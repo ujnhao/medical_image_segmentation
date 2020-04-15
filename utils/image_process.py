@@ -3,12 +3,11 @@
    image preprocess for CT or MR
 """
 import os
-import nibabel as nib
 import matplotlib.pyplot as plt
-import cv2
 import numpy as np
 import SimpleITK as itk
-import tensorflow as tf
+from skimage import transform
+import cv2
 
 
 # read all image path from file
@@ -27,6 +26,7 @@ def show_image(*image_data_list):
     plt.show()
 
 
+# 图片信息
 def image_info(itk_img):
     print("itk_image_array.shape: {}".format(itk.GetArrayFromImage(itk_img).shape))
     # 原点Origin，大小Size，间距Spacing和方向Direction
@@ -69,7 +69,7 @@ def re_sample_img(itk_img, out_spacing=[1.0, 1.0, 1.0], is_label=False):
     return re_sample.Execute(itk_img)
 
 
-# 将源文件和标签文件裁剪为(256,256,256)大小后保存
+# 将源文件和标签文件裁剪为(256,256,256)大小
 def image_crop(val_image, label_image):
     # val_image = val_image.transpose(2, 1, 0)  # 原始数组为三维数组(x,y,z),则原始axis排列为(0,1,2),则transpose()的默认参数为(2,1,0)，
     # 得到转置后的数组视图，不影响原数组的内容以及大小，这里实际上是x轴和z轴进行了交换
@@ -116,30 +116,60 @@ def image_crop(val_image, label_image):
     print("all_sum: ", all_sum)
     show_image(image_block[128, :, :], image_block[:, 128, :], image_block[:, :, 128],
                 label_block[128, :, :], label_block[:, 128, :], label_block[:, :, 128])
+    return image_block, label_block
+
+
+# image_resize (256, 256, 256) * 0.05
+def image_resize(img_data):
+    (x, y, z) = img_data.shape
+    roi = 256*1.05/min(x, y, z)
+    print(roi)
+    img_data = transform.resize(img_data, (int(x*roi), int(y*roi), int(z*roi)))
+    return img_data
+
+
+# 归一化
+def normalize(img):
+    img = img.astype(np.float32)
+    img = (img - img.min()) / (img.max() - img.min())
+    return img
 
 
 if __name__ == "__main__":
-    image_path = "example/ct_train_1001_image.nii.gz"
-    label_path = "example/ct_train_1001_label.nii.gz"
+    image_path = "example/mr_train_1003_image.nii.gz"
+    label_path = "example/mr_train_1003_label.nii.gz"
     itk_image = itk.ReadImage(image_path)
     itk_label = itk.ReadImage(label_path)
-    itk_image_array = itk.GetArrayFromImage(itk_image)
-    itk_label_array = itk.GetArrayFromImage(itk_label)
-    show_image(itk_image_array[80, :, :], itk_image_array[:, 128, :], itk_image_array[:, :, 128],
-               itk_label_array[80, :, :], itk_label_array[:, 128, :], itk_label_array[:, :, 128])
-    image_info(itk_image)
+
+    # itk_image_array = itk.GetArrayFromImage(itk_image)
+    # itk_label_array = itk.GetArrayFromImage(itk_label)
+    # show_image(itk_image_array[80, :, :], itk_image_array[:, 128, :], itk_image_array[:, :, 128],
+    #            itk_label_array[80, :, :], itk_label_array[:, 128, :], itk_label_array[:, :, 128])
     # show_image(itk_image_array[80, :, :], itk_image_array[:, 256, :], itk_image_array[:, :, 256])
 
-    new_itk_image = re_sample_img(itk_image, out_spacing=[1.0, 1.0, 1.0], is_label=False)
-    new_itk_label = re_sample_img(itk_label, out_spacing=[1.0, 1.0, 1.0], is_label=True)
+    itk_image = re_sample_img(itk_image, out_spacing=[1.0, 1.0, 1.0], is_label=False)
+    itk_label = re_sample_img(itk_label, out_spacing=[1.0, 1.0, 1.0], is_label=True)
+    image_info(itk_image)
 
-    new_itk_image_array = itk.GetArrayFromImage(new_itk_image)
-    new_itk_label_array = itk.GetArrayFromImage(new_itk_label)
-    show_image(new_itk_image_array[80, :, :], new_itk_image_array[:, 128, :], new_itk_image_array[:, :, 128],
-               new_itk_label_array[80, :, :], new_itk_label_array[:, 128, :], new_itk_label_array[:, :, 128])
-    image_info(new_itk_image)
-    # image_crop(new_itk_image_array, new_itk_label_array)
-    # image_info(new_itk_image)
+    itk_image_array = image_resize(itk.GetArrayFromImage(itk_image))
+    itk_label_array = image_resize(itk.GetArrayFromImage(itk_label))
+
+    itk_image_array = itk_image_array.transpose(2, 1, 0)
+    itk_label_array = itk_label_array.transpose(2, 1, 0)
+    itk_image_array = normalize(itk_image_array)
+    itk_label_array = normalize(itk_label_array)
+
+    itk_image_array, itk_label_array = image_crop(itk_image_array, itk_label_array)
+
+    cv2.imshow("img", itk_image_array[:, :, 127:130])
+    cv2.imshow("label", itk_label_array[:, :, 127:130])
+    cv2.waitKey(0)
+    image_info(itk_image)
+
+
+    # show_image(itk_image_array[80, :, :], itk_image_array[:, 128, :], itk_image_array[:, :, 128],
+    #            itk_label_array[80, :, :], itk_label_array[:, 128, :], itk_label_array[:, :, 128])
+    # image_info(itk_image)
     # show_image(itk_image_array[80, :, :], itk_image_array[:, 256, :], itk_image_array[:, :, 256],
     #            new_itk_image_array[80, :, :], new_itk_image_array[:, 256, :], new_itk_image_array[:, :, 256])
     # itk_label = re_sample_img(itk_label, out_spacing=[1.0, 1.0, 1.0], is_label=True)

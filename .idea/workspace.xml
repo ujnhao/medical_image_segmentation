@@ -2,20 +2,14 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="8d1930a8-028d-4957-b438-f8f1e7dfaa33" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/layers.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lib.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ops.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/source_segmenter.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/train_segmentation.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/utils/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/utils/gettfrecords.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/utils/image_preprocess.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/utils/nii2npz.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/utils/plot_3d.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/utils/test.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/utils/example/mr_train_1001_image.nii.gz" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/utils/example/mr_train_1001_label.nii.gz" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/utils/example/mr_train_1003_image.nii.gz" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/utils/example/mr_train_1003_label.nii.gz" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/utils/mri_image_preprocess.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/utils/image_preprocess.py" beforeDir="false" afterPath="$PROJECT_DIR$/utils/image_process.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -46,6 +40,7 @@
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\wanghaohao\repos\medical_image_segmentation\utils" />
       <recent name="C:\Users\wanghaohao\repos\medical_image_segmentation\utils\example" />
     </key>
   </component>
@@ -75,7 +70,7 @@
       <workItem from="1586854125440" duration="13609000" />
       <workItem from="1586878573901" duration="5495000" />
       <workItem from="1586885544948" duration="13160000" />
-      <workItem from="1586928276239" duration="801000" />
+      <workItem from="1586928276239" duration="21745000" />
     </task>
     <servers />
   </component>
