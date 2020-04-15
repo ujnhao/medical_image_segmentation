@@ -1,7 +1,22 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="8d1930a8-028d-4957-b438-f8f1e7dfaa33" name="Default Changelist" comment="" />
+    <list default="true" id="8d1930a8-028d-4957-b438-f8f1e7dfaa33" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/layers.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lib.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ops.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/source_segmenter.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/train_segmentation.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/utils/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/utils/gettfrecords.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/utils/image_preprocess.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/utils/nii2npz.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/utils/plot_3d.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/utils/test.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+    </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -17,18 +32,6 @@
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
-  </component>
-  <component name="ProjectConfigurationFiles">
-    <option name="files">
-      <list>
-        <option value="$PROJECT_DIR$/.idea/medical_image_segmentation.iml" />
-        <option value="$PROJECT_DIR$/.idea/misc.xml" />
-        <option value="$PROJECT_DIR$/.idea/vcs.xml" />
-        <option value="$PROJECT_DIR$/.idea/modules.xml" />
-        <option value="$PROJECT_DIR$/.idea/inspectionProfiles/profiles_settings.xml" />
-        <option value="$PROJECT_DIR$/.idea/.gitignore" />
-      </list>
-    </option>
   </component>
   <component name="ProjectId" id="1aUfqbeAQRVprnPsslZFJZGNHtp" />
   <component name="ProjectLevelVcsManager">
@@ -58,35 +61,6 @@
       </list>
     </option>
   </component>
-  <component name="RunManager">
-    <configuration name="image_preprocess" type="PythonConfigurationType" factoryName="Python" temporary="true">
-      <module name="medical_image_segmentation" />
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <envs>
-        <env name="PYTHONUNBUFFERED" value="1" />
-      </envs>
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/utils" />
-      <option name="IS_MODULE_SDK" value="true" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/utils/image_preprocess.py" />
-      <option name="PARAMETERS" value="" />
-      <option name="SHOW_COMMAND_LINE" value="false" />
-      <option name="EMULATE_TERMINAL" value="false" />
-      <option name="MODULE_MODE" value="false" />
-      <option name="REDIRECT_INPUT" value="false" />
-      <option name="INPUT_FILE" value="" />
-      <method v="2" />
-    </configuration>
-    <recent_temporary>
-      <list>
-        <item itemvalue="Python.image_preprocess" />
-      </list>
-    </recent_temporary>
-  </component>
   <component name="SvnConfiguration">
     <configuration />
   </component>
@@ -100,7 +74,8 @@
       <workItem from="1586795295799" duration="13261000" />
       <workItem from="1586854125440" duration="13609000" />
       <workItem from="1586878573901" duration="5495000" />
-      <workItem from="1586885544948" duration="12864000" />
+      <workItem from="1586885544948" duration="13160000" />
+      <workItem from="1586928276239" duration="801000" />
     </task>
     <servers />
   </component>
