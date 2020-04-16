@@ -1,3 +1,4 @@
+#!/usr/bin/python3
 import scipy.ndimage
 import matplotlib.pyplot as plt
 

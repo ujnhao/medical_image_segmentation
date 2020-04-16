@@ -60,10 +60,10 @@ def re_sample_img(itk_img, out_spacing=[1.0, 1.0, 1.0], is_label=False):
 # 将源文件和标签文件裁剪为(256,256,256)大小
 def image_crop(val_image, val_label):
     val_image = val_image.transpose(2, 1, 0)  # 原始数组为三维数组(x,y,z),则原始axis排列为(0,1,2),则transpose()的默认参数为(2,1,0)，
+    val_label = val_label.transpose(2, 1, 0)  # 原始数组为三维数组(x,y,z),则原始axis排列为(0,1,2),则transpose()的默认参数为(2,1,0)，
+
     # 得到转置后的数组视图，不影响原数组的内容以及大小，这里实际上是x轴和z轴进行了交换
     val_image = val_image[::-1, ::-1, :]  # 进行了一个左右翻转
-
-    val_label = val_label.transpose(2, 1, 0)  # 原始数组为三维数组(x,y,z),则原始axis排列为(0,1,2),则transpose()的默认参数为(2,1,0)，
     val_label = val_label[::-1, ::-1, :]  # 此时的label为uint8类型的，需要转换为bool类型再进行操作
     bool_label = val_label.astype(np.bool)  # 将label转换成bool类型
     axis_list = np.where(bool_label)  # 输出满足条件（即非0）元素的坐标，这里的坐标以元组的形式给出，原数组有三维，所以tuple中有三个数组
@@ -78,26 +78,28 @@ def image_crop(val_image, val_label):
     # 将标签和原图像裁剪为(256, 256, 256)大小
     label_block = val_label
     image_block = val_image
+
     if center_point[0] >= 128:
-        label_block = label_block[center_point[0] - 128:center_point[0] + 128, :, :]
-        image_block = image_block[center_point[0] - 128:center_point[0] + 128, :, :]
+        label_block = label_block[center_point[0] - 128:min(center_point[0] + 128, val_image.shape[0]), :, :]
+        image_block = image_block[center_point[0] - 128:min(center_point[0] + 128, val_label.shape[0]), :, :]
     else:
-        label_block = label_block[128 - center_point[0]:384 - center_point[0], :, :]
-        image_block = image_block[128 - center_point[0]:384 - center_point[0], :, :]
+        label_block = label_block[:min(256, val_image.shape[0]), :, :]
+        image_block = image_block[:min(256, val_label.shape[0]), :, :]
 
     if center_point[1] >= 128:
-        label_block = label_block[:, center_point[1] - 128:center_point[1] + 128, :]
-        image_block = image_block[:, center_point[1] - 128:center_point[1] + 128, :]
+        label_block = label_block[:, center_point[1] - 128:min(center_point[1] + 128, val_image.shape[1]), :]
+        image_block = image_block[:, center_point[1] - 128:min(center_point[1] + 128, val_label.shape[1]), :]
     else:
-        label_block = label_block[:, 128 - center_point[1]:384 - center_point[1], :]
-        image_block = image_block[:, 128 - center_point[1]:384 - center_point[1], :]
+        label_block = label_block[:, :min(256, val_image.shape[1]), :]
+        image_block = image_block[:, :min(256, val_label.shape[1]), :]
 
     if center_point[2] >= 128:
-        label_block = label_block[:, :, center_point[2] - 128:center_point[2] + 128]
-        image_block = image_block[:, :, center_point[2] - 128:center_point[2] + 128]
+        label_block = label_block[:, :, center_point[2] - 128:min(center_point[2] + 128, val_image.shape[2])]
+        image_block = image_block[:, :, center_point[2] - 128:min(center_point[2] + 128, val_label.shape[2])]
     else:
-        label_block = label_block[:, :, 128 - center_point[2]:384 - center_point[2]]
-        image_block = image_block[:, :, 128 - center_point[2]:384 - center_point[2]]
+        label_block = label_block[:, :, :min(256, val_image.shape[2])]
+        image_block = image_block[:, :, :min(256, val_label.shape[2])]
+
     # print("label_block: {}".format(label_block.shape))
     # print("image_block: {}".format(image_block.shape))
     # block_sum = np.sum(label_block.astype(np.bool))  # 裁剪后标签中的label中bool值为真的像素个数
@@ -116,12 +118,28 @@ def normalize(img):
 
 # image_resize (256, 256, 256)
 def image_resize(img_data):
-    (x, y, z) = img_data.shape
-    x = max(x, 256)
-    y = max(y, 256)
-    z = max(z, 256)
-    img_data = transform.resize(img_data, (x, y, z))
+    img_data = transform.resize(img_data, (256, 256, img_data.shape[2]))
     return img_data
+
+
+# save npz file
+def save_npz(path, img_data, lab_data):
+    file, _ = os.path.split(path)
+    if not os.path.exists(file):
+        os.makedirs(file)
+    np.savez(path, img_data, lab_data)
+
+
+def save_slice_npz(file, img_name, img_data, lab_data):
+    if not os.path.exists(file):
+        os.makedirs(file)
+    if img_data.shape[2] < 3:
+        return None
+    for i in range(1, img_data.shape[2]-1):
+        block_sum = np.sum(lab_data[:, :, i].astype(np.bool))
+        if block_sum > 10:
+            npz_path = file + "/" + img_name + "_slice_" + str(i) + ".npz"
+            save_npz(npz_path, img_data[:, :, i-1:i+2], lab_data[:, :, i-1:i+2])
 
 
 def mri_image_preprocess():
@@ -133,31 +151,44 @@ def mri_image_preprocess():
     print(image_name_list)
     image_list = []
     for image_name in image_name_list:
+        print("handle %s" % image_name)
         image_path = file_path + "/" + image_name + "_image.nii.gz"
         label_path = file_path + "/" + image_name + "_label.nii.gz"
-        npz_path = npz_file_path + "/" + image_name + ".npz"
+        npz_all_path = npz_file_path + "_all" + "/" + image_name + ".npz"
 
         # 读取图像
         itk_image = itk.ReadImage(image_path)
         itk_label = itk.ReadImage(label_path)
+
         # 重采样
         itk_image = re_sample_img(itk_image, out_spacing=[1.0, 1.0, 1.0], is_label=False)
         itk_label = re_sample_img(itk_label, out_spacing=[1.0, 1.0, 1.0], is_label=True)
         val_image, val_label = itk.GetArrayFromImage(itk_image), itk.GetArrayFromImage(itk_label)
+
         # 归一化
         val_image = normalize(val_image)
         val_label = normalize(val_label)
-        # 缩放
-        (x, y, z) = val_image.shape
-        if min(x, y, z) < 256:
+
+        # 中心剪切256 x 256 x 256
+        val_image, val_label = image_crop(val_image, val_label)
+
+        # 缩放(256, 256, z)
+        if min(val_image.shape[0], val_image.shape[1]) < 256:
             val_image = image_resize(val_image)
             val_label = image_resize(val_label)
-        # 剪切256 x 256 x 256
-        val_image, val_label = image_crop(val_image, val_label)
+
+        save_npz(npz_all_path, val_image, val_label)
+        save_slice_npz(npz_file_path, image_name, val_image, val_label)
+
+        # print("img_shape: {}".format(val_image.shape))
+        # print("lab_shape: {}".format(val_label.shape))
+        # show_image(val_image[:, :, int(val_image.shape[2]/2)], val_label[:, :, int(val_image.shape[2]/2)])
         # image_list.append(val_image[:, :, 129])
         # image_list.append(val_label[:, :, 129])
-        # show_image(val_image[:, :, 129], val_label[:, :, 129])
-        np.savez(npz_path, val_image[:, :, 127:130], val_image[:, :, 127:130])
+        # for i in range(0, val_image.shape[2]):
+        #     show_image(val_image[:, :, i], val_label[:, :, i])
+        # break
+        # np.savez(npz_path, val_image[:, :, 127:130], val_label[:, :, 127:130])
         # cv2.imshow(image_name+"_image", val_image[:, :, 127:130])
         # cv2.imshow(image_name+"_label", val_label[:, :, 127:130])
         # cv2.waitKey(1000)
