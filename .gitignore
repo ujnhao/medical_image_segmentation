@@ -130,3 +130,6 @@ dmypy.json
 
 # myself
 *.nii.gz
+*.npz
+*.tfrecords
+*.jpg
