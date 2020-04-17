@@ -113,7 +113,7 @@ def _dice_eval(compact_pred, labels, n_class):
         dice = dice + 2.0 * inse / (union + eps)
         dice_arr.append(2.0 * inse / (union + eps))
 
-    return 1.0 * dice  / n_class, dice_arr
+    return 1.0 * dice / n_class, dice_arr
 
 
 def _inverse_lookup(my_dict, _value):
@@ -162,12 +162,12 @@ def _indicator_eval(cm):
     """
     Decompose confusion matrix and get statistics
     """
-    contour_map = { # a map used for mapping label value to its name, used for output
-        "bg": 0,
+    contour_map = {     # a map used for mapping label value to its name, used for output
+        "back_ground": 0,
         "la_myo": 1,
-        "la_blood": 2,
-        "lv_blood": 3,
-        "aa": 4
+        # "la_blood": 2,
+        # "lv_blood": 3,
+        # "aa": 4
     }
 
     dice = _dice(cm)

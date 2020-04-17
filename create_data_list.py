@@ -16,3 +16,6 @@ if __name__ == '__main__':
     data_fd = "list/tfs_mr_val"
     data_list = 'list/tfs_mr_val_list.txt'
     make_datalist(data_fd, data_list)
+    data_fd = "list/tfs_mr_train"
+    data_list = 'list/tfs_mr_train_list.txt'
+    make_datalist(data_fd, data_list)

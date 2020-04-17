@@ -106,7 +106,7 @@ def do_npz2tfs_handle():
 
 if __name__ == "__main__":
     # do_npz2tfs_handle()
-    filepth = "example/mr_train_1001_slice_128.tfrecords"
+    filepth = "example/mr_train_1001_slice_48.tfrecords"
     data_vol, label_vol = read_decode_samples([filepth], True)
     print(data_vol)
 

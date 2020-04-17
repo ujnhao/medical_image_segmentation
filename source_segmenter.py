@@ -69,15 +69,15 @@ class Full_DRN(object):
         self.conv_weights = []
         self.x = tf.placeholder("float", shape=[None, volume_size[0], volume_size[1], channels])
         self.y = tf.placeholder("float", shape=[None, label_size[0], label_size[1], self.n_class])
-        self.main_bn = tf.placeholder_with_default(True, shape = None, name = "main_batchnorm_training_switch")
+        self.main_bn = tf.placeholder_with_default(True, shape=None, name="main_batchnorm_training_switch")
         self.main_trainable = main_trainable
         self.adapt_trainable = adapt_trainable
 
-        self.adapt_bn = tf.placeholder_with_default(True, shape = None, name = "adapt_batchnorm_training_switch")
-        self.keep_prob = tf.placeholder(tf.float32) #dropout (keep probability)
-        logits =  self.create_network(input_size = raw_size, input_channel = channels, num_cls = self.n_class, feature_base = 16, keep_prob = self.keep_prob, adapt_module = adapt_module, \
-                                      main_bn = self.main_bn, main_trainable = self.main_trainable, \
-                                      adapt_bn = self.adapt_bn, adapt_trainable = self.adapt_trainable)
+        self.adapt_bn = tf.placeholder_with_default(True, shape=None, name="adapt_batchnorm_training_switch")
+        self.keep_prob = tf.placeholder(tf.float32)  # dropout (keep probability)
+        logits = self.create_network(input_size=raw_size, input_channel=channels, num_cls=self.n_class, feature_base=16, keep_prob=self.keep_prob, adapt_module=adapt_module,
+                                      main_bn=self.main_bn, main_trainable=self.main_trainable,
+                                      adapt_bn=self.adapt_bn, adapt_trainable=self.adapt_trainable)
         self.predicter = pixel_wise_softmax_2(logits)
         self.compact_pred = tf.argmax(self.predicter, 3)
         self.compact_y = tf.argmax(self.y, 3)
@@ -85,124 +85,123 @@ class Full_DRN(object):
         self.cost, self.regularizer_loss = self._get_cost(logits, cost_kwargs)
         self.confusion_matrix = tf.confusion_matrix(tf.reshape(self.compact_y,[-1]), tf.reshape(self.compact_pred, [-1]), num_classes = self.n_class)
 
-
     def create_network(self, input_size, input_channel, num_cls, feature_base=16, keep_prob=0.75, main_bn=True, main_trainable=True, adapt_module = True, adapt_bn=True, adapt_trainable=True):
         with tf.name_scope('group_1') as scope:
-            w1_1 = weight_variable(shape = [3, 3, input_channel, feature_base], trainable = adapt_trainable)
+            w1_1 = weight_variable(shape=[3, 3, input_channel, feature_base], trainable=adapt_trainable)
             conv1_1 = conv2d(self.x, w1_1, keep_prob )
-            wr1_1 = weight_variable(shape = [3, 3, feature_base, feature_base], trainable = adapt_trainable)
-            wr1_2 = weight_variable(shape = [3, 3, feature_base, feature_base], trainable = adapt_trainable)
-            block1_1 = residual_block(conv1_1, wr1_1, wr1_2, keep_prob , is_train = adapt_bn, leak = True, bn_trainable = adapt_trainable)
-            out1 = max_pool2d(block1_1, n = 2)
+            wr1_1 = weight_variable(shape=[3, 3, feature_base, feature_base], trainable=adapt_trainable)
+            wr1_2 = weight_variable(shape=[3, 3, feature_base, feature_base], trainable=adapt_trainable)
+            block1_1 = residual_block(conv1_1, wr1_1, wr1_2, keep_prob, is_train=adapt_bn, leak=True, bn_trainable=adapt_trainable)
+            out1 = max_pool2d(block1_1, n=2)
             self.conv_weights.append(w1_1)
             self.conv_weights.append(wr1_1)
             self.conv_weights.append(wr1_2)
 
         with tf.name_scope('group_2') as scope:
-            wr2_1 = weight_variable(shape = [3, 3, feature_base, feature_base * 2], trainable = adapt_trainable)
-            wr2_2 = weight_variable(shape = [3, 3, feature_base * 2, feature_base * 2], trainable = adapt_trainable)
-            block2_1 = residual_block(out1, wr2_1, wr2_2, inc_dim = True, leak = True, keep_prob = keep_prob, is_train = adapt_bn, bn_trainable = adapt_trainable)
-            out2 = max_pool2d(block2_1, n = 2)
+            wr2_1 = weight_variable(shape=[3, 3, feature_base, feature_base * 2], trainable=adapt_trainable)
+            wr2_2 = weight_variable(shape=[3, 3, feature_base * 2, feature_base * 2], trainable=adapt_trainable)
+            block2_1 = residual_block(out1, wr2_1, wr2_2, inc_dim=True, leak=True, keep_prob=keep_prob, is_train=adapt_bn, bn_trainable=adapt_trainable)
+            out2 = max_pool2d(block2_1, n=2)
             self.conv_weights.append(wr2_1)
             self.conv_weights.append(wr2_2)
 
         with tf.name_scope('group_3') as scope:
-            wr3_1 = weight_variable( shape = [3, 3, feature_base * 2, feature_base * 4], trainable = adapt_trainable  )
-            wr3_2 = weight_variable( shape = [3, 3, feature_base * 4, feature_base * 4], trainable = adapt_trainable  )
-            block3_1 = residual_block( out2, wr3_1, wr3_2, keep_prob, inc_dim = True, leak = True, is_train = adapt_bn, bn_trainable = adapt_trainable      )
+            wr3_1 = weight_variable(shape=[3, 3, feature_base * 2, feature_base * 4], trainable=adapt_trainable)
+            wr3_2 = weight_variable(shape=[3, 3, feature_base * 4, feature_base * 4], trainable=adapt_trainable)
+            block3_1 = residual_block(out2, wr3_1, wr3_2, keep_prob, inc_dim=True, leak=True, is_train=adapt_bn, bn_trainable=adapt_trainable)
 
-            wr3_3 = weight_variable( shape = [3, 3, feature_base * 4, feature_base * 4], trainable = adapt_trainable  )
-            wr3_4 = weight_variable( shape = [3, 3, feature_base * 4, feature_base * 4], trainable = adapt_trainable  )
-            block3_2 = residual_block( block3_1, wr3_3, wr3_4,keep_prob = keep_prob, leak = True, is_train = adapt_bn, bn_trainable = adapt_trainable     )
-            out3 = max_pool2d(block3_2, n = 2)
+            wr3_3 = weight_variable(shape=[3, 3, feature_base * 4, feature_base * 4], trainable=adapt_trainable)
+            wr3_4 = weight_variable(shape=[3, 3, feature_base * 4, feature_base * 4], trainable=adapt_trainable)
+            block3_2 = residual_block(block3_1, wr3_3, wr3_4,keep_prob=keep_prob, leak=True, is_train=adapt_bn, bn_trainable=adapt_trainable)
+            out3 = max_pool2d(block3_2, n=2)
             self.conv_weights.append(wr3_1)
             self.conv_weights.append(wr3_2)
             self.conv_weights.append(wr3_3)
             self.conv_weights.append(wr3_4)
 
         with tf.name_scope('group_4') as scope:
-            wr4_1 = weight_variable( shape = [3, 3, feature_base * 4, feature_base * 8], trainable = adapt_trainable  )
-            wr4_2 = weight_variable( shape = [3, 3, feature_base * 8, feature_base * 8], trainable = adapt_trainable   )
-            block4_1 = residual_block( out3, wr4_1, wr4_2, keep_prob,  inc_dim = True, leak = True, is_train = adapt_bn, bn_trainable = adapt_trainable     )
+            wr4_1 = weight_variable(shape=[3, 3, feature_base * 4, feature_base * 8], trainable=adapt_trainable)
+            wr4_2 = weight_variable(shape=[3, 3, feature_base * 8, feature_base * 8], trainable=adapt_trainable)
+            block4_1 = residual_block(out3, wr4_1, wr4_2, keep_prob,  inc_dim=True, leak=True, is_train=adapt_bn, bn_trainable=adapt_trainable)
 
-            wr4_3 = weight_variable( shape = [3, 3, feature_base * 8, feature_base * 8], trainable = adapt_trainable  )
-            wr4_4 = weight_variable( shape = [3, 3, feature_base * 8, feature_base * 8], trainable = adapt_trainable  )
-            block4_2 = residual_block( block4_1, wr4_3, wr4_4, keep_prob, is_train = adapt_bn, leak = True, bn_trainable = adapt_trainable     )
+            wr4_3 = weight_variable(shape=[3, 3, feature_base * 8, feature_base * 8], trainable=adapt_trainable)
+            wr4_4 = weight_variable(shape=[3, 3, feature_base * 8, feature_base * 8], trainable=adapt_trainable)
+            block4_2 = residual_block(block4_1, wr4_3, wr4_4, keep_prob, is_train=adapt_bn, leak=True, bn_trainable=adapt_trainable)
             self.conv_weights.append(wr4_1)
             self.conv_weights.append(wr4_2)
             self.conv_weights.append(wr4_4)
             self.conv_weights.append(wr4_4)
 
         with tf.name_scope('group_5') as scope:
-            wr5_1 = weight_variable( shape = [3, 3, feature_base * 8, feature_base * 16], trainable = main_trainable  )
-            wr5_2 = weight_variable( shape = [3, 3, feature_base * 16, feature_base * 16], trainable = main_trainable  )
-            block5_1 = residual_block( block4_2, wr5_1, wr5_2, keep_prob = keep_prob, leak = True, inc_dim = True,  is_train = main_bn, bn_trainable = main_trainable    )
+            wr5_1 = weight_variable(shape=[3, 3, feature_base * 8, feature_base * 16], trainable=main_trainable)
+            wr5_2 = weight_variable(shape=[3, 3, feature_base * 16, feature_base * 16], trainable=main_trainable)
+            block5_1 = residual_block(block4_2, wr5_1, wr5_2, keep_prob=keep_prob, leak=True, inc_dim=True,  is_train=main_bn, bn_trainable=main_trainable)
 
-            wr5_3 = weight_variable( shape = [3, 3, feature_base * 16, feature_base * 16], trainable = main_trainable  )
-            wr5_4 = weight_variable( shape = [3, 3, feature_base * 16, feature_base * 16], trainable = main_trainable  )
-            block5_2 = residual_block( block5_1, wr5_3, wr5_4, keep_prob = keep_prob, leak = True,  is_train = main_bn, bn_trainable = main_trainable    )
-            self.conv_weights.append( wr5_1  )
-            self.conv_weights.append( wr5_2  )
-            self.conv_weights.append( wr5_3  )
-            self.conv_weights.append( wr5_4  )
+            wr5_3 = weight_variable(shape=[3, 3, feature_base * 16, feature_base * 16], trainable=main_trainable)
+            wr5_4 = weight_variable(shape=[3, 3, feature_base * 16, feature_base * 16], trainable=main_trainable)
+            block5_2 = residual_block(block5_1, wr5_3, wr5_4, keep_prob=keep_prob, leak=True,  is_train=main_bn, bn_trainable=main_trainable)
+            self.conv_weights.append(wr5_1)
+            self.conv_weights.append(wr5_2)
+            self.conv_weights.append(wr5_3)
+            self.conv_weights.append(wr5_4)
 
         with tf.name_scope('group_6') as scope:
-            wr6_1 = weight_variable( shape = [3, 3, feature_base * 16, feature_base * 16], trainable = main_trainable  )
-            wr6_2 = weight_variable( shape = [3, 3, feature_base * 16, feature_base * 16], trainable = main_trainable  )
-            block6_1 = residual_block( block5_2, wr6_1, wr6_2, keep_prob = keep_prob, leak = True, is_train = main_bn,  bn_trainable = main_trainable    )
+            wr6_1 = weight_variable(shape=[3, 3, feature_base * 16, feature_base * 16], trainable=main_trainable)
+            wr6_2 = weight_variable(shape=[3, 3, feature_base * 16, feature_base * 16], trainable=main_trainable)
+            block6_1 = residual_block(block5_2, wr6_1, wr6_2, keep_prob=keep_prob, leak=True, is_train=main_bn,  bn_trainable=main_trainable)
 
-            wr6_3 = weight_variable( shape = [3, 3, feature_base * 16, feature_base * 16], trainable = main_trainable  )
-            wr6_4 = weight_variable( shape = [3, 3, feature_base * 16, feature_base * 16], trainable = main_trainable  )
-            block6_2 = residual_block( block6_1, wr6_3, wr6_4, keep_prob = keep_prob, leak = True,  is_train = main_bn,  bn_trainable = main_trainable    )
-            self.conv_weights.append( wr6_1  )
-            self.conv_weights.append( wr6_2  )
-            self.conv_weights.append( wr6_3  )
-            self.conv_weights.append( wr6_4  )
+            wr6_3 = weight_variable(shape=[3, 3, feature_base * 16, feature_base * 16], trainable=main_trainable)
+            wr6_4 = weight_variable(shape=[3, 3, feature_base * 16, feature_base * 16], trainable=main_trainable)
+            block6_2 = residual_block(block6_1, wr6_3, wr6_4, keep_prob=keep_prob, leak=True,  is_train=main_bn,  bn_trainable=main_trainable)
+            self.conv_weights.append(wr6_1)
+            self.conv_weights.append(wr6_2)
+            self.conv_weights.append(wr6_3)
+            self.conv_weights.append(wr6_4)
 
         with tf.name_scope('group_7') as scope:
-            wr7_1 = weight_variable( shape = [3, 3, feature_base * 16, feature_base * 32], trainable = main_trainable  )
-            wr7_2 = weight_variable( shape = [3, 3, feature_base * 32, feature_base * 32], trainable = main_trainable  )
-            block7_1 = residual_block( block6_2, wr7_1, wr7_2, keep_prob = keep_prob, leak = True,  inc_dim = True, is_train = main_bn, bn_trainable = main_trainable    )
+            wr7_1 = weight_variable(shape=[3, 3, feature_base * 16, feature_base * 32], trainable=main_trainable)
+            wr7_2 = weight_variable(shape=[3, 3, feature_base * 32, feature_base * 32], trainable=main_trainable)
+            block7_1 = residual_block(block6_2, wr7_1, wr7_2, keep_prob=keep_prob, leak=True,  inc_dim=True, is_train=main_bn, bn_trainable=main_trainable)
 
-            wr7_3 = weight_variable( shape = [3, 3, feature_base * 32, feature_base * 32], trainable = main_trainable  )
-            wr7_4 = weight_variable( shape = [3, 3, feature_base * 32, feature_base * 32], trainable = main_trainable  )
-            block7_2 = residual_block( block7_1, wr7_3, wr7_4, keep_prob = keep_prob, leak = True,  is_train = main_bn, bn_trainable = main_trainable    )
-            self.conv_weights.append( wr7_1  )
-            self.conv_weights.append( wr7_2  )
-            self.conv_weights.append( wr7_3  )
-            self.conv_weights.append( wr7_4  )
+            wr7_3 = weight_variable(shape=[3, 3, feature_base * 32, feature_base * 32], trainable=main_trainable)
+            wr7_4 = weight_variable(shape=[3, 3, feature_base * 32, feature_base * 32], trainable=main_trainable)
+            block7_2 = residual_block(block7_1, wr7_3, wr7_4, keep_prob=keep_prob, leak=True,  is_train=main_bn, bn_trainable=main_trainable)
+            self.conv_weights.append(wr7_1)
+            self.conv_weights.append(wr7_2)
+            self.conv_weights.append(wr7_3)
+            self.conv_weights.append(wr7_4)
 
         with tf.name_scope('group_8') as scope:
-            wr8_1 = weight_variable( shape = [3, 3, feature_base * 32, feature_base * 32], trainable = main_trainable  )
-            wr8_2 = weight_variable( shape = [3, 3, feature_base * 32, feature_base * 32], trainable = main_trainable  )
-            block8_1 = DR_block( block7_2, wr8_1, wr8_2, keep_prob = keep_prob, leak = True, rate = 2, is_train = main_bn, bn_trainable = main_trainable    )
+            wr8_1 = weight_variable(shape=[3, 3, feature_base * 32, feature_base * 32], trainable=main_trainable)
+            wr8_2 = weight_variable(shape=[3, 3, feature_base * 32, feature_base * 32], trainable=main_trainable)
+            block8_1 = DR_block(block7_2, wr8_1, wr8_2, keep_prob=keep_prob, leak=True, rate=2, is_train=main_bn, bn_trainable=main_trainable)
 
-            wr8_3 = weight_variable( shape = [3, 3, feature_base * 32, feature_base * 32], trainable = main_trainable  )
-            wr8_4 = weight_variable( shape = [3, 3, feature_base * 32, feature_base * 32], trainable = main_trainable  )
-            block8_2 = DR_block( block8_1, wr8_3, wr8_4, keep_prob = keep_prob, leak = True,  rate = 2, is_train = main_bn, bn_trainable = main_trainable    )
-            self.conv_weights.append( wr8_1  )
-            self.conv_weights.append( wr8_2  )
-            self.conv_weights.append( wr8_3  )
-            self.conv_weights.append( wr8_4  )
+            wr8_3 = weight_variable(shape=[3, 3, feature_base * 32, feature_base * 32], trainable=main_trainable)
+            wr8_4 = weight_variable(shape=[3, 3, feature_base * 32, feature_base * 32], trainable=main_trainable)
+            block8_2 = DR_block(block8_1, wr8_3, wr8_4, keep_prob=keep_prob, leak=True,  rate=2, is_train=main_bn, bn_trainable=main_trainable)
+            self.conv_weights.append(wr8_1)
+            self.conv_weights.append(wr8_2)
+            self.conv_weights.append(wr8_3)
+            self.conv_weights.append(wr8_4)
 
         with tf.name_scope('group_9') as scope:
-            w9_1 = weight_variable( shape = [3, 3, feature_base * 32, feature_base * 32], trainable = main_trainable  )
-            conv9_1 = conv_bn_relu2d( block8_2, w9_1, keep_prob, is_train = main_bn, bn_trainable = main_trainable, leak = True    )
-            w9_2 = weight_variable( shape = [3, 3, feature_base * 32, feature_base * 32], trainable = main_trainable  )
-            conv9_2 = conv_bn_relu2d( conv9_1, w9_2, keep_prob, is_train = main_bn, bn_trainable = main_trainable, leak = True    )
-            self.conv_weights.append( w9_1  )
-            self.conv_weights.append( w9_2  )
+            w9_1 = weight_variable( shape=[3, 3, feature_base * 32, feature_base * 32], trainable=main_trainable)
+            conv9_1 = conv_bn_relu2d( block8_2, w9_1, keep_prob, is_train=main_bn, bn_trainable=main_trainable, leak=True)
+            w9_2 = weight_variable( shape=[3, 3, feature_base * 32, feature_base * 32], trainable=main_trainable)
+            conv9_2 = conv_bn_relu2d(conv9_1, w9_2, keep_prob, is_train=main_bn, bn_trainable=main_trainable, leak=True)
+            self.conv_weights.append(w9_1)
+            self.conv_weights.append(w9_2)
 
         with tf.name_scope('group_10') as scope:
-            local_size = 8 * 8 # (r^2)
-            w10_1 = weight_variable( shape = [3, 3, feature_base * 32, local_size * num_cls * 8], trainable = main_trainable  )
-            conv10_1 = conv2d( conv9_2, w10_1, keep_prob_ = keep_prob, padding = 'SYMMETRIC')
+            local_size = 8 * 8  # (r^2)
+            w10_1 = weight_variable(shape=[3, 3, feature_base * 32, local_size * num_cls * 8], trainable=main_trainable)
+            conv10_1 = conv2d(conv9_2, w10_1, keep_prob_=keep_prob, padding='SYMMETRIC')
             self.conv_weights.append(w10_1)
-            flat_conv10_1 = PS(conv10_1, r = 8, n_channel = num_cls * 8, batch_size = self.batch_size)
+            flat_conv10_1 = PS(conv10_1, r=8, n_channel=num_cls * 8, batch_size=self.batch_size)
 
         with tf.name_scope('output') as scope:
-            w11_1 = weight_variable( shape = [5, 5, num_cls * 8, num_cls], trainable = main_trainable  )
-            logits = conv2d( flat_conv10_1, w11_1, keep_prob_ = 1., padding = 'SYMMETRIC'  )
+            w11_1 = weight_variable(shape=[5, 5, num_cls * 8, num_cls], trainable=main_trainable)
+            logits = conv2d(flat_conv10_1, w11_1, keep_prob_=1., padding='SYMMETRIC')
             self.conv_weights.append(w11_1)
 
         return logits
@@ -229,23 +228,24 @@ class Full_DRN(object):
 
         self.dice_eval, self.dice_eval_arr = _dice_eval(self.compact_pred, self.y, self.n_class)
         self.dice_eval_c1 = self.dice_eval_arr[1]
-        self.dice_eval_c2 = self.dice_eval_arr[2]
-        self.dice_eval_c3 = self.dice_eval_arr[3]
-        self.dice_eval_c4 = self.dice_eval_arr[4]
+        # 根据分类, 需要改造
+        # self.dice_eval_c2 = self.dice_eval_arr[2]
+        # self.dice_eval_c3 = self.dice_eval_arr[3]
+        # self.dice_eval_c4 = self.dice_eval_arr[4]
 
         regularizers = sum([tf.nn.l2_loss(variable) for variable in self.conv_weights])
 
         return loss, reg_coeff * regularizers
 
     def _softmax_weighted_loss(self, logits):
-        '''
+        """
         calculate weighted cross-entropy loss, the weight is dynamic dependent on the data
-        '''
+        """
         softmaxpred = tf.nn.softmax(logits)
 
         for i in range(self.n_class):
-            gti = self.y[:,:,:,i]
-            predi = softmaxpred[:,:,:,i]
+            gti = self.y[:, :, :, i]
+            predi = softmaxpred[:, :, :, i]
             weighted = 1-(tf.reduce_sum(gti) / tf.reduce_sum(self.y))
             if i == 0:
                 raw_loss = -1.0 * weighted * gti * tf.log(tf.clip_by_value(predi, 0.005, 1))
@@ -257,9 +257,9 @@ class Full_DRN(object):
         return loss
 
     def _dice_loss_fun(self, logits):
-        '''
+        """
         calculate dice loss, - 2*interesction/union, with relaxed for gradients backpropagation
-        '''
+        """
         dice = 0
         eps = 1e-7
         softmaxpred = tf.nn.softmax(logits)
@@ -327,7 +327,6 @@ class Trainer(object):
         self.loss_dict = {}
         self.lr_update_flag = lr_update_flag
 
-
     def next_batch(self, input_queue, capacity=120, num_threads=4, min_after_dequeue=30, label_type='float'):
         """ move original input pipeline here"""
         reader = tf.TFRecordReader()
@@ -383,26 +382,30 @@ class Trainer(object):
     def _initialize(self, training_iters, output_path,  restore):
 
         self.global_step = tf.Variable(0)
-        scalar_summaries = []
-        scalar_summaries.append(tf.summary.scalar('loss', self.net.cost))
-        scalar_summaries.append(tf.summary.scalar('regularizer_loss', self.net.regularizer_loss))
-        scalar_summaries.append(tf.summary.scalar('weighted_loss', self.net.weighted_loss))
-        scalar_summaries.append(tf.summary.scalar('dice_loss', self.net.dice_loss))
-        scalar_summaries.append(tf.summary.scalar('dice_eval', self.net.dice_eval))
+        scalar_summaries = [
+            tf.summary.scalar('loss', self.net.cost),
+            tf.summary.scalar('regularizer_loss', self.net.regularizer_loss),
+            tf.summary.scalar('weighted_loss', self.net.weighted_loss),
+            tf.summary.scalar('dice_loss', self.net.dice_loss),
+            tf.summary.scalar('dice_eval', self.net.dice_eval),
+            tf.summary.scalar('dice_eval_c1', self.net.dice_eval_c1)
+        ]
 
-        scalar_summaries.append(tf.summary.scalar('dice_eval_c1', self.net.dice_eval_c1))
-        scalar_summaries.append(tf.summary.scalar('dice_eval_c2', self.net.dice_eval_c2))
-        scalar_summaries.append(tf.summary.scalar('dice_eval_c3', self.net.dice_eval_c3))
-        scalar_summaries.append(tf.summary.scalar('dice_eval_c4', self.net.dice_eval_c4))
+        # 需要根据分类改造
+        # scalar_summaries.append(tf.summary.scalar('dice_eval_c2', self.net.dice_eval_c2))
+        # scalar_summaries.append(tf.summary.scalar('dice_eval_c3', self.net.dice_eval_c3))
+        # scalar_summaries.append(tf.summary.scalar('dice_eval_c4', self.net.dice_eval_c4))
 
-        train_images = []
-        train_images.append(tf.summary.image('train_pred', tf.expand_dims(tf.cast(self.net.compact_pred, tf.float32), 3)))
-        train_images.append(tf.summary.image('image', tf.expand_dims(tf.cast(self.net.x[:, :, :, 1], tf.float32), 3)))
-        train_images.append(tf.summary.image('GND', tf.expand_dims(tf.cast(self.net.compact_y, tf.float32), 3)))
-        val_images = []
-        val_images.append(tf.summary.image('val_pred', tf.expand_dims(tf.cast(self.net.compact_pred, tf.float32), 3)))
-        val_images.append(tf.summary.image('image', tf.expand_dims(tf.cast(self.net.x[:,:,:,1], tf.float32), 3)))
-        val_images.append(tf.summary.image('validation_GND', tf.expand_dims(tf.cast(self.net.compact_y, tf.float32), 3)))
+        train_images = [
+            tf.summary.image('train_pred', tf.expand_dims(tf.cast(self.net.compact_pred, tf.float32), 3)),
+            tf.summary.image('image', tf.expand_dims(tf.cast(self.net.x[:, :, :, 1], tf.float32), 3)),
+            tf.summary.image('GND', tf.expand_dims(tf.cast(self.net.compact_y, tf.float32), 3))
+        ]
+        val_images = [
+            tf.summary.image('val_pred', tf.expand_dims(tf.cast(self.net.compact_pred, tf.float32), 3)),
+            tf.summary.image('image', tf.expand_dims(tf.cast(self.net.x[:, :, :, 1], tf.float32), 3)),
+            tf.summary.image('validation_GND', tf.expand_dims(tf.cast(self.net.compact_y, tf.float32), 3))
+        ]
 
         self.scalar_summary_op = tf.summary.merge(scalar_summaries)
         self.train_image_summary_op = tf.summary.merge(train_images)
@@ -459,12 +462,14 @@ class Trainer(object):
 
                 if self.lr_update_flag is True:
                     sess.run(tf.assign(self.learning_rate_node, self._new_LR))
-                    logging.info("New learning rate %s has been loaded"%str(self._new_LR))
+                    logging.info("New learning rate %s has been loaded" % str(self._new_LR))
 
             train_summary_writer = tf.summary.FileWriter(output_path + "/train_log", graph=sess.graph)
             val_summary_writer = tf.summary.FileWriter(output_path + "/val_log", graph=sess.graph)
             feed_all, feed_fid = self.next_batch(self.train_queue)
             feed_val, feed_val_fid = self.next_batch(self.val_queue)
+            print(feed_all)
+            print(feed_fid)
             threads = tf.train.start_queue_runners(sess=sess, coord=coord)
 
             train_vars = tf.trainable_variables()
@@ -477,9 +482,9 @@ class Trainer(object):
                     start = time.time()
                     batch, fid = sess.run([feed_all, feed_fid])
                     batch_x = batch[:, :, :, 0:3]
-                    raw_y = batch[:, :, :, 3] # a single map with multi-classes
-                    batch_y = _label_decomp(self.num_cls, raw_y) # n_class binary maps
-                    fids = [ _single.decode('utf-8').split(":")[0] for _single in fid ]
+                    raw_y = batch[:, :, :, 3]  # a single map with multi-classes
+                    batch_y = _label_decomp(self.num_cls, raw_y)  # n_class binary maps
+                    fids = [_single.decode('utf-8').split(":")[0] for _single in fid]
 
                     _, loss, lr = sess.run((self.optimizer, self.net.cost, self.learning_rate_node),
                                            feed_dict={self.net.x: batch_x,
@@ -488,45 +493,45 @@ class Trainer(object):
                                                       self.net.adapt_bn: True,
                                                       self.net.keep_prob: dropout})
                     if verbose:
-                        logging.info("Training at step %s epoch %s , loss is %0.4f"%(str(step), str(epoch), loss))
-                        logging.info("Time elapsed %s seconds"%(str(time.time() - start)))
+                        logging.info("Training at step %s epoch %s , loss is %0.4f" % (str(step), str(epoch), loss))
+                        logging.info("Time elapsed %s seconds" % (str(time.time() - start)))
 
                     if step % display_step == 0:
                         self.output_minibatch_stats(sess, train_summary_writer, step, batch_x, batch_y, raw_y)
 
                     if step % (display_step * 1) == 0:
                         val_batch = feed_val.eval()
-                        val_x = val_batch[:,:,:,0:3]
-                        val_y = val_batch[:,:,:,3]
+                        val_x = val_batch[:, :, :, 0:3]
+                        val_y = val_batch[:, :, :, 3]
                         val_y = _label_decomp(self.num_cls, val_y)
                         detail_flag = False
                         if step % (1 * display_step) == 0:
                             detail_flag = True
                         self.val_stats(sess, val_summary_writer, step, val_x, val_y, detail_flag)
 
-                    if step % (self.checkpoint_space) == 0 and step > 10000:
+                    if step % self.checkpoint_space == 0 and step > 10000:
                         if step == 0:
                             pass
                         else:
-                            save_path = _save(sess, save_path, global_step = self.global_step.eval())
+                            save_path = _save(sess, save_path, global_step=self.global_step.eval())
                             last_ckpt = tf.train.get_checkpoint_state(output_path)
                             if last_ckpt and last_ckpt.model_checkpoint_path:
                                 self.net.restore(sess, last_ckpt.model_checkpoint_path)
                             logging.info("Model has been restored for re-allocation")
                             _pre_lr = sess.run(self.learning_rate_node)
-                            sess.run( tf.assign(self.learning_rate_node, _pre_lr * 0.9 )  )
+                            sess.run(tf.assign(self.learning_rate_node, _pre_lr * 0.9))
 
-                logging.info("Global step %s"%str(self.global_step.eval()))
+                logging.info("Global step %s" % str(self.global_step.eval()))
             logging.info("Optimization Finished!")
             coord.request_stop()
             coord.join(threads)
             return save_path
 
-    def output_minibatch_stats(self, sess, summary_writer, step, batch_x, batch_y, compact_y = None):
+    def output_minibatch_stats(self, sess, summary_writer, step, batch_x, batch_y, compact_y=None):
         """
         minibatch stats for tensorboard observation
         """
-        summary_str, summary_img, loss= sess.run([ \
+        summary_str, summary_img, loss = sess.run([
             self.scalar_summary_op,
             self.train_image_summary_op,
             self.net.cost],
@@ -538,10 +543,10 @@ class Trainer(object):
         summary_writer.add_summary(summary_img, step)
         summary_writer.flush()
 
-    def val_stats(self, sess, summary_writer, step, batch_x, batch_y, detail = False):
+    def val_stats(self, sess, summary_writer, step, batch_x, batch_y, detail=False):
 
         if detail is False:
-            summary_str, summary_img, loss= sess.run([ \
+            summary_str, summary_img, loss=sess.run([
                 self.scalar_summary_op,
                 self.val_image_summary_op,
                 self.net.cost],
@@ -552,24 +557,24 @@ class Trainer(object):
                             self.net.keep_prob: 1.})
 
         else:
-            pred, curr_conf_mat, summary_str, summary_img, loss = sess.run([ \
+            pred, curr_conf_mat, summary_str, summary_img, loss = sess.run([
                 self.net.compact_pred,
-                self.net.confusion_matrix, \
+                self.net.confusion_matrix,
                 self.scalar_summary_op,
                 self.val_image_summary_op,
                 self.net.cost],
-                feed_dict ={self.net.x: batch_x,
+                feed_dict={self.net.x: batch_x,
                             self.net.y: batch_y,
                             self.net.main_bn: False,
                             self.net.adapt_bn: False,
-                            self.net.keep_prob: 1.0 })
+                            self.net.keep_prob: 1.0})
 
             _indicator_eval(curr_conf_mat)
         summary_writer.add_summary(summary_str, step)
         summary_writer.add_summary(summary_img, step)
         summary_writer.flush()
 
-    def test_eval(self, sess, output_path, flip_correction = True, save_result = False):
+    def test_eval(self, sess, output_path, flip_correction=True, save_result=False):
         """
         Doing inference given test cases, in the format of .nii file
         Args:
@@ -582,43 +587,43 @@ class Trainer(object):
             logging.info("Cannot create prediction result folder")
 
         self.test_pair_list = list(zip(self.test_label_list, self.test_nii_list))
-        sample_eval_list = [] # evaluation of each sample
+        sample_eval_list = []  # evaluation of each sample
 
         for idx_file, pair in enumerate(self.test_pair_list):
-            sample_cm = np.zeros([self.num_cls, self.num_cls]) # confusion matrix for each sample
+            sample_cm = np.zeros([self.num_cls, self.num_cls])  # confusion matrix for each sample
             label_fid = pair[0]
             nii_fid = pair[1]
 
             if not os.path.isfile(nii_fid):
-                raise Exception("cannot find sample %s"%str(nii_fid))
+                raise Exception("cannot find sample %s" % str(nii_fid))
             raw = read_nii_image(nii_fid)
             raw_y = read_nii_image(label_fid)
 
             nii_pred_bname = "dense_pred_" + os.path.basename(nii_fid)
 
             if flip_correction is True:
-                raw = np.flip(raw, axis = 0)
-                raw = np.flip(raw, axis = 1)
-                raw_y = np.flip(raw_y, axis = 0)
-                raw_y = np.flip(raw_y, axis = 1)
+                raw = np.flip(raw, axis=0)
+                raw = np.flip(raw, axis=1)
+                raw_y = np.flip(raw_y, axis=0)
+                raw_y = np.flip(raw_y, axis=1)
 
             tmp_y = np.zeros(raw_y.shape)
 
-            for ii in range( int(floor( raw.shape[2] // self.net.batch_size  )  ) ):
-                vol = np.zeros( [self.net.batch_size, raw_size[0], raw_size[1], raw_size[2]]  )
-                slice_y = np.zeros( [self.net.batch_size, label_size[0], label_size[1]]  )
+            for ii in range(int(floor(raw.shape[2] // self.net.batch_size))):
+                vol = np.zeros([self.net.batch_size, raw_size[0], raw_size[1], raw_size[2]])
+                slice_y = np.zeros([self.net.batch_size, label_size[0], label_size[1]])
 
                 for idx, jj in enumerate(range(ii * self.net.batch_size, (ii + 1) * self.net.batch_size)):
-                    vol[idx,...] = raw[ ..., jj -1: jj+2  ].copy()
-                    slice_y[idx,...] = raw_y[..., jj ].copy()
+                    vol[idx, ...] = raw[..., jj-1:jj+2].copy()
+                    slice_y[idx, ...] = raw_y[..., jj].copy()
                 vol_y = _label_decomp(self.num_cls, slice_y)
-                pred, curr_conf_mat= sess.run([self.net.compact_pred, self.net.confusion_matrix], \
-                                              feed_dict = {self.net.x: vol, self.net.y: vol_y, self.net.keep_prob: 1.0, \
+                pred, curr_conf_mat = sess.run([self.net.compact_pred, self.net.confusion_matrix],
+                                              feed_dict={self.net.x: vol, self.net.y: vol_y, self.net.keep_prob: 1.0,
                                                            self.net.main_bn: False, self.net.adapt_bn: False})
 
                 for idx, jj in enumerate(range(ii * self.net.batch_size, (ii + 1) * self.net.batch_size)):
-                    tmp_y[..., jj] = pred[idx, ... ].copy()
-                logging.info(" part %s of %s of sample %s has been processed.."%(str(ii), str(floor(raw.shape[2] // self.net.batch_size)), str(idx_file)))
+                    tmp_y[..., jj] = pred[idx, ...].copy()
+                logging.info(" part %s of %s of sample %s has been processed.." % (str(ii), str(floor(raw.shape[2] // self.net.batch_size)), str(idx_file)))
                 sample_cm += curr_conf_mat
 
             sample_dice = _dice(sample_cm)
@@ -626,7 +631,7 @@ class Trainer(object):
             sample_eval_list.append((sample_dice, sample_jaccard))
 
             if save_result is True:
-                _save_nii_prediction(raw_y, tmp_y, nii_fid, pred_folder, out_bname = nii_pred_bname)
+                _save_nii_prediction(raw_y, tmp_y, nii_fid, pred_folder, out_bname=nii_pred_bname)
 
         subject_dice_list, subject_jaccard_list = self.sample_metric_stddev(sample_eval_list)
         return subject_dice_list, subject_jaccard_list
@@ -635,30 +640,30 @@ class Trainer(object):
         """
         calculate stddev of each organ across samples
         """
-        metric_mat = np.zeros( [len(sample_eval_list), self.num_cls, 2]  )
+        metric_mat = np.zeros([len(sample_eval_list), self.num_cls, 2])
         for organ, ind in list(contour_map.items()):
             for ii in range(len(sample_eval_list)):
-                metric_mat[ii, int(ind), 0] = sample_eval_list[ii][0][int(ind)] # dice
-                metric_mat[ii, int(ind), 1] = sample_eval_list[ii][1][int(ind)] # jaccard
+                metric_mat[ii, int(ind), 0] = sample_eval_list[ii][0][int(ind)]  # dice
+                metric_mat[ii, int(ind), 1] = sample_eval_list[ii][1][int(ind)]  # jaccard
 
         print("------- inside the sample_metric_stddev file ---- ")
         for organ, ind in list(contour_map.items()):
-            print(( "organ: %s"%organ ))
-            print(( "dice_stddev: %s"%( np.std(metric_mat[:, int(ind), 0] ) ) ))
-            print(( "jaccard_stddev: %s"%( np.std(metric_mat[:, int(ind), 1] )  )  ))
+            print(("organ: %s" % organ))
+            print(("dice_stddev: %s" % (np.std(metric_mat[:, int(ind), 0]))))
+            print(("jaccard_stddev: %s" % (np.std(metric_mat[:, int(ind), 1]))))
 
         print("------- inside the sample_metric_stddev file ----  ")
         for organ, ind in list(contour_map.items()):
-            print(( "organ: %s"%organ ))
-            print(( "dice_mean: %s"%( np.mean(metric_mat[:, int(ind), 0] ) ) ))
-            print(( "jaccard_mean %s"%( np.mean(metric_mat[:, int(ind), 1] )  )  ))
+            print(("organ: %s" % organ))
+            print(("dice_mean: %s" % (np.mean(metric_mat[:, int(ind), 0]))))
+            print(("jaccard_mean %s" % (np.mean(metric_mat[:, int(ind), 1]))))
 
         print("-------")
-        print(( "all_dice_mean: %s"%( np.mean(metric_mat[:, 1:, 0] ) ) ))
-        print(("all_jaccard_mean: %s" % (np.mean(metric_mat[:, 1:, 1] ) )))
+        print(("all_dice_mean: %s" % (np.mean(metric_mat[:, 1:, 0]))))
+        print(("all_jaccard_mean: %s" % (np.mean(metric_mat[:, 1:, 1]))))
 
         subject_level_list = np.mean(metric_mat, axis=0)
-        subject_level_list_dice = subject_level_list[:,0]
+        subject_level_list_dice = subject_level_list[:, 0]
         subject_level_list_jaccard = subject_level_list[:1]
 
         return subject_level_list_dice, subject_level_list_jaccard

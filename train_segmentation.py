@@ -30,7 +30,7 @@ def main():
     restored_path = output_path
     lr_update_flag = False  # Set True if want to use a new learning rate for fine-tuning
 
-    num_cls = 5
+    num_cls = 2
     batch_size = 10
     training_iters = 10
     epochs = 5000
@@ -62,15 +62,16 @@ def main():
 
     train_list = _read_lists(train_fid)
     val_list = _read_lists(val_fid)
-    print("train_list_len:%d", len(train_list))
-    print("val_list_len:%d", len(val_list))
+    print("train_list_len:%d" % len(train_list))
+    print("val_list_len:%d" % len(val_list))
 
     trainer = drn.Trainer(net, train_list=train_list, val_list=val_list, num_cls=num_cls,
                           batch_size=batch_size, opt_kwargs=opt_kwargs, checkpoint_space=checkpoint_space,
                           optimizer=optimizer, lr_update_flag=lr_update_flag)
 
     # start tensorboard before getting started
-    # command1 = "tensorboard --logdir=" + output_path + " --port=6999 " + " &"
+    command1 = "tensorboard --logdir=" + output_path + " --port=6999 " + " &"
+    print(command1)
     # os.system(command1)
 
     print("Now start training...")
