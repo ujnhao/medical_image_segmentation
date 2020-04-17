@@ -18,14 +18,15 @@ logging.basicConfig(filename="general_log", level=logging.DEBUG)
 currtime = datetime.datetime.now().strftime('%Y_%m_%d_%H_%M_%S')
 
 os.environ['CUDA_VISIBLE_DEVICES'] = '0'
+os.environ['TF_CPP_MIN_LOG_LEVEL'] = '2'
 
 
 def main():
-    train_fid = "./lists/mr_train_list"
-    val_fid = "./lists/mr_val_list"
+    train_fid = "list/tfs_mr_train_list.txt"
+    val_fid = "list/tfs_mr_val_list.txt"
     output_path = "./tmp_exps/mr_baseline"
 
-    restore = True  # set True if resume training from stored model
+    restore = False  # set True if resume training from stored model
     restored_path = output_path
     lr_update_flag = False  # Set True if want to use a new learning rate for fine-tuning
 
@@ -61,14 +62,16 @@ def main():
 
     train_list = _read_lists(train_fid)
     val_list = _read_lists(val_fid)
+    print("train_list_len:%d", len(train_list))
+    print("val_list_len:%d", len(val_list))
 
-    trainer = drn.Trainer(net, train_list=train_list, val_list=val_list, num_cls=num_cls, \
-                          batch_size=batch_size, opt_kwargs=opt_kwargs, checkpoint_space=checkpoint_space, \
+    trainer = drn.Trainer(net, train_list=train_list, val_list=val_list, num_cls=num_cls,
+                          batch_size=batch_size, opt_kwargs=opt_kwargs, checkpoint_space=checkpoint_space,
                           optimizer=optimizer, lr_update_flag=lr_update_flag)
 
     # start tensorboard before getting started
-    command1 = "tensorboard --logdir=" + output_path + " --port=6999 " + " &"
-    os.system(command1)
+    # command1 = "tensorboard --logdir=" + output_path + " --port=6999 " + " &"
+    # os.system(command1)
 
     print("Now start training...")
     if restore is True:

@@ -33,8 +33,8 @@ if verbose == True:
 view = True
 logging.basicConfig(filename="curr_log", level=logging.DEBUG, format='%(asctime)s %(message)s')
 
-raw_size = [256, 256, 3] # original raw input size
-volume_size = [256, 256, 3] # volume size after processing
+raw_size = [256, 256, 3]  # original raw input size
+volume_size = [256, 256, 3]  # volume size after processing
 label_size = [256, 256, 1]
 
 decomp_feature = {
@@ -49,7 +49,7 @@ decomp_feature = {
 
 
 class Full_DRN(object):
-    def __init__(self, channels, n_class, batch_size, adapt_module = True, main_trainable = True, adapt_trainable = True, cost_kwargs={}, **kwargs):
+    def __init__(self, channels, n_class, batch_size, adapt_module=True, main_trainable=True, adapt_trainable=True, cost_kwargs={}, **kwargs):
         """
         Dilated Residual Network
         :param channels:    number of channels in the input image, set as 3
@@ -86,9 +86,7 @@ class Full_DRN(object):
         self.confusion_matrix = tf.confusion_matrix(tf.reshape(self.compact_y,[-1]), tf.reshape(self.compact_pred, [-1]), num_classes = self.n_class)
 
 
-    def create_network(self, input_size, input_channel, num_cls, feature_base = 16, keep_prob = 0.75, main_bn = True, main_trainable = True, \
-                       adapt_module = True, adapt_bn = True, adapt_trainable = True):
-
+    def create_network(self, input_size, input_channel, num_cls, feature_base=16, keep_prob=0.75, main_bn=True, main_trainable=True, adapt_module = True, adapt_bn=True, adapt_trainable=True):
         with tf.name_scope('group_1') as scope:
             w1_1 = weight_variable(shape = [3, 3, input_channel, feature_base], trainable = adapt_trainable)
             conv1_1 = conv2d(self.x, w1_1, keep_prob )
@@ -310,8 +308,8 @@ class Trainer(object):
     :param test_nii_list: image files used at testing mode
     """
 
-    def __init__(self, net, train_list, val_list, num_cls, batch_size, test_nii_list = None, test_label_list = None, optimizer="momentum", \
-                 opt_kwargs={}, num_epochs = 100, checkpoint_space = 500, lr_update_flag = False):
+    def __init__(self, net, train_list, val_list, num_cls, batch_size, test_nii_list=None, test_label_list=None, optimizer="momentum",
+                 opt_kwargs={}, num_epochs=100, checkpoint_space=500, lr_update_flag=False):
         self.net = net
         self.batch_size = batch_size
         self.num_cls = num_cls
@@ -322,18 +320,19 @@ class Trainer(object):
         self.val_list = val_list
         self.test_label_list = test_label_list
         self.test_nii_list = test_nii_list
-        self.train_queue = tf.train.string_input_producer(train_list, num_epochs = None, shuffle = True)
-        self.val_queue = tf.train.string_input_producer(val_list, num_epochs = None, shuffle = True)
-        self.dice = tf.Variable( -1 * np.ones( self.num_cls))
-        self.jaccard = tf.Variable( -1 * np.ones( self.num_cls))
+        self.train_queue = tf.train.string_input_producer(train_list, num_epochs=None, shuffle=True)
+        self.val_queue = tf.train.string_input_producer(val_list, num_epochs=None, shuffle=True)
+        self.dice = tf.Variable(-1 * np.ones( self.num_cls))
+        self.jaccard = tf.Variable(-1 * np.ones( self.num_cls))
         self.loss_dict = {}
         self.lr_update_flag = lr_update_flag
 
-    def next_batch(self, input_queue, capacity = 120, num_threads = 4, min_after_dequeue = 30, label_type = 'float'):
+
+    def next_batch(self, input_queue, capacity=120, num_threads=4, min_after_dequeue=30, label_type='float'):
         """ move original input pipeline here"""
         reader = tf.TFRecordReader()
         fid, serialized_example = reader.read(input_queue)
-        parser = tf.parse_single_example(serialized_example, features = decomp_feature)
+        parser = tf.parse_single_example(serialized_example, features=decomp_feature)
         dsize_dim0 = tf.cast(parser['dsize_dim0'], tf.int32)
         dsize_dim1 = tf.cast(parser['dsize_dim1'], tf.int32)
         dsize_dim2 = tf.cast(parser['dsize_dim2'], tf.int32)
@@ -345,13 +344,13 @@ class Trainer(object):
 
         data_vol = tf.reshape(data_vol, raw_size)
         label_vol = tf.reshape(label_vol, raw_size)
-        data_vol = tf.slice(data_vol, [0,0,0], volume_size)
-        label_vol = tf.slice(label_vol, [0,0,1], label_size)
+        data_vol = tf.slice(data_vol, [0, 0, 0], volume_size)
+        label_vol = tf.slice(label_vol, [0, 0, 1], label_size)
 
-        data_feed, label_feed, fid_feed = tf.train.shuffle_batch([data_vol, label_vol, fid], batch_size =self.batch_size , capacity = capacity, \
-                                                                 num_threads = num_threads, min_after_dequeue = min_after_dequeue)
+        data_feed, label_feed, fid_feed = tf.train.shuffle_batch([data_vol, label_vol, fid], batch_size=self.batch_size, capacity=capacity,
+                                                                 num_threads=num_threads, min_after_dequeue=min_after_dequeue)
 
-        pair_feed = tf.concat([data_feed, label_feed], axis = 3)
+        pair_feed = tf.concat([data_feed, label_feed], axis=3)
 
         return pair_feed, fid_feed
 
@@ -377,7 +376,7 @@ class Trainer(object):
             self.learning_rate_node = tf.Variable(learning_rate)
             self._new_LR = learning_rate # this for using a new specified learning rate when RESTORING a model
             optimizer = tf.train.AdamOptimizer(learning_rate=self.learning_rate_node,
-                                               **self.opt_kwargs).minimize(self.net.cost + self.net.regularizer_loss , \
+                                               **self.opt_kwargs).minimize(self.net.cost + self.net.regularizer_loss,
                                                                            global_step=global_step)
         return optimizer
 
@@ -397,8 +396,8 @@ class Trainer(object):
         scalar_summaries.append(tf.summary.scalar('dice_eval_c4', self.net.dice_eval_c4))
 
         train_images = []
-        train_images.append(tf.summary.image('train_pred', tf.expand_dims(tf.cast(self.net.compact_pred, tf.float32), 3 )) )
-        train_images.append(tf.summary.image('image', tf.expand_dims(tf.cast(self.net.x[:,:,:,1], tf.float32), 3 )) )
+        train_images.append(tf.summary.image('train_pred', tf.expand_dims(tf.cast(self.net.compact_pred, tf.float32), 3)))
+        train_images.append(tf.summary.image('image', tf.expand_dims(tf.cast(self.net.x[:, :, :, 1], tf.float32), 3)))
         train_images.append(tf.summary.image('GND', tf.expand_dims(tf.cast(self.net.compact_y, tf.float32), 3)))
         val_images = []
         val_images.append(tf.summary.image('val_pred', tf.expand_dims(tf.cast(self.net.compact_pred, tf.float32), 3)))
@@ -466,7 +465,7 @@ class Trainer(object):
             val_summary_writer = tf.summary.FileWriter(output_path + "/val_log", graph=sess.graph)
             feed_all, feed_fid = self.next_batch(self.train_queue)
             feed_val, feed_val_fid = self.next_batch(self.val_queue)
-            threads = tf.train.start_queue_runners(sess = sess, coord = coord)
+            threads = tf.train.start_queue_runners(sess=sess, coord=coord)
 
             train_vars = tf.trainable_variables()
             for _var in train_vars:
@@ -474,11 +473,11 @@ class Trainer(object):
 
             for epoch in range(epochs):
                 for step in range((epoch*training_iters), ((epoch+1)*training_iters)):
-                    logging.info("Running step %s epoch %s ..."%(str(step), str(epoch)))
+                    logging.info("Running step %s epoch %s ..." % (str(step), str(epoch)))
                     start = time.time()
                     batch, fid = sess.run([feed_all, feed_fid])
-                    batch_x = batch[:,:,:,0:3]
-                    raw_y = batch[:,:,:,3] # a single map with multi-classes
+                    batch_x = batch[:, :, :, 0:3]
+                    raw_y = batch[:, :, :, 3] # a single map with multi-classes
                     batch_y = _label_decomp(self.num_cls, raw_y) # n_class binary maps
                     fids = [ _single.decode('utf-8').split(":")[0] for _single in fid ]
 
