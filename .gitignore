@@ -133,3 +133,5 @@ dmypy.json
 *.npz
 *.tfrecords
 *.jpg
+*.zip
+*.png

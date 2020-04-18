@@ -20,11 +20,8 @@ from lib import _dice_eval, _save, _save_nii_prediction, _jaccard, _dice, _label
 np.random.seed(0)
 
 contour_map = {
-    "bg": 0,
-    "lv_myo": 1,
-    "la_blood": 2,
-    "lv_blood": 3,
-    "aa": 4,
+    "back_ground": 0,
+    "lesion": 1,
 }
 
 verbose = True
