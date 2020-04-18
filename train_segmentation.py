@@ -13,6 +13,10 @@ from tensorflow.python import debug as tf_debug
 import source_segmenter as drn
 import numpy as np
 from lib import _read_lists
+import json
+
+with open('./config_param.json') as config_file:
+    config = json.load(config_file)
 
 logging.basicConfig(filename="general_log", level=logging.DEBUG)
 currtime = datetime.datetime.now().strftime('%Y_%m_%d_%H_%M_%S')
@@ -22,10 +26,7 @@ os.environ['TF_CPP_MIN_LOG_LEVEL'] = '2'
 
 
 def main():
-    train_fid = "list/tfs_mr_train_list.txt"
-    val_fid = "list/tfs_mr_val_list.txt"
     output_path = "./tmp_exps/mr_baseline"
-
     restore = False  # set True if resume training from stored model
     restored_path = output_path
     lr_update_flag = False  # Set True if want to use a new learning rate for fine-tuning
@@ -53,15 +54,15 @@ def main():
 
     try:
         os.makedirs(output_path)
-    except:
-        print("folder exist!")
+    except Exception as err:
+        print("folder exist!", err)
 
     net = drn.Full_DRN(channels=3, batch_size=batch_size, n_class=num_cls, image_summeris=image_summeris,
                        cost_kwargs=cost_kwargs)
     print("Network has been built!")
 
-    train_list = _read_lists(train_fid)
-    val_list = _read_lists(val_fid)
+    train_list = _read_lists(config["train_fid"])
+    val_list = _read_lists(config["val_fid"])
     print("train_list_len:%d" % len(train_list))
     print("val_list_len:%d" % len(val_list))
 
