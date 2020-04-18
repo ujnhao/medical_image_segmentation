@@ -42,6 +42,7 @@ def re_sample_img(itk_img, out_spacing=[1.0, 1.0, 1.0], is_label=False):
         int(np.round(original_size[0] * (original_spacing[0] / out_spacing[0]))),
         int(np.round(original_size[1] * (original_spacing[1] / out_spacing[1]))),
         int(np.round(original_size[2] * (original_spacing[2] / out_spacing[2])))]
+    # out_size = [256, 256, 256]
     re_sample = itk.ResampleImageFilter()
     re_sample.SetOutputSpacing(out_spacing)
     re_sample.SetSize(out_size)
@@ -50,7 +51,8 @@ def re_sample_img(itk_img, out_spacing=[1.0, 1.0, 1.0], is_label=False):
     re_sample.SetTransform(itk.Transform())
     re_sample.SetDefaultPixelValue(itk_img.GetPixelIDValue())
     if is_label:
-        re_sample.SetInterpolator(itk.sitkNearestNeighbor)
+        # re_sample.SetInterpolator(itk.sitkNearestNeighbor)
+        re_sample.SetInterpolator(itk.sitkBSpline)
     else:
         # re_sample.SetInterpolator(itk.sitkBSpline)
         re_sample.SetInterpolator(itk.sitkLinear)
@@ -80,22 +82,34 @@ def image_crop(val_image, val_label):
     image_block = val_image
 
     if center_point[0] >= 128:
-        label_block = label_block[center_point[0] - 128:min(center_point[0] + 128, val_image.shape[0]), :, :]
-        image_block = image_block[center_point[0] - 128:min(center_point[0] + 128, val_label.shape[0]), :, :]
+        if center_point[0] + 128 <= val_image.shape[0]:
+            label_block = label_block[center_point[0] - 128:center_point[0] + 128, :, :]
+            image_block = image_block[center_point[0] - 128:center_point[0] + 128, :, :]
+        else:
+            label_block = label_block[max(0, val_image.shape[0]-256):, :, :]
+            image_block = image_block[max(0, val_label.shape[0]-256):, :, :]
     else:
         label_block = label_block[:min(256, val_image.shape[0]), :, :]
         image_block = image_block[:min(256, val_label.shape[0]), :, :]
 
     if center_point[1] >= 128:
-        label_block = label_block[:, center_point[1] - 128:min(center_point[1] + 128, val_image.shape[1]), :]
-        image_block = image_block[:, center_point[1] - 128:min(center_point[1] + 128, val_label.shape[1]), :]
+        if center_point[1] + 128 <= val_image.shape[1]:
+            label_block = label_block[:, center_point[1] - 128:center_point[1] + 128, :]
+            image_block = image_block[:, center_point[1] - 128:center_point[1] + 128, :]
+        else:
+            label_block = label_block[:, max(0, val_image.shape[1] - 256):, :]
+            image_block = image_block[:, max(0, val_label.shape[1] - 256):, :]
     else:
         label_block = label_block[:, :min(256, val_image.shape[1]), :]
         image_block = image_block[:, :min(256, val_label.shape[1]), :]
 
     if center_point[2] >= 128:
-        label_block = label_block[:, :, center_point[2] - 128:min(center_point[2] + 128, val_image.shape[2])]
-        image_block = image_block[:, :, center_point[2] - 128:min(center_point[2] + 128, val_label.shape[2])]
+        if center_point[2] + 128 <= val_image.shape[2]:
+            label_block = label_block[:, :, center_point[2] - 128:center_point[2] + 128]
+            image_block = image_block[:, :, center_point[2] - 128:center_point[2] + 128]
+        else:
+            label_block = label_block[:, :, max(0, val_image.shape[2] - 256):]
+            image_block = image_block[:, :, max(0, val_label.shape[2] - 256):]
     else:
         label_block = label_block[:, :, :min(256, val_image.shape[2])]
         image_block = image_block[:, :, :min(256, val_label.shape[2])]
@@ -118,7 +132,7 @@ def normalize(img):
 
 # image_resize (256, 256, 256)
 def image_resize(img_data):
-    img_data = transform.resize(img_data, (256, 256, img_data.shape[2]))
+    img_data = transform.resize(img_data, (256, 256, 256))
     return img_data
 
 
@@ -135,26 +149,34 @@ def save_slice_npz(file, img_name, img_data, lab_data):
         os.makedirs(file)
     if img_data.shape[2] < 3:
         return None
-    for i in range(1, img_data.shape[2]-1):
+    for i in range(int(img_data.shape[2]/2 - 100), int(img_data.shape[2]/2 + 100)):
         block_sum = np.sum(lab_data[:, :, i].astype(np.bool))
-        if block_sum > 10:
-            npz_path = file + "/" + img_name + "_slice_" + str(i) + ".npz"
-            save_npz(npz_path, img_data[:, :, i-1:i+2], lab_data[:, :, i-1:i+2])
+        npz_path = file + "/" + img_name + "_slice_" + str(i) + ".npz"
+        save_npz(npz_path, img_data[:, :, i-1:i+2], lab_data[:, :, i-1:i+2])
 
 
-def mri_image_preprocess():
-    file_path = "ct_train2"
+def mri_image_preprocess(file_path):
     npz_file_path = "npz_" + file_path
-    # file_path = "ct_train1"
     # read all nii.gz
     image_name_list = read_image_name(file_path)
-    print(image_name_list)
-    image_list = []
-    for image_name in image_name_list:
+    print("image_list:{}".format(image_name_list))
+
+    # 随机 0.2
+    rand_list = np.random.permutation(len(image_name_list))
+    rand_list = rand_list[:int(len(image_name_list)*0.2)]
+    print("rand:{}".format(rand_list))
+
+    for i in range(0, len(image_name_list)):
+        image_name = image_name_list[i]
         print("handle %s" % image_name)
         image_path = file_path + "/" + image_name + "_image.nii.gz"
         label_path = file_path + "/" + image_name + "_label.nii.gz"
-        npz_all_path = npz_file_path + "_all" + "/" + image_name + ".npz"
+        npz_all_path = npz_file_path + "_train_all" + "/" + image_name + ".npz"
+        npz_info_path = npz_file_path + "_train"
+
+        if i in rand_list:
+            npz_all_path = npz_file_path + "_val_all" + "/" + image_name + ".npz"
+            npz_info_path = npz_file_path + "_val"
 
         # 读取图像
         itk_image = itk.ReadImage(image_path)
@@ -169,16 +191,30 @@ def mri_image_preprocess():
         val_image = normalize(val_image)
         val_label = normalize(val_label)
 
-        # 中心剪切256 x 256 x 256
+        # 中心剪切[256, 256, 256]
         val_image, val_label = image_crop(val_image, val_label)
 
         # 缩放(256, 256, z)
-        if min(val_image.shape[0], val_image.shape[1]) < 256:
-            val_image = image_resize(val_image)
-            val_label = image_resize(val_label)
+        val_image = image_resize(val_image)
+        val_label = image_resize(val_label)
 
+        # print("img_shape: {}".format(val_image.shape))
+        # print("lab_shape: {}".format(val_label.shape))
+        # show_image(val_image[:, :, int(val_image.shape[2]/2)], val_label[:, :, int(val_image.shape[2]/2)],
+        #            val_image[:, int(val_image.shape[1]/2), :], val_label[:, int(val_image.shape[1]/2), :],
+        #            val_image[int(val_image.shape[0]/2), :, :], val_label[int(val_image.shape[0]/2), :, :])
+
+        # all info
         save_npz(npz_all_path, val_image, val_label)
-        save_slice_npz(npz_file_path, image_name, val_image, val_label)
+
+        # x, y, z
+        save_slice_npz(npz_info_path, image_name + "_z_", val_image, val_label)
+
+        # y, z, x
+        save_slice_npz(npz_info_path, image_name + "_x_", val_image.transpose(2, 1, 0), val_label.transpose(2, 1, 0))
+
+        # x, z, y
+        save_slice_npz(npz_info_path, image_name + "_y_", val_image.transpose(0, 2, 1), val_label.transpose(0, 2, 1))
 
         # print("img_shape: {}".format(val_image.shape))
         # print("lab_shape: {}".format(val_label.shape))
@@ -195,7 +231,10 @@ def mri_image_preprocess():
 
 
 if __name__ == "__main__":
-    mri_image_preprocess()
+    file_pth = "mr_train"
+    mri_image_preprocess(file_pth)
+    file_pth = "ct_train1"
+    file_pth = "ct_train2"
 
 
 

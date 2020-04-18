@@ -105,29 +105,29 @@ def do_npz2tfs_handle():
 
 
 if __name__ == "__main__":
-    # do_npz2tfs_handle()
-    filepth = "example/mr_train_1001_slice_48.tfrecords"
-    data_vol, label_vol = read_decode_samples([filepth], True)
-    print(data_vol)
-
-    sess = tf.Session()
-    init = tf.global_variables_initializer()
-    sess.run(init)
-
-    # **5.启动队列进行数据读取
-    # 下面的 coord 是个线程协调器，把启动队列的时候加上线程协调器。
-    # 这样，在数据读取完毕以后，调用协调器把线程全部都关了。
-    coord = tf.train.Coordinator()
-    threads = tf.train.start_queue_runners(sess=sess, coord=coord)
-    y_outputs = list()
-    _X_batch, _y_batch = sess.run([data_vol, label_vol])
-    img_data = _X_batch[0]
-    lab_data = _y_batch[0]
-    cv2.imshow("img_data", img_data)
-    cv2.imshow("lab_data", lab_data)
-    cv2.waitKey(0)
-
-    # **6.最后记得把队列关掉
-    coord.request_stop()
-    coord.join(threads)
-
+    do_npz2tfs_handle()
+    # filepth = "example/mr_train_1001_slice_48.tfrecords"
+    # data_vol, label_vol = read_decode_samples([filepth], True)
+    # print(data_vol)
+    #
+    # sess = tf.Session()
+    # init = tf.global_variables_initializer()
+    # sess.run(init)
+    #
+    # # **5.启动队列进行数据读取
+    # # 下面的 coord 是个线程协调器，把启动队列的时候加上线程协调器。
+    # # 这样，在数据读取完毕以后，调用协调器把线程全部都关了。
+    # coord = tf.train.Coordinator()
+    # threads = tf.train.start_queue_runners(sess=sess, coord=coord)
+    # y_outputs = list()
+    # _X_batch, _y_batch = sess.run([data_vol, label_vol])
+    # img_data = _X_batch[0]
+    # lab_data = _y_batch[0]
+    # cv2.imshow("img_data", img_data)
+    # cv2.imshow("lab_data", lab_data)
+    # cv2.waitKey(0)
+    #
+    # # **6.最后记得把队列关掉
+    # coord.request_stop()
+    # coord.join(threads)
+    #
