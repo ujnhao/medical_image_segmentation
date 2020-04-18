@@ -327,7 +327,8 @@ class Trainer(object):
         self.loss_dict = {}
         self.lr_update_flag = lr_update_flag
 
-    def next_batch(self, input_queue, capacity=120, num_threads=4, min_after_dequeue=30, label_type='float'):
+    # old_num_threads = 4
+    def next_batch(self, input_queue, capacity=120, num_threads=32, min_after_dequeue=30, label_type='float'):
         """ move original input pipeline here"""
         reader = tf.TFRecordReader()
         fid, serialized_example = reader.read(input_queue)
@@ -468,8 +469,6 @@ class Trainer(object):
             val_summary_writer = tf.summary.FileWriter(output_path + "/val_log", graph=sess.graph)
             feed_all, feed_fid = self.next_batch(self.train_queue)
             feed_val, feed_val_fid = self.next_batch(self.val_queue)
-            print(feed_all)
-            print(feed_fid)
             threads = tf.train.start_queue_runners(sess=sess, coord=coord)
 
             train_vars = tf.trainable_variables()

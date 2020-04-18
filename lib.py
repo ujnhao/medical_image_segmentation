@@ -164,7 +164,8 @@ def _indicator_eval(cm):
     """
     contour_map = {     # a map used for mapping label value to its name, used for output
         "back_ground": 0,
-        "la_myo": 1,
+        "lesion": 1,
+        # "la_myo": 1,
         # "la_blood": 2,
         # "lv_blood": 3,
         # "aa": 4
