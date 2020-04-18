@@ -94,7 +94,7 @@ def read_decode_samples(image_list, shuffle=False):
 
 
 def do_npz2tfs_handle():
-    img_file = "ct_train"
+    img_file = "mr_train_val"
     npz_img_file = "npz_" + img_file
     tfs_img_file = "tfs_" + img_file
     npz_img_name_list = read_image_name(npz_img_file)
