@@ -42,7 +42,8 @@ decomp_feature = {
     'lsize_dim1': tf.FixedLenFeature([], tf.int64),
     'lsize_dim2': tf.FixedLenFeature([], tf.int64),
     'data_vol': tf.FixedLenFeature([], tf.string),
-    'label_vol': tf.FixedLenFeature([], tf.string)}
+    'label_vol': tf.FixedLenFeature([], tf.string)
+}
 
 
 class Full_DRN(object):
@@ -325,23 +326,18 @@ class Trainer(object):
         self.lr_update_flag = lr_update_flag
 
     # old_num_threads = 4
-    def next_batch(self, input_queue, capacity=120, num_threads=32, min_after_dequeue=30, label_type='float'):
+    def next_batch(self, input_queue, capacity=120, num_threads=4, min_after_dequeue=30, label_type='float'):
         """ move original input pipeline here"""
         reader = tf.TFRecordReader()
         fid, serialized_example = reader.read(input_queue)
         parser = tf.parse_single_example(serialized_example, features=decomp_feature)
-        dsize_dim0 = tf.cast(parser['dsize_dim0'], tf.int32)
-        dsize_dim1 = tf.cast(parser['dsize_dim1'], tf.int32)
-        dsize_dim2 = tf.cast(parser['dsize_dim2'], tf.int32)
-        lsize_dim0 = tf.cast(parser['lsize_dim0'], tf.int32)
-        lsize_dim1 = tf.cast(parser['lsize_dim1'], tf.int32)
-        lsize_dim2 = tf.cast(parser['dsize_dim2'], tf.int32)
-        data_vol = tf.decode_raw(parser['data_vol'], tf.float32)
-        label_vol = tf.decode_raw(parser['label_vol'], tf.float32)
 
+        data_vol = tf.decode_raw(parser['data_vol'], tf.float32)
         data_vol = tf.reshape(data_vol, raw_size)
-        label_vol = tf.reshape(label_vol, raw_size)
         data_vol = tf.slice(data_vol, [0, 0, 0], volume_size)
+
+        label_vol = tf.decode_raw(parser['label_vol'], tf.float32)
+        label_vol = tf.reshape(label_vol, raw_size)
         label_vol = tf.slice(label_vol, [0, 0, 1], label_size)
 
         data_feed, label_feed, fid_feed = tf.train.shuffle_batch([data_vol, label_vol, fid], batch_size=self.batch_size, capacity=capacity,
@@ -474,6 +470,7 @@ class Trainer(object):
 
             for epoch in range(epochs):
                 for step in range((epoch*training_iters), ((epoch+1)*training_iters)):
+                    print("Running step %s epoch %s ..." % (str(step), str(epoch)))
                     logging.info("Running step %s epoch %s ..." % (str(step), str(epoch)))
                     start = time.time()
                     batch, fid = sess.run([feed_all, feed_fid])
@@ -481,6 +478,7 @@ class Trainer(object):
                     raw_y = batch[:, :, :, 3]  # a single map with multi-classes
                     batch_y = _label_decomp(self.num_cls, raw_y)  # n_class binary maps
                     fids = [_single.decode('utf-8').split(":")[0] for _single in fid]
+                    print(fids)
 
                     _, loss, lr = sess.run((self.optimizer, self.net.cost, self.learning_rate_node),
                                            feed_dict={self.net.x: batch_x,

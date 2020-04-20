@@ -104,11 +104,26 @@ def do_npz2tfs_handle():
         npz2tfrecords(npz_img_path, tfs_img_path)
 
 
+def read_list(fid):
+    if not os.path.isfile(fid):
+        return None
+    with open(fid, 'r') as fd:
+        _list = fd.readlines()
+
+    my_list = []
+    for _item in _list:
+        if len(_item) < 3:
+            _list.remove(_item)
+        my_list.append(_item.split('\n')[0])
+    return my_list
+
+
 if __name__ == "__main__":
-    do_npz2tfs_handle()
-    # filepth = "example/mr_train_1001_slice_48.tfrecords"
-    # data_vol, label_vol = read_decode_samples([filepth], True)
-    # print(data_vol)
+    # do_npz2tfs_handle()
+    filename = "../list/tfs_mr_train_list.txt"
+    file_list = read_list(filename)
+    data_vol, label_vol = read_decode_samples(file_list, True)
+    print(data_vol)
     #
     # sess = tf.Session()
     # init = tf.global_variables_initializer()
