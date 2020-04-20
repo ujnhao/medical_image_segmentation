@@ -1,17 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="8d1930a8-028d-4957-b438-f8f1e7dfaa33" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/tmp_exps/mr_baseline/train_log/events.out.tfevents.1587374399.DESKTOP-MSG5DPT" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/tmp_exps/mr_baseline/val_log/events.out.tfevents.1587374402.DESKTOP-MSG5DPT" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/list/tfs_mr_train_list.txt" beforeDir="false" afterPath="$PROJECT_DIR$/list/tfs_mr_train_list.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/list/tfs_mr_val_list.txt" beforeDir="false" afterPath="$PROJECT_DIR$/list/tfs_mr_val_list.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/source_segmenter.py" beforeDir="false" afterPath="$PROJECT_DIR$/source_segmenter.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tmp_exps/mr_baseline/train_log/events.out.tfevents.1587213774.DESKTOP-MSG5DPT" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tmp_exps/mr_baseline/val_log/events.out.tfevents.1587213778.DESKTOP-MSG5DPT" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/utils/gettfrecords.py" beforeDir="false" afterPath="$PROJECT_DIR$/utils/gettfrecords.py" afterDir="false" />
-    </list>
+    <list default="true" id="8d1930a8-028d-4957-b438-f8f1e7dfaa33" name="Default Changelist" comment="" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -77,7 +67,7 @@
       <workItem from="1586963283530" duration="21796000" />
       <workItem from="1587027251570" duration="7085000" />
       <workItem from="1587089623098" duration="46822000" />
-      <workItem from="1587373160225" duration="2166000" />
+      <workItem from="1587373160225" duration="2474000" />
     </task>
     <servers />
   </component>
