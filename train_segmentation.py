@@ -14,6 +14,8 @@ import source_segmenter as drn
 import numpy as np
 from lib import _read_lists
 import json
+import platform
+
 
 with open('./config_param.json') as config_file:
     config = json.load(config_file)
@@ -71,9 +73,9 @@ def main():
                           optimizer=optimizer, lr_update_flag=lr_update_flag)
 
     # start tensorboard before getting started
-    command1 = "tensorboard --logdir=" + output_path + " --port=6999 " + " &"
-    print(command1)
-    # os.system(command1)
+    if platform.system() is "Linux":
+        command1 = "tensorboard --logdir=" + output_path + " --port=6999 " + " &"
+        os.system(command1)
 
     print("Now start training...")
     if restore is True:

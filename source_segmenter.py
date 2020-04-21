@@ -470,7 +470,7 @@ class Trainer(object):
 
             for epoch in range(epochs):
                 for step in range((epoch*training_iters), ((epoch+1)*training_iters)):
-                    print("Running step %s epoch %s ..." % (str(step), str(epoch)))
+                    # print("Running step %s epoch %s ..." % (str(step), str(epoch)))
                     logging.info("Running step %s epoch %s ..." % (str(step), str(epoch)))
                     start = time.time()
                     batch, fid = sess.run([feed_all, feed_fid])
@@ -478,7 +478,6 @@ class Trainer(object):
                     raw_y = batch[:, :, :, 3]  # a single map with multi-classes
                     batch_y = _label_decomp(self.num_cls, raw_y)  # n_class binary maps
                     fids = [_single.decode('utf-8').split(":")[0] for _single in fid]
-                    print(fids)
 
                     _, loss, lr = sess.run((self.optimizer, self.net.cost, self.learning_rate_node),
                                            feed_dict={self.net.x: batch_x,
