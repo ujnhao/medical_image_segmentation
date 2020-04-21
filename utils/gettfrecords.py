@@ -99,8 +99,7 @@ def read_decode_samples(image_list, shuffle=False):
     return data_vol, label_vol
 
 
-def do_npz2tfs_handle():
-    img_file = "mr_train"
+def do_npz2tfs_handle(img_file):
     npz_img_file = "npz_" + img_file
     tfs_img_file = "tfs_" + img_file
     npz_img_name_list = read_image_name(npz_img_file)
@@ -156,6 +155,7 @@ def test_tfs():
 
 
 if __name__ == "__main__":
-    # do_npz2tfs_handle()
-    test_tfs()
+    do_npz2tfs_handle("ct_train")
+    do_npz2tfs_handle("ct_val")
+    # test_tfs()
 
