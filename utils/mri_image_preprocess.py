@@ -8,6 +8,7 @@ import SimpleITK as itk
 import cv2
 from skimage import transform
 import matplotlib.pyplot as plt
+import tensorflow as tf
 
 
 # show image with plt and image data(array)
@@ -124,10 +125,24 @@ def image_crop(val_image, val_label):
 
 
 # 归一化
-def normalize(img):
-    img = img.astype(np.float32)
-    img = (img - img.min()) / (img.max() - img.min())
-    return img
+# def normalize(img):
+#     img = img.astype(np.float32)
+#     cv2.mean()
+#     img = (img - img.min()) / (img.max() - img.min())
+#     img[img > 1] = 1
+#     img[img < 0] = 0
+#     return img
+
+
+def normalize(data):
+    volume = data
+    pixels = volume[volume > 0]
+    mean = pixels.mean()
+    std = pixels.std()
+    out = (volume - mean)/std
+    out_random = np.zeros(volume.shape)
+    out[volume == 0] = out_random[volume == 0]
+    return out
 
 
 # image_resize (256, 256, 256)
@@ -153,6 +168,7 @@ def save_slice_npz(file, img_name, img_data, lab_data):
         block_sum = np.sum(lab_data[:, :, i].astype(np.bool))
         npz_path = file + "/" + img_name + "_slice_" + str(i) + ".npz"
         save_npz(npz_path, img_data[:, :, i-1:i+2], lab_data[:, :, i-1:i+2])
+        break
 
 
 def mri_image_preprocess(file_path):
@@ -198,23 +214,25 @@ def mri_image_preprocess(file_path):
         val_image = image_resize(val_image)
         val_label = image_resize(val_label)
 
-        # print("img_shape: {}".format(val_image.shape))
-        # print("lab_shape: {}".format(val_label.shape))
-        # show_image(val_image[:, :, int(val_image.shape[2]/2)], val_label[:, :, int(val_image.shape[2]/2)],
-        #            val_image[:, int(val_image.shape[1]/2), :], val_label[:, int(val_image.shape[1]/2), :],
-        #            val_image[int(val_image.shape[0]/2), :, :], val_label[int(val_image.shape[0]/2), :, :])
+        print("img_shape: {}".format(val_image.shape))
+        print("lab_shape: {}".format(val_label.shape))
+        show_image(val_image[:, :, int(val_image.shape[2]/2)], val_label[:, :, int(val_image.shape[2]/2)],
+                   val_image[:, int(val_image.shape[1]/2), :], val_label[:, int(val_image.shape[1]/2), :],
+                   val_image[int(val_image.shape[0]/2), :, :], val_label[int(val_image.shape[0]/2), :, :])
 
         # all info
-        save_npz(npz_all_path, val_image, val_label)
+        # save_npz(npz_all_path, val_image, val_label)
 
         # x, y, z
         save_slice_npz(npz_info_path, image_name + "_z_", val_image, val_label)
 
         # y, z, x
-        save_slice_npz(npz_info_path, image_name + "_x_", val_image.transpose(2, 1, 0), val_label.transpose(2, 1, 0))
+        # save_slice_npz(npz_info_path, image_name + "_x_", val_image.transpose(2, 1, 0), val_label.transpose(2, 1, 0))
 
         # x, z, y
-        save_slice_npz(npz_info_path, image_name + "_y_", val_image.transpose(0, 2, 1), val_label.transpose(0, 2, 1))
+        # save_slice_npz(npz_info_path, image_name + "_y_", val_image.transpose(0, 2, 1), val_label.transpose(0, 2, 1))
+
+        break
 
         # print("img_shape: {}".format(val_image.shape))
         # print("lab_shape: {}".format(val_label.shape))
