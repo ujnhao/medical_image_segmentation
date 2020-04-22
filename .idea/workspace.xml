@@ -2,14 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="8d1930a8-028d-4957-b438-f8f1e7dfaa33" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/tmp_exps/mr_baseline/train_log/events.out.tfevents.1587476558.DESKTOP-MSG5DPT" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/tmp_exps/mr_baseline/val_log/events.out.tfevents.1587476563.DESKTOP-MSG5DPT" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/adversarial.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/train_gen.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/config_param.json" beforeDir="false" afterPath="$PROJECT_DIR$/config_param.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib.py" beforeDir="false" afterPath="$PROJECT_DIR$/lib.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tmp_exps/mr_baseline/train_log/events.out.tfevents.1587476260.DESKTOP-MSG5DPT" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tmp_exps/mr_baseline/val_log/events.out.tfevents.1587476268.DESKTOP-MSG5DPT" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/train_segmentation.py" beforeDir="false" afterPath="$PROJECT_DIR$/train_segmentation.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -20,8 +15,8 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="Python Script" />
         <option value="package.json" />
+        <option value="Python Script" />
       </list>
     </option>
   </component>
@@ -36,7 +31,7 @@
     <property name="ASKED_ADD_EXTERNAL_FILES" value="true" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/utils/example" />
+    <property name="last_opened_file_path" value="$USER_HOME$/repos/web_crawler_demo/graduation_project/cross_modality_domain_adaptation/Medical-Cross-Modality-Domain-Adaptation-master" />
     <property name="nodejs_package_manager_path" value="npm" />
     <property name="settings.editor.selected.configurable" value="com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable" />
   </component>
@@ -77,7 +72,7 @@
       <workItem from="1586963283530" duration="21796000" />
       <workItem from="1587027251570" duration="7085000" />
       <workItem from="1587089623098" duration="46822000" />
-      <workItem from="1587373160225" duration="50150000" />
+      <workItem from="1587373160225" duration="52016000" />
     </task>
     <servers />
   </component>
