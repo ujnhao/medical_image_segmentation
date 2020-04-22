@@ -21,7 +21,11 @@ np.random.seed(0)
 
 contour_map = {
     "back_ground": 0,
-    "lesion": 1,
+    # "lesion": 1,
+    "lv_myo": 1,
+    "la_blood": 2,
+    "lv_blood": 3,
+    "aa": 4,
 }
 
 verbose = True
@@ -224,12 +228,12 @@ class Full_DRN(object):
             self.dice_loss = self._dice_loss_fun(logits)
             loss += miu_dice * self.dice_loss
 
+        # 根据分类, 需要改造
         self.dice_eval, self.dice_eval_arr = _dice_eval(self.compact_pred, self.y, self.n_class)
         self.dice_eval_c1 = self.dice_eval_arr[1]
-        # 根据分类, 需要改造
-        # self.dice_eval_c2 = self.dice_eval_arr[2]
-        # self.dice_eval_c3 = self.dice_eval_arr[3]
-        # self.dice_eval_c4 = self.dice_eval_arr[4]
+        self.dice_eval_c2 = self.dice_eval_arr[2]
+        self.dice_eval_c3 = self.dice_eval_arr[3]
+        self.dice_eval_c4 = self.dice_eval_arr[4]
 
         regularizers = sum([tf.nn.l2_loss(variable) for variable in self.conv_weights])
 
@@ -376,19 +380,19 @@ class Trainer(object):
     def _initialize(self, training_iters, output_path,  restore):
 
         self.global_step = tf.Variable(0)
+        # 需要根据分类改造
         scalar_summaries = [
             tf.summary.scalar('loss', self.net.cost),
             tf.summary.scalar('regularizer_loss', self.net.regularizer_loss),
             tf.summary.scalar('weighted_loss', self.net.weighted_loss),
             tf.summary.scalar('dice_loss', self.net.dice_loss),
             tf.summary.scalar('dice_eval', self.net.dice_eval),
-            tf.summary.scalar('dice_eval_c1', self.net.dice_eval_c1)
+            tf.summary.scalar('dice_eval_c1', self.net.dice_eval_c1),
+            tf.summary.scalar('dice_eval_c2', self.net.dice_eval_c2),
+            tf.summary.scalar('dice_eval_c3', self.net.dice_eval_c3),
+            tf.summary.scalar('dice_eval_c4', self.net.dice_eval_c4)
         ]
 
-        # 需要根据分类改造
-        # scalar_summaries.append(tf.summary.scalar('dice_eval_c2', self.net.dice_eval_c2))
-        # scalar_summaries.append(tf.summary.scalar('dice_eval_c3', self.net.dice_eval_c3))
-        # scalar_summaries.append(tf.summary.scalar('dice_eval_c4', self.net.dice_eval_c4))
 
         train_images = [
             tf.summary.image('train_pred', tf.expand_dims(tf.cast(self.net.compact_pred, tf.float32), 3)),

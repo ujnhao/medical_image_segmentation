@@ -32,7 +32,7 @@ def main():
     restore = False  # set True if resume training from stored model
     restored_path = output_path
     lr_update_flag = False  # Set True if want to use a new learning rate for fine-tuning
-    num_cls = 2
+    num_cls = 5
     batch_size = 10
     training_iters = 10
     checkpoint_space = 1500

@@ -28,12 +28,12 @@ def npz2tfrecords(image_path, tfrecord_path):
     data_vol_val = npz_data['arr_0']
     label_vol_val = npz_data['arr_1']
 
-    # print(label_vol_val.shape)
-    # print(data_vol_val.max(), data_vol_val.min())
-    # cv2.imshow("data", data_vol_val)
-    # cv2.imshow("label", label_vol_val)
-    # cv2.waitKey(0)
-    # return
+    print(label_vol_val.shape)
+    print(data_vol_val.max(), data_vol_val.min())
+    cv2.imshow("data", data_vol_val)
+    cv2.imshow("label", label_vol_val)
+    cv2.waitKey(0)
+    return
 
     dsize_dim0_val = data_vol_val.shape[0]
     dsize_dim1_val = data_vol_val.shape[1]
@@ -155,7 +155,7 @@ def test_tfs():
 
 
 if __name__ == "__main__":
-    do_npz2tfs_handle("ct_train")
-    do_npz2tfs_handle("ct_val")
+    do_npz2tfs_handle("mr_train")
+    # do_npz2tfs_handle("ct_val")
     # test_tfs()
 

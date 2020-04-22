@@ -2,7 +2,7 @@
   "train_fid": "list/tfs_mr_train_list.txt",
   "val_fid": "list/tfs_mr_val_list.txt",
   "output_path": "./tmp_exps/mr_baseline",
-  "num_cls": 2,
+  "num_cls": 5,
 
   "#restore": "# Set True if resume training from stored model",
   "restore": false,
