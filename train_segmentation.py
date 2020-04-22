@@ -32,15 +32,11 @@ def main():
     restore = False  # set True if resume training from stored model
     restored_path = output_path
     lr_update_flag = False  # Set True if want to use a new learning rate for fine-tuning
-
     num_cls = 2
     batch_size = 10
     training_iters = 10
-    epochs = 5000
     checkpoint_space = 1500
     image_summeris = True
-
-    optimizer = 'adam'
 
     cost_kwargs = {
         "cross_flag": True,  # use cross entropy loss
@@ -70,7 +66,7 @@ def main():
 
     trainer = drn.Trainer(net, train_list=train_list, val_list=val_list, num_cls=num_cls,
                           batch_size=batch_size, opt_kwargs=opt_kwargs, checkpoint_space=checkpoint_space,
-                          optimizer=optimizer, lr_update_flag=lr_update_flag)
+                          optimizer=config["optimizer"], lr_update_flag=lr_update_flag)
 
     # start tensorboard before getting started
     if platform.system() is "Linux":
@@ -79,10 +75,10 @@ def main():
 
     print("Now start training...")
     if restore is True:
-        trainer.train(output_path=output_path, training_iters=training_iters, epochs=epochs, restore=True,
+        trainer.train(output_path=output_path, training_iters=training_iters, epochs=config["epochs"], restore=True,
                       restored_path=restored_path)
     else:
-        trainer.train(output_path=output_path, training_iters=training_iters, epochs=epochs)
+        trainer.train(output_path=output_path, training_iters=training_iters, epochs=config["epochs"])
 
 
 if __name__ == "__main__":

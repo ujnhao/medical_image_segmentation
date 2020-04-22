@@ -95,7 +95,7 @@ def _label_decomp(num_cls, label_vol):
             continue
         _n_slice = np.zeros(label_vol.shape)
         _n_slice[label_vol == i] = 1
-        _vol = np.concatenate( (_vol, _n_slice[..., np.newaxis]), axis=3)
+        _vol = np.concatenate((_vol, _n_slice[..., np.newaxis]), axis=3)
     return np.float32(_vol)
 
 

@@ -3,6 +3,12 @@
   "val_fid": "list/tfs_mr_val_list.txt",
   "output_path": "./tmp_exps/mr_baseline",
   "num_cls": 2,
-  "restore": 0,
-  "lr_update_flag": 0
+
+  "#restore": "# Set True if resume training from stored model",
+  "restore": false,
+
+  "#lr_update_flag": "# Set True if want to use a new learning rate for fine-tuning",
+  "lr_update_flag": false,
+  "epochs": 5000,
+  "optimizer": "adam"
 }
