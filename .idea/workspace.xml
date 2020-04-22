@@ -2,10 +2,19 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="8d1930a8-028d-4957-b438-f8f1e7dfaa33" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/list/ct_train_list" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/list/ct_val_list" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/list/mr_train_list" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/list/mr_val_list" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tmp_exps/mr_baseline/train_log/events.out.tfevents.1587525138.DESKTOP-MSG5DPT" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tmp_exps/mr_baseline/val_log/events.out.tfevents.1587525144.DESKTOP-MSG5DPT" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/config_param.json" beforeDir="false" afterPath="$PROJECT_DIR$/config_param.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/train_segmentation.py" beforeDir="false" afterPath="$PROJECT_DIR$/train_segmentation.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/utils/gettfrecords.py" beforeDir="false" afterPath="$PROJECT_DIR$/utils/gettfrecords.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/create_data_list.py" beforeDir="false" afterPath="$PROJECT_DIR$/create_data_list.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/list/tfs_mr_train_list.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/list/tfs_mr_val_list.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/tmp_exps/mr_baseline/train_log/events.out.tfevents.1587476558.DESKTOP-MSG5DPT" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/tmp_exps/mr_baseline/val_log/events.out.tfevents.1587476563.DESKTOP-MSG5DPT" beforeDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -73,7 +82,7 @@
       <workItem from="1586963283530" duration="21796000" />
       <workItem from="1587027251570" duration="7085000" />
       <workItem from="1587089623098" duration="46822000" />
-      <workItem from="1587373160225" duration="52976000" />
+      <workItem from="1587373160225" duration="56855000" />
     </task>
     <servers />
   </component>

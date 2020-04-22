@@ -1,6 +1,6 @@
 {
-  "train_fid": "list/tfs_mr_train_list.txt",
-  "val_fid": "list/tfs_mr_val_list.txt",
+  "train_fid": "list/mr_train_list",
+  "val_fid": "list/mr_val_list",
   "output_path": "./tmp_exps/mr_baseline",
   "num_cls": 5,
 

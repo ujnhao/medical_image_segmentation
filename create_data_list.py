@@ -13,9 +13,15 @@ def make_datalist(data_fd, data_list):
 
 
 if __name__ == '__main__':
-    data_fd = "list/tfs_mr_val"
-    data_list = 'list/tfs_mr_val_list.txt'
+    data_fd = "list/mr_val_tfs"
+    data_list = 'list/mr_val_list'
     make_datalist(data_fd, data_list)
-    data_fd = "list/tfs_mr_train"
-    data_list = 'list/tfs_mr_train_list.txt'
+    data_fd = "list/mr_train_tfs"
+    data_list = 'list/mr_train_list'
+    make_datalist(data_fd, data_list)
+    data_fd = "list/ct_val_tfs"
+    data_list = 'list/ct_val_list'
+    make_datalist(data_fd, data_list)
+    data_fd = "list/ct_train_tfs"
+    data_list = 'list/ct_train_list'
     make_datalist(data_fd, data_list)
