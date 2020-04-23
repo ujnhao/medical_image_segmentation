@@ -1011,3 +1011,9 @@
 2020-04-23 08:59:05,858 discriminator updated 0 of 1
 2020-04-23 08:59:05,888 Training step 250 epoch 1 has been finished!
 2020-04-23 08:59:05,890 Time elapsed 198.4247989654541 seconds
+2020-04-23 12:27:13,112 extent of joint part and segmenter need to be manually set, including variables and bns
+2020-04-23 12:27:54,028 New learning rate 0.0003 has been loaded
+2020-04-23 12:28:24,016 Running step 0 epoch 0 ...
+2020-04-23 12:28:24,017 Training step 0 epoch 0 has been finished!
+2020-04-23 12:28:24,017 Time elapsed 0.0 seconds
+2020-04-23 12:32:36,695 Running step 1 epoch 0 ...

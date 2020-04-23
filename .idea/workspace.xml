@@ -2,24 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="8d1930a8-028d-4957-b438-f8f1e7dfaa33" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/curr_log" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lists/ct_train_list" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lists/ct_val_list" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lists/mr_train_list" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lists/mr_val_list" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/tmp_exps/mr2ct122103/train_loggan-0.3_1221/events.out.tfevents.1587544882.DESKTOP-MSG5DPT" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/tmp_exps/mr2ct122103/train_loggan-0.3_1221/events.out.tfevents.1587545135.DESKTOP-MSG5DPT" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/tmp_exps/mr2ct122103/val_loggan-0.3_1221/events.out.tfevents.1587544905.DESKTOP-MSG5DPT" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/tmp_exps/mr2ct122103/val_loggan-0.3_1221/events.out.tfevents.1587545153.DESKTOP-MSG5DPT" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/train_gan.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tmp_exps/mr2ct122103/train_loggan-0.3_1221-gan/events.out.tfevents.1587616080.DESKTOP-MSG5DPT" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tmp_exps/mr2ct122103/val_loggan-0.3_1221-gan/events.out.tfevents.1587616096.DESKTOP-MSG5DPT" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/adversarial.py" beforeDir="false" afterPath="$PROJECT_DIR$/adversarial.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/create_data_list.py" beforeDir="false" afterPath="$PROJECT_DIR$/create_data_list.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/list/ct_train_list" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/list/ct_val_list" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/list/mr_train_list" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/list/mr_val_list" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/train_gen.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/curr_log" beforeDir="false" afterPath="$PROJECT_DIR$/curr_log" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -46,7 +32,7 @@
     <property name="ASKED_ADD_EXTERNAL_FILES" value="true" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$USER_HOME$/repos/web_crawler_demo/graduation_project/cross_modality_domain_adaptation/Medical-Cross-Modality-Domain-Adaptation-master" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="nodejs_package_manager_path" value="npm" />
     <property name="settings.editor.selected.configurable" value="com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable" />
   </component>
@@ -88,6 +74,7 @@
       <workItem from="1587027251570" duration="7085000" />
       <workItem from="1587089623098" duration="46822000" />
       <workItem from="1587373160225" duration="67083000" />
+      <workItem from="1587615617989" duration="3450000" />
     </task>
     <servers />
   </component>
