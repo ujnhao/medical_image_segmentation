@@ -1,0 +1,1013 @@
+2020-04-22 16:37:04,162 Allocating './tmp_exps/mr2ct122103'
+2020-04-22 16:37:04,261 extent of joint part and segmenter need to be manually set, including variables and bns
+2020-04-22 16:40:03,197 extent of joint part and segmenter need to be manually set, including variables and bns
+2020-04-22 16:41:11,707 New learning rate 0.0003 has been loaded
+2020-04-22 16:41:57,439 Running step 0 epoch 0 ...
+2020-04-22 16:41:57,440 Training step 0 epoch 0 has been finished!
+2020-04-22 16:41:57,441 Time elapsed 0.0009992122650146484 seconds
+2020-04-22 16:44:19,252 extent of joint part and segmenter need to be manually set, including variables and bns
+2020-04-22 16:45:25,995 New learning rate 0.0003 has been loaded
+2020-04-22 16:46:05,056 Running step 0 epoch 0 ...
+2020-04-22 16:46:05,074 Training step 0 epoch 0 has been finished!
+2020-04-22 16:46:05,074 Time elapsed 0.0 seconds
+2020-04-22 16:51:02,069 Running step 1 epoch 0 ...
+2020-04-22 16:55:51,330 discriminator updated 0 of 1
+2020-04-22 16:55:51,386 Training step 1 epoch 0 has been finished!
+2020-04-22 16:55:51,390 Time elapsed 289.2843759059906 seconds
+2020-04-22 16:55:51,391 Running step 2 epoch 0 ...
+2020-04-22 16:59:38,675 discriminator updated 0 of 1
+2020-04-22 16:59:38,727 Training step 2 epoch 0 has been finished!
+2020-04-22 16:59:38,728 Time elapsed 227.33645725250244 seconds
+2020-04-22 16:59:38,729 Running step 3 epoch 0 ...
+2020-04-22 17:03:35,868 discriminator updated 0 of 1
+2020-04-22 17:03:35,925 Training step 3 epoch 0 has been finished!
+2020-04-22 17:03:35,926 Time elapsed 237.19482803344727 seconds
+2020-04-22 17:03:35,927 Running step 4 epoch 0 ...
+2020-04-22 17:08:19,324 discriminator updated 0 of 1
+2020-04-22 17:08:19,360 Training step 4 epoch 0 has been finished!
+2020-04-22 17:08:19,367 Time elapsed 283.43864727020264 seconds
+2020-04-22 17:08:19,369 Running step 5 epoch 0 ...
+2020-04-22 17:13:13,924 discriminator updated 0 of 1
+2020-04-22 17:13:13,979 Training step 5 epoch 0 has been finished!
+2020-04-22 17:13:13,980 Time elapsed 294.61082887649536 seconds
+2020-04-22 17:17:36,168 Running step 6 epoch 0 ...
+2020-04-22 17:22:31,150 discriminator updated 0 of 1
+2020-04-22 17:22:31,201 Training step 6 epoch 0 has been finished!
+2020-04-22 17:22:31,203 Time elapsed 295.0329239368439 seconds
+2020-04-22 17:22:31,203 Running step 7 epoch 0 ...
+2020-04-22 17:27:29,360 discriminator updated 0 of 1
+2020-04-22 17:27:29,391 Training step 7 epoch 0 has been finished!
+2020-04-22 17:27:29,392 Time elapsed 298.1854236125946 seconds
+2020-04-22 17:27:29,392 Running step 8 epoch 0 ...
+2020-04-22 17:31:27,627 discriminator updated 0 of 1
+2020-04-22 17:31:27,657 Training step 8 epoch 0 has been finished!
+2020-04-22 17:31:27,658 Time elapsed 238.26496815681458 seconds
+2020-04-22 17:31:27,659 Running step 9 epoch 0 ...
+2020-04-22 17:35:57,435 discriminator updated 0 of 1
+2020-04-22 17:35:57,481 Training step 9 epoch 0 has been finished!
+2020-04-22 17:35:57,482 Time elapsed 269.8225471973419 seconds
+2020-04-22 17:35:57,483 Running step 10 epoch 0 ...
+2020-04-22 17:40:02,091 discriminator updated 0 of 1
+2020-04-22 17:40:02,128 Training step 10 epoch 0 has been finished!
+2020-04-22 17:40:02,129 Time elapsed 244.64484429359436 seconds
+2020-04-22 17:44:05,885 Running step 11 epoch 0 ...
+2020-04-22 17:48:15,709 discriminator updated 0 of 1
+2020-04-22 17:48:15,760 Training step 11 epoch 0 has been finished!
+2020-04-22 17:48:15,762 Time elapsed 249.87660670280457 seconds
+2020-04-22 17:48:15,763 Running step 12 epoch 0 ...
+2020-04-22 17:52:21,270 discriminator updated 0 of 1
+2020-04-22 17:52:21,638 Training step 12 epoch 0 has been finished!
+2020-04-22 17:52:21,639 Time elapsed 245.87460064888 seconds
+2020-04-22 17:52:21,640 Running step 13 epoch 0 ...
+2020-04-22 17:56:26,001 discriminator updated 0 of 1
+2020-04-22 17:56:26,071 Training step 13 epoch 0 has been finished!
+2020-04-22 17:56:26,072 Time elapsed 244.42976832389832 seconds
+2020-04-22 17:56:26,073 Running step 14 epoch 0 ...
+2020-04-22 18:01:06,905 discriminator updated 0 of 1
+2020-04-22 18:01:06,990 Training step 14 epoch 0 has been finished!
+2020-04-22 18:01:06,991 Time elapsed 280.91472458839417 seconds
+2020-04-22 18:01:06,992 Running step 15 epoch 0 ...
+2020-04-22 18:06:03,804 discriminator updated 0 of 1
+2020-04-22 18:06:03,853 Training step 15 epoch 0 has been finished!
+2020-04-22 18:06:03,855 Time elapsed 296.8617856502533 seconds
+2020-04-22 18:10:02,076 Running step 16 epoch 0 ...
+2020-04-22 18:13:11,067 discriminator updated 0 of 1
+2020-04-22 18:13:11,129 Training step 16 epoch 0 has been finished!
+2020-04-22 18:13:11,132 Time elapsed 189.05388689041138 seconds
+2020-04-22 18:13:11,134 Running step 17 epoch 0 ...
+2020-04-22 18:16:26,790 discriminator updated 0 of 1
+2020-04-22 18:16:26,837 Training step 17 epoch 0 has been finished!
+2020-04-22 18:16:26,839 Time elapsed 195.70420217514038 seconds
+2020-04-22 18:16:26,839 Running step 18 epoch 0 ...
+2020-04-22 18:19:33,627 discriminator updated 0 of 1
+2020-04-22 18:19:33,686 Training step 18 epoch 0 has been finished!
+2020-04-22 18:19:33,687 Time elapsed 186.84750890731812 seconds
+2020-04-22 18:19:33,688 Running step 19 epoch 0 ...
+2020-04-22 18:22:43,024 discriminator updated 0 of 1
+2020-04-22 18:22:43,069 Training step 19 epoch 0 has been finished!
+2020-04-22 18:22:43,070 Time elapsed 189.37962126731873 seconds
+2020-04-22 18:22:43,072 Running step 20 epoch 0 ...
+2020-04-22 18:25:45,695 discriminator updated 0 of 1
+2020-04-22 18:25:45,799 Training step 20 epoch 0 has been finished!
+2020-04-22 18:25:45,800 Time elapsed 182.72739362716675 seconds
+2020-04-22 18:28:53,436 Running step 21 epoch 0 ...
+2020-04-22 18:31:43,327 discriminator updated 0 of 1
+2020-04-22 18:31:43,376 Training step 21 epoch 0 has been finished!
+2020-04-22 18:31:43,380 Time elapsed 169.94227290153503 seconds
+2020-04-22 18:31:43,380 Running step 22 epoch 0 ...
+2020-04-22 18:34:39,031 discriminator updated 0 of 1
+2020-04-22 18:34:39,160 Training step 22 epoch 0 has been finished!
+2020-04-22 18:34:39,162 Time elapsed 175.7786762714386 seconds
+2020-04-22 18:34:39,163 Running step 23 epoch 0 ...
+2020-04-22 18:37:41,403 discriminator updated 0 of 1
+2020-04-22 18:37:41,441 Training step 23 epoch 0 has been finished!
+2020-04-22 18:37:41,442 Time elapsed 182.2782437801361 seconds
+2020-04-22 18:37:41,442 Running step 24 epoch 0 ...
+2020-04-22 18:41:42,877 discriminator updated 0 of 1
+2020-04-22 18:41:42,913 Training step 24 epoch 0 has been finished!
+2020-04-22 18:41:42,914 Time elapsed 241.47059416770935 seconds
+2020-04-22 18:41:42,915 Running step 25 epoch 0 ...
+2020-04-22 18:46:00,159 discriminator updated 0 of 1
+2020-04-22 18:46:00,210 Training step 25 epoch 0 has been finished!
+2020-04-22 18:46:00,212 Time elapsed 257.2965862751007 seconds
+2020-04-22 18:49:59,560 Running step 26 epoch 0 ...
+2020-04-22 18:54:18,877 discriminator updated 0 of 1
+2020-04-22 18:54:18,910 Training step 26 epoch 0 has been finished!
+2020-04-22 18:54:18,913 Time elapsed 259.35265135765076 seconds
+2020-04-22 18:54:18,914 Running step 27 epoch 0 ...
+2020-04-22 18:58:33,800 discriminator updated 0 of 1
+2020-04-22 18:58:33,848 Training step 27 epoch 0 has been finished!
+2020-04-22 18:58:33,849 Time elapsed 254.93494534492493 seconds
+2020-04-22 18:58:33,850 Running step 28 epoch 0 ...
+2020-04-22 19:03:04,029 discriminator updated 0 of 1
+2020-04-22 19:03:04,121 Training step 28 epoch 0 has been finished!
+2020-04-22 19:03:04,122 Time elapsed 270.2716693878174 seconds
+2020-04-22 19:03:04,123 Running step 29 epoch 0 ...
+2020-04-22 19:06:24,380 discriminator updated 0 of 1
+2020-04-22 19:06:24,414 Training step 29 epoch 0 has been finished!
+2020-04-22 19:06:24,415 Time elapsed 200.29118180274963 seconds
+2020-04-22 19:06:24,417 Running step 30 epoch 0 ...
+2020-04-22 19:09:19,578 discriminator updated 0 of 1
+2020-04-22 19:09:19,617 Training step 30 epoch 0 has been finished!
+2020-04-22 19:09:19,618 Time elapsed 175.19927072525024 seconds
+2020-04-22 19:12:31,566 Running step 31 epoch 0 ...
+2020-04-22 19:15:25,804 discriminator updated 0 of 1
+2020-04-22 19:15:25,870 Training step 31 epoch 0 has been finished!
+2020-04-22 19:15:25,873 Time elapsed 174.30648922920227 seconds
+2020-04-22 19:15:25,873 Running step 32 epoch 0 ...
+2020-04-22 19:18:33,867 discriminator updated 0 of 1
+2020-04-22 19:18:33,932 Training step 32 epoch 0 has been finished!
+2020-04-22 19:18:33,934 Time elapsed 188.06003594398499 seconds
+2020-04-22 19:18:33,939 Running step 33 epoch 0 ...
+2020-04-22 19:21:38,722 discriminator updated 0 of 1
+2020-04-22 19:21:38,866 Training step 33 epoch 0 has been finished!
+2020-04-22 19:21:38,867 Time elapsed 184.92676758766174 seconds
+2020-04-22 19:21:38,867 Running step 34 epoch 0 ...
+2020-04-22 19:24:31,029 discriminator updated 0 of 1
+2020-04-22 19:24:31,068 Training step 34 epoch 0 has been finished!
+2020-04-22 19:24:31,069 Time elapsed 172.2002444267273 seconds
+2020-04-22 19:24:31,070 Running step 35 epoch 0 ...
+2020-04-22 19:27:21,670 discriminator updated 0 of 1
+2020-04-22 19:27:22,375 Training step 35 epoch 0 has been finished!
+2020-04-22 19:27:22,377 Time elapsed 171.28389692306519 seconds
+2020-04-22 19:30:22,861 Running step 36 epoch 0 ...
+2020-04-22 19:33:08,037 discriminator updated 0 of 1
+2020-04-22 19:33:08,127 Training step 36 epoch 0 has been finished!
+2020-04-22 19:33:08,128 Time elapsed 165.26606678962708 seconds
+2020-04-22 19:33:08,130 Running step 37 epoch 0 ...
+2020-04-22 19:36:00,835 discriminator updated 0 of 1
+2020-04-22 19:36:01,460 Training step 37 epoch 0 has been finished!
+2020-04-22 19:36:01,467 Time elapsed 173.32999420166016 seconds
+2020-04-22 19:36:01,468 Running step 38 epoch 0 ...
+2020-04-22 19:39:01,093 discriminator updated 0 of 1
+2020-04-22 19:39:01,127 Training step 38 epoch 0 has been finished!
+2020-04-22 19:39:01,128 Time elapsed 179.65907645225525 seconds
+2020-04-22 19:39:01,128 Running step 39 epoch 0 ...
+2020-04-22 19:41:47,348 discriminator updated 0 of 1
+2020-04-22 19:41:47,598 Training step 39 epoch 0 has been finished!
+2020-04-22 19:41:47,599 Time elapsed 166.46941351890564 seconds
+2020-04-22 19:41:47,600 Running step 40 epoch 0 ...
+2020-04-22 19:44:40,486 discriminator updated 0 of 1
+2020-04-22 19:44:40,519 Training step 40 epoch 0 has been finished!
+2020-04-22 19:44:40,520 Time elapsed 172.91928720474243 seconds
+2020-04-22 19:47:43,755 Running step 41 epoch 0 ...
+2020-04-22 19:50:33,086 discriminator updated 0 of 1
+2020-04-22 19:50:33,187 Training step 41 epoch 0 has been finished!
+2020-04-22 19:50:33,190 Time elapsed 169.43355083465576 seconds
+2020-04-22 19:50:33,192 Running step 42 epoch 0 ...
+2020-04-22 19:53:26,703 discriminator updated 0 of 1
+2020-04-22 19:53:26,878 Training step 42 epoch 0 has been finished!
+2020-04-22 19:53:26,879 Time elapsed 173.68557572364807 seconds
+2020-04-22 19:53:26,880 Running step 43 epoch 0 ...
+2020-04-22 19:56:18,916 discriminator updated 0 of 1
+2020-04-22 19:56:18,973 Training step 43 epoch 0 has been finished!
+2020-04-22 19:56:18,975 Time elapsed 172.09322881698608 seconds
+2020-04-22 19:56:18,975 Running step 44 epoch 0 ...
+2020-04-22 19:59:18,720 discriminator updated 0 of 1
+2020-04-22 19:59:20,382 Training step 44 epoch 0 has been finished!
+2020-04-22 19:59:20,391 Time elapsed 181.40629410743713 seconds
+2020-04-22 19:59:20,392 Running step 45 epoch 0 ...
+2020-04-22 20:02:10,864 discriminator updated 0 of 1
+2020-04-22 20:02:10,900 Training step 45 epoch 0 has been finished!
+2020-04-22 20:02:10,901 Time elapsed 170.50747299194336 seconds
+2020-04-22 20:06:00,411 Running step 46 epoch 0 ...
+2020-04-22 20:10:07,020 discriminator updated 0 of 1
+2020-04-22 20:10:07,059 Training step 46 epoch 0 has been finished!
+2020-04-22 20:10:07,061 Time elapsed 246.6480278968811 seconds
+2020-04-22 20:10:07,061 Running step 47 epoch 0 ...
+2020-04-22 20:14:17,355 discriminator updated 0 of 1
+2020-04-22 20:14:17,438 Training step 47 epoch 0 has been finished!
+2020-04-22 20:14:17,439 Time elapsed 250.3764522075653 seconds
+2020-04-22 20:14:17,440 Running step 48 epoch 0 ...
+2020-04-22 20:17:12,525 discriminator updated 0 of 1
+2020-04-22 20:17:12,572 Training step 48 epoch 0 has been finished!
+2020-04-22 20:17:12,573 Time elapsed 175.1309311389923 seconds
+2020-04-22 20:17:12,574 Running step 49 epoch 0 ...
+2020-04-22 20:20:13,886 discriminator updated 0 of 1
+2020-04-22 20:20:13,956 Training step 49 epoch 0 has been finished!
+2020-04-22 20:20:13,961 Time elapsed 181.38342905044556 seconds
+2020-04-22 20:20:13,961 Running step 50 epoch 0 ...
+2020-04-22 20:23:18,457 discriminator updated 0 of 1
+2020-04-22 20:23:18,506 Training step 50 epoch 0 has been finished!
+2020-04-22 20:23:18,507 Time elapsed 184.54486727714539 seconds
+2020-04-22 20:26:21,056 Running step 51 epoch 0 ...
+2020-04-22 20:29:17,110 discriminator updated 0 of 1
+2020-04-22 20:29:17,181 Training step 51 epoch 0 has been finished!
+2020-04-22 20:29:17,186 Time elapsed 176.12826704978943 seconds
+2020-04-22 20:29:17,187 Running step 52 epoch 0 ...
+2020-04-22 20:32:15,997 discriminator updated 0 of 1
+2020-04-22 20:32:16,034 Training step 52 epoch 0 has been finished!
+2020-04-22 20:32:16,035 Time elapsed 178.8458194732666 seconds
+2020-04-22 20:32:16,036 Running step 53 epoch 0 ...
+2020-04-22 20:35:14,316 discriminator updated 0 of 1
+2020-04-22 20:35:14,920 Training step 53 epoch 0 has been finished!
+2020-04-22 20:35:14,925 Time elapsed 178.88561844825745 seconds
+2020-04-22 20:35:14,930 Running step 54 epoch 0 ...
+2020-04-22 20:38:04,067 discriminator updated 0 of 1
+2020-04-22 20:38:04,092 Training step 54 epoch 0 has been finished!
+2020-04-22 20:38:04,093 Time elapsed 169.16175389289856 seconds
+2020-04-22 20:38:04,094 Running step 55 epoch 0 ...
+2020-04-22 20:40:55,651 discriminator updated 0 of 1
+2020-04-22 20:40:55,691 Training step 55 epoch 0 has been finished!
+2020-04-22 20:40:55,694 Time elapsed 171.59805560112 seconds
+2020-04-22 20:43:58,684 Running step 56 epoch 0 ...
+2020-04-22 20:46:52,807 discriminator updated 0 of 1
+2020-04-22 20:46:52,878 Training step 56 epoch 0 has been finished!
+2020-04-22 20:46:52,880 Time elapsed 174.19423127174377 seconds
+2020-04-22 20:46:52,880 Running step 57 epoch 0 ...
+2020-04-22 20:49:42,687 discriminator updated 0 of 1
+2020-04-22 20:49:42,733 Training step 57 epoch 0 has been finished!
+2020-04-22 20:49:42,734 Time elapsed 169.8525915145874 seconds
+2020-04-22 20:49:42,735 Running step 58 epoch 0 ...
+2020-04-22 20:52:30,845 discriminator updated 0 of 1
+2020-04-22 20:52:30,902 Training step 58 epoch 0 has been finished!
+2020-04-22 20:52:30,907 Time elapsed 168.16874289512634 seconds
+2020-04-22 20:52:30,907 Running step 59 epoch 0 ...
+2020-04-22 20:55:31,488 discriminator updated 0 of 1
+2020-04-22 20:55:31,565 Training step 59 epoch 0 has been finished!
+2020-04-22 20:55:31,568 Time elapsed 180.65830993652344 seconds
+2020-04-22 20:55:31,571 Running step 60 epoch 0 ...
+2020-04-22 20:58:19,845 discriminator updated 0 of 1
+2020-04-22 20:58:19,898 Training step 60 epoch 0 has been finished!
+2020-04-22 20:58:19,900 Time elapsed 168.3272683620453 seconds
+2020-04-22 21:01:30,578 Running step 61 epoch 0 ...
+2020-04-22 21:04:25,623 discriminator updated 0 of 1
+2020-04-22 21:04:25,662 Training step 61 epoch 0 has been finished!
+2020-04-22 21:04:25,663 Time elapsed 175.0845925807953 seconds
+2020-04-22 21:04:25,664 Running step 62 epoch 0 ...
+2020-04-22 21:07:16,243 discriminator updated 0 of 1
+2020-04-22 21:07:16,277 Training step 62 epoch 0 has been finished!
+2020-04-22 21:07:16,278 Time elapsed 170.61305260658264 seconds
+2020-04-22 21:07:16,278 Running step 63 epoch 0 ...
+2020-04-22 21:10:10,763 discriminator updated 0 of 1
+2020-04-22 21:10:10,827 Training step 63 epoch 0 has been finished!
+2020-04-22 21:10:10,828 Time elapsed 174.54757046699524 seconds
+2020-04-22 21:10:10,828 Running step 64 epoch 0 ...
+2020-04-22 21:13:25,847 discriminator updated 0 of 1
+2020-04-22 21:13:25,931 Training step 64 epoch 0 has been finished!
+2020-04-22 21:13:25,933 Time elapsed 195.10305213928223 seconds
+2020-04-22 21:13:25,933 Running step 65 epoch 0 ...
+2020-04-22 21:16:34,331 discriminator updated 0 of 1
+2020-04-22 21:16:34,389 Training step 65 epoch 0 has been finished!
+2020-04-22 21:16:34,418 Time elapsed 188.48019647598267 seconds
+2020-04-22 21:19:42,066 Running step 66 epoch 0 ...
+2020-04-22 21:22:33,651 discriminator updated 0 of 1
+2020-04-22 21:22:33,697 Training step 66 epoch 0 has been finished!
+2020-04-22 21:22:33,698 Time elapsed 171.63051104545593 seconds
+2020-04-22 21:22:33,699 Running step 67 epoch 0 ...
+2020-04-22 21:25:28,184 discriminator updated 0 of 1
+2020-04-22 21:25:28,240 Training step 67 epoch 0 has been finished!
+2020-04-22 21:25:28,242 Time elapsed 174.5421063899994 seconds
+2020-04-22 21:25:28,243 Running step 68 epoch 0 ...
+2020-04-22 21:29:05,564 discriminator updated 0 of 1
+2020-04-22 21:29:05,614 Training step 68 epoch 0 has been finished!
+2020-04-22 21:29:05,615 Time elapsed 217.37049317359924 seconds
+2020-04-22 21:29:05,615 Running step 69 epoch 0 ...
+2020-04-22 21:32:58,525 discriminator updated 0 of 1
+2020-04-22 21:32:58,571 Training step 69 epoch 0 has been finished!
+2020-04-22 21:32:58,572 Time elapsed 232.95544576644897 seconds
+2020-04-22 21:32:58,572 Running step 70 epoch 0 ...
+2020-04-22 21:37:13,317 discriminator updated 0 of 1
+2020-04-22 21:37:13,352 Training step 70 epoch 0 has been finished!
+2020-04-22 21:37:13,353 Time elapsed 254.78029608726501 seconds
+2020-04-22 21:41:29,775 Running step 71 epoch 0 ...
+2020-04-22 21:46:14,889 discriminator updated 0 of 1
+2020-04-22 21:46:14,945 Training step 71 epoch 0 has been finished!
+2020-04-22 21:46:14,946 Time elapsed 285.1693363189697 seconds
+2020-04-22 21:46:14,947 Running step 72 epoch 0 ...
+2020-04-22 21:50:39,505 discriminator updated 0 of 1
+2020-04-22 21:50:39,542 Training step 72 epoch 0 has been finished!
+2020-04-22 21:50:39,543 Time elapsed 264.5955924987793 seconds
+2020-04-22 21:50:39,544 Running step 73 epoch 0 ...
+2020-04-22 21:55:02,135 discriminator updated 0 of 1
+2020-04-22 21:55:02,170 Training step 73 epoch 0 has been finished!
+2020-04-22 21:55:02,171 Time elapsed 262.6254777908325 seconds
+2020-04-22 21:55:02,172 Running step 74 epoch 0 ...
+2020-04-22 21:58:26,553 discriminator updated 0 of 1
+2020-04-22 21:58:26,589 Training step 74 epoch 0 has been finished!
+2020-04-22 21:58:26,590 Time elapsed 204.4173128604889 seconds
+2020-04-22 21:58:26,591 Running step 75 epoch 0 ...
+2020-04-22 22:02:37,472 discriminator updated 0 of 1
+2020-04-22 22:02:37,550 Training step 75 epoch 0 has been finished!
+2020-04-22 22:02:37,551 Time elapsed 250.95934510231018 seconds
+2020-04-22 22:06:37,315 Running step 76 epoch 0 ...
+2020-04-22 22:10:34,485 discriminator updated 0 of 1
+2020-04-22 22:10:34,528 Training step 76 epoch 0 has been finished!
+2020-04-22 22:10:34,530 Time elapsed 237.21381521224976 seconds
+2020-04-22 22:10:34,531 Running step 77 epoch 0 ...
+2020-04-22 22:14:43,493 discriminator updated 0 of 1
+2020-04-22 22:14:43,537 Training step 77 epoch 0 has been finished!
+2020-04-22 22:14:43,539 Time elapsed 249.00610852241516 seconds
+2020-04-22 22:14:43,540 Running step 78 epoch 0 ...
+2020-04-22 22:19:05,771 discriminator updated 0 of 1
+2020-04-22 22:19:05,825 Training step 78 epoch 0 has been finished!
+2020-04-22 22:19:05,826 Time elapsed 262.28419637680054 seconds
+2020-04-22 22:19:05,827 Running step 79 epoch 0 ...
+2020-04-22 22:23:12,447 discriminator updated 0 of 1
+2020-04-22 22:23:12,501 Training step 79 epoch 0 has been finished!
+2020-04-22 22:23:12,503 Time elapsed 246.6751766204834 seconds
+2020-04-22 22:23:12,504 Running step 80 epoch 0 ...
+2020-04-22 22:27:27,882 discriminator updated 0 of 1
+2020-04-22 22:27:27,932 Training step 80 epoch 0 has been finished!
+2020-04-22 22:27:27,935 Time elapsed 255.42857122421265 seconds
+2020-04-22 22:31:45,257 Running step 81 epoch 0 ...
+2020-04-22 22:35:45,188 discriminator updated 0 of 1
+2020-04-22 22:35:45,259 Training step 81 epoch 0 has been finished!
+2020-04-22 22:35:45,261 Time elapsed 240.00209736824036 seconds
+2020-04-22 22:35:45,261 Running step 82 epoch 0 ...
+2020-04-22 22:40:01,226 discriminator updated 0 of 1
+2020-04-22 22:40:01,280 Training step 82 epoch 0 has been finished!
+2020-04-22 22:40:01,281 Time elapsed 256.0188283920288 seconds
+2020-04-22 22:40:01,282 Running step 83 epoch 0 ...
+2020-04-22 22:43:42,841 discriminator updated 0 of 1
+2020-04-22 22:43:42,880 Training step 83 epoch 0 has been finished!
+2020-04-22 22:43:42,881 Time elapsed 221.5922281742096 seconds
+2020-04-22 22:43:42,882 Running step 84 epoch 0 ...
+2020-04-22 22:48:00,262 discriminator updated 0 of 1
+2020-04-22 22:48:00,313 Training step 84 epoch 0 has been finished!
+2020-04-22 22:48:00,314 Time elapsed 257.43095231056213 seconds
+2020-04-22 22:48:00,315 Running step 85 epoch 0 ...
+2020-04-22 22:52:20,095 discriminator updated 0 of 1
+2020-04-22 22:52:20,141 Training step 85 epoch 0 has been finished!
+2020-04-22 22:52:20,142 Time elapsed 259.82569456100464 seconds
+2020-04-22 22:56:18,710 Running step 86 epoch 0 ...
+2020-04-22 23:00:34,133 discriminator updated 0 of 1
+2020-04-22 23:00:34,238 Training step 86 epoch 0 has been finished!
+2020-04-22 23:00:34,240 Time elapsed 255.5289535522461 seconds
+2020-04-22 23:00:34,241 Running step 87 epoch 0 ...
+2020-04-22 23:04:12,592 discriminator updated 0 of 1
+2020-04-22 23:04:12,627 Training step 87 epoch 0 has been finished!
+2020-04-22 23:04:12,629 Time elapsed 218.38715362548828 seconds
+2020-04-22 23:04:12,629 Running step 88 epoch 0 ...
+2020-04-22 23:08:12,123 discriminator updated 0 of 1
+2020-04-22 23:08:12,164 Training step 88 epoch 0 has been finished!
+2020-04-22 23:08:12,165 Time elapsed 239.53365635871887 seconds
+2020-04-22 23:08:12,165 Running step 89 epoch 0 ...
+2020-04-22 23:12:37,557 discriminator updated 0 of 1
+2020-04-22 23:12:37,607 Training step 89 epoch 0 has been finished!
+2020-04-22 23:12:37,608 Time elapsed 265.44095277786255 seconds
+2020-04-22 23:12:37,609 Running step 90 epoch 0 ...
+2020-04-22 23:16:53,448 discriminator updated 0 of 1
+2020-04-22 23:16:53,501 Training step 90 epoch 0 has been finished!
+2020-04-22 23:16:53,502 Time elapsed 255.89260530471802 seconds
+2020-04-22 23:21:07,683 Running step 91 epoch 0 ...
+2020-04-22 23:25:21,653 discriminator updated 0 of 1
+2020-04-22 23:25:21,689 Training step 91 epoch 0 has been finished!
+2020-04-22 23:25:21,691 Time elapsed 254.0062153339386 seconds
+2020-04-22 23:25:21,692 Running step 92 epoch 0 ...
+2020-04-22 23:30:47,151 discriminator updated 0 of 1
+2020-04-22 23:30:47,235 Training step 92 epoch 0 has been finished!
+2020-04-22 23:30:47,237 Time elapsed 325.54331064224243 seconds
+2020-04-22 23:30:47,238 Running step 93 epoch 0 ...
+2020-04-22 23:34:15,986 discriminator updated 0 of 1
+2020-04-22 23:34:16,058 Training step 93 epoch 0 has been finished!
+2020-04-22 23:34:16,061 Time elapsed 208.82116675376892 seconds
+2020-04-22 23:34:16,061 Running step 94 epoch 0 ...
+2020-04-22 23:39:20,023 discriminator updated 0 of 1
+2020-04-22 23:39:20,073 Training step 94 epoch 0 has been finished!
+2020-04-22 23:39:20,074 Time elapsed 304.01146364212036 seconds
+2020-04-22 23:39:20,075 Running step 95 epoch 0 ...
+2020-04-22 23:43:46,183 discriminator updated 0 of 1
+2020-04-22 23:43:46,223 Training step 95 epoch 0 has been finished!
+2020-04-22 23:43:46,224 Time elapsed 266.1474914550781 seconds
+2020-04-22 23:47:48,887 Running step 96 epoch 0 ...
+2020-04-22 23:51:05,913 discriminator updated 0 of 1
+2020-04-22 23:51:05,951 Training step 96 epoch 0 has been finished!
+2020-04-22 23:51:05,952 Time elapsed 197.06399011611938 seconds
+2020-04-22 23:51:05,953 Running step 97 epoch 0 ...
+2020-04-22 23:55:40,264 discriminator updated 0 of 1
+2020-04-22 23:55:40,721 Training step 97 epoch 0 has been finished!
+2020-04-22 23:55:40,723 Time elapsed 274.76896715164185 seconds
+2020-04-22 23:55:40,724 Running step 98 epoch 0 ...
+2020-04-23 00:00:00,701 discriminator updated 0 of 1
+2020-04-23 00:00:00,756 Training step 98 epoch 0 has been finished!
+2020-04-23 00:00:00,758 Time elapsed 260.03306579589844 seconds
+2020-04-23 00:00:00,759 Running step 99 epoch 0 ...
+2020-04-23 00:03:58,736 discriminator updated 0 of 1
+2020-04-23 00:03:58,866 Training step 99 epoch 0 has been finished!
+2020-04-23 00:03:58,869 Time elapsed 238.1079547405243 seconds
+2020-04-23 00:03:58,870 Running step 100 epoch 0 ...
+2020-04-23 00:08:24,898 discriminator updated 0 of 1
+2020-04-23 00:08:24,978 Training step 100 epoch 0 has been finished!
+2020-04-23 00:08:24,982 Time elapsed 266.1049270629883 seconds
+2020-04-23 00:12:34,980 Running step 101 epoch 0 ...
+2020-04-23 00:17:12,584 discriminator updated 0 of 1
+2020-04-23 00:17:12,633 Training step 101 epoch 0 has been finished!
+2020-04-23 00:17:12,634 Time elapsed 277.6518499851227 seconds
+2020-04-23 00:17:12,652 Running step 102 epoch 0 ...
+2020-04-23 00:22:01,487 discriminator updated 0 of 1
+2020-04-23 00:22:01,599 Training step 102 epoch 0 has been finished!
+2020-04-23 00:22:01,601 Time elapsed 288.94745349884033 seconds
+2020-04-23 00:22:01,602 Running step 103 epoch 0 ...
+2020-04-23 00:26:42,174 discriminator updated 0 of 1
+2020-04-23 00:26:42,208 Training step 103 epoch 0 has been finished!
+2020-04-23 00:26:42,210 Time elapsed 280.6069824695587 seconds
+2020-04-23 00:26:42,211 Running step 104 epoch 0 ...
+2020-04-23 00:31:30,522 discriminator updated 0 of 1
+2020-04-23 00:31:30,582 Training step 104 epoch 0 has been finished!
+2020-04-23 00:31:30,583 Time elapsed 288.37202072143555 seconds
+2020-04-23 00:31:30,584 Running step 105 epoch 0 ...
+2020-04-23 00:35:39,601 discriminator updated 0 of 1
+2020-04-23 00:35:39,646 Training step 105 epoch 0 has been finished!
+2020-04-23 00:35:39,648 Time elapsed 249.06257843971252 seconds
+2020-04-23 00:39:28,156 Running step 106 epoch 0 ...
+2020-04-23 00:43:00,221 discriminator updated 0 of 1
+2020-04-23 00:43:00,260 Training step 106 epoch 0 has been finished!
+2020-04-23 00:43:00,263 Time elapsed 212.10506010055542 seconds
+2020-04-23 00:43:00,277 Running step 107 epoch 0 ...
+2020-04-23 00:47:40,307 discriminator updated 0 of 1
+2020-04-23 00:47:40,388 Training step 107 epoch 0 has been finished!
+2020-04-23 00:47:40,390 Time elapsed 280.1115128993988 seconds
+2020-04-23 00:47:40,391 Running step 108 epoch 0 ...
+2020-04-23 00:52:07,536 discriminator updated 0 of 1
+2020-04-23 00:52:07,574 Training step 108 epoch 0 has been finished!
+2020-04-23 00:52:07,575 Time elapsed 267.1835341453552 seconds
+2020-04-23 00:52:07,576 Running step 109 epoch 0 ...
+2020-04-23 00:57:52,881 discriminator updated 0 of 1
+2020-04-23 00:57:52,917 Training step 109 epoch 0 has been finished!
+2020-04-23 00:57:52,918 Time elapsed 345.3425614833832 seconds
+2020-04-23 00:57:52,919 Running step 110 epoch 0 ...
+2020-04-23 01:02:53,598 discriminator updated 0 of 1
+2020-04-23 01:02:53,647 Training step 110 epoch 0 has been finished!
+2020-04-23 01:02:53,649 Time elapsed 300.72823119163513 seconds
+2020-04-23 01:06:45,915 Running step 111 epoch 0 ...
+2020-04-23 01:10:56,642 discriminator updated 0 of 1
+2020-04-23 01:10:56,698 Training step 111 epoch 0 has been finished!
+2020-04-23 01:10:56,700 Time elapsed 250.78260374069214 seconds
+2020-04-23 01:10:56,700 Running step 112 epoch 0 ...
+2020-04-23 01:15:02,518 discriminator updated 0 of 1
+2020-04-23 01:15:02,559 Training step 112 epoch 0 has been finished!
+2020-04-23 01:15:02,574 Time elapsed 245.87274956703186 seconds
+2020-04-23 01:15:02,576 Running step 113 epoch 0 ...
+2020-04-23 01:19:24,203 discriminator updated 0 of 1
+2020-04-23 01:19:24,322 Training step 113 epoch 0 has been finished!
+2020-04-23 01:19:24,325 Time elapsed 261.74523544311523 seconds
+2020-04-23 01:19:24,342 Running step 114 epoch 0 ...
+2020-04-23 01:23:33,753 discriminator updated 0 of 1
+2020-04-23 01:23:33,796 Training step 114 epoch 0 has been finished!
+2020-04-23 01:23:33,798 Time elapsed 249.4558982849121 seconds
+2020-04-23 01:23:33,799 Running step 115 epoch 0 ...
+2020-04-23 01:27:36,982 discriminator updated 0 of 1
+2020-04-23 01:27:37,022 Training step 115 epoch 0 has been finished!
+2020-04-23 01:27:37,024 Time elapsed 243.2237205505371 seconds
+2020-04-23 01:31:22,179 Running step 116 epoch 0 ...
+2020-04-23 01:35:17,433 discriminator updated 0 of 1
+2020-04-23 01:35:17,468 Training step 116 epoch 0 has been finished!
+2020-04-23 01:35:17,469 Time elapsed 235.28906178474426 seconds
+2020-04-23 01:35:17,470 Running step 117 epoch 0 ...
+2020-04-23 01:39:14,866 discriminator updated 0 of 1
+2020-04-23 01:39:14,886 Training step 117 epoch 0 has been finished!
+2020-04-23 01:39:14,887 Time elapsed 237.41645169258118 seconds
+2020-04-23 01:39:14,887 Running step 118 epoch 0 ...
+2020-04-23 01:43:09,590 discriminator updated 0 of 1
+2020-04-23 01:43:09,605 Training step 118 epoch 0 has been finished!
+2020-04-23 01:43:09,607 Time elapsed 234.7197666168213 seconds
+2020-04-23 01:43:09,608 Running step 119 epoch 0 ...
+2020-04-23 01:47:12,988 discriminator updated 0 of 1
+2020-04-23 01:47:13,078 Training step 119 epoch 0 has been finished!
+2020-04-23 01:47:13,080 Time elapsed 243.47011518478394 seconds
+2020-04-23 01:47:13,081 Running step 120 epoch 0 ...
+2020-04-23 01:51:27,608 discriminator updated 0 of 1
+2020-04-23 01:51:27,642 Training step 120 epoch 0 has been finished!
+2020-04-23 01:51:27,643 Time elapsed 254.56109714508057 seconds
+2020-04-23 01:55:19,497 Running step 121 epoch 0 ...
+2020-04-23 01:59:07,128 discriminator updated 0 of 1
+2020-04-23 01:59:07,175 Training step 121 epoch 0 has been finished!
+2020-04-23 01:59:07,177 Time elapsed 227.67783069610596 seconds
+2020-04-23 01:59:07,177 Running step 122 epoch 0 ...
+2020-04-23 02:03:22,352 discriminator updated 0 of 1
+2020-04-23 02:03:22,389 Training step 122 epoch 0 has been finished!
+2020-04-23 02:03:22,391 Time elapsed 255.21245503425598 seconds
+2020-04-23 02:03:22,391 Running step 123 epoch 0 ...
+2020-04-23 02:07:08,563 discriminator updated 0 of 1
+2020-04-23 02:07:08,599 Training step 123 epoch 0 has been finished!
+2020-04-23 02:07:08,601 Time elapsed 226.20823740959167 seconds
+2020-04-23 02:07:08,602 Running step 124 epoch 0 ...
+2020-04-23 02:11:08,151 discriminator updated 0 of 1
+2020-04-23 02:11:08,283 Training step 124 epoch 0 has been finished!
+2020-04-23 02:11:08,287 Time elapsed 239.679705619812 seconds
+2020-04-23 02:11:08,288 Running step 125 epoch 0 ...
+2020-04-23 02:15:03,723 discriminator updated 0 of 1
+2020-04-23 02:15:03,815 Training step 125 epoch 0 has been finished!
+2020-04-23 02:15:03,817 Time elapsed 235.5277910232544 seconds
+2020-04-23 02:18:53,163 Running step 126 epoch 0 ...
+2020-04-23 02:22:04,496 discriminator updated 0 of 1
+2020-04-23 02:22:04,532 Training step 126 epoch 0 has been finished!
+2020-04-23 02:22:04,534 Time elapsed 191.36832308769226 seconds
+2020-04-23 02:22:04,534 Running step 127 epoch 0 ...
+2020-04-23 02:25:14,577 discriminator updated 0 of 1
+2020-04-23 02:25:14,940 Training step 127 epoch 0 has been finished!
+2020-04-23 02:25:14,941 Time elapsed 190.40685200691223 seconds
+2020-04-23 02:25:14,942 Running step 128 epoch 0 ...
+2020-04-23 02:28:19,036 discriminator updated 0 of 1
+2020-04-23 02:28:19,100 Training step 128 epoch 0 has been finished!
+2020-04-23 02:28:19,103 Time elapsed 184.1593472957611 seconds
+2020-04-23 02:28:19,103 Running step 129 epoch 0 ...
+2020-04-23 02:31:11,686 discriminator updated 0 of 1
+2020-04-23 02:31:11,718 Training step 129 epoch 0 has been finished!
+2020-04-23 02:31:11,719 Time elapsed 172.61439394950867 seconds
+2020-04-23 02:31:11,719 Running step 130 epoch 0 ...
+2020-04-23 02:33:56,163 discriminator updated 0 of 1
+2020-04-23 02:33:56,201 Training step 130 epoch 0 has been finished!
+2020-04-23 02:33:56,203 Time elapsed 164.48274612426758 seconds
+2020-04-23 02:36:56,305 Running step 131 epoch 0 ...
+2020-04-23 02:39:40,289 discriminator updated 0 of 1
+2020-04-23 02:39:40,321 Training step 131 epoch 0 has been finished!
+2020-04-23 02:39:40,324 Time elapsed 164.01710653305054 seconds
+2020-04-23 02:39:40,325 Running step 132 epoch 0 ...
+2020-04-23 02:42:22,487 discriminator updated 0 of 1
+2020-04-23 02:42:22,614 Training step 132 epoch 0 has been finished!
+2020-04-23 02:42:22,616 Time elapsed 162.29001379013062 seconds
+2020-04-23 02:42:22,617 Running step 133 epoch 0 ...
+2020-04-23 02:45:05,618 discriminator updated 0 of 1
+2020-04-23 02:45:05,960 Training step 133 epoch 0 has been finished!
+2020-04-23 02:45:05,961 Time elapsed 163.34133958816528 seconds
+2020-04-23 02:45:05,961 Running step 134 epoch 0 ...
+2020-04-23 02:47:46,422 discriminator updated 0 of 1
+2020-04-23 02:47:46,424 Training step 134 epoch 0 has been finished!
+2020-04-23 02:47:46,424 Time elapsed 160.46211552619934 seconds
+2020-04-23 02:47:46,424 Running step 135 epoch 0 ...
+2020-04-23 02:50:25,140 discriminator updated 0 of 1
+2020-04-23 02:50:25,153 Training step 135 epoch 0 has been finished!
+2020-04-23 02:50:25,154 Time elapsed 158.72818231582642 seconds
+2020-04-23 02:53:24,459 Running step 136 epoch 0 ...
+2020-04-23 02:56:01,492 discriminator updated 0 of 1
+2020-04-23 02:56:01,506 Training step 136 epoch 0 has been finished!
+2020-04-23 02:56:01,507 Time elapsed 157.0462188720703 seconds
+2020-04-23 02:56:01,508 Running step 137 epoch 0 ...
+2020-04-23 02:58:38,783 discriminator updated 0 of 1
+2020-04-23 02:58:38,801 Training step 137 epoch 0 has been finished!
+2020-04-23 02:58:38,802 Time elapsed 157.2920696735382 seconds
+2020-04-23 02:58:38,803 Running step 138 epoch 0 ...
+2020-04-23 03:01:16,304 discriminator updated 0 of 1
+2020-04-23 03:01:16,305 Training step 138 epoch 0 has been finished!
+2020-04-23 03:01:16,306 Time elapsed 157.50293922424316 seconds
+2020-04-23 03:01:16,307 Running step 139 epoch 0 ...
+2020-04-23 03:03:53,407 discriminator updated 0 of 1
+2020-04-23 03:03:53,419 Training step 139 epoch 0 has been finished!
+2020-04-23 03:03:53,420 Time elapsed 157.1131775379181 seconds
+2020-04-23 03:03:53,421 Running step 140 epoch 0 ...
+2020-04-23 03:06:30,749 discriminator updated 0 of 1
+2020-04-23 03:06:30,761 Training step 140 epoch 0 has been finished!
+2020-04-23 03:06:30,762 Time elapsed 157.3400399684906 seconds
+2020-04-23 03:09:27,479 Running step 141 epoch 0 ...
+2020-04-23 03:12:02,909 discriminator updated 0 of 1
+2020-04-23 03:12:02,922 Training step 141 epoch 0 has been finished!
+2020-04-23 03:12:02,924 Time elapsed 155.4432075023651 seconds
+2020-04-23 03:12:02,924 Running step 142 epoch 0 ...
+2020-04-23 03:14:39,052 discriminator updated 0 of 1
+2020-04-23 03:14:39,076 Training step 142 epoch 0 has been finished!
+2020-04-23 03:14:39,077 Time elapsed 156.15076994895935 seconds
+2020-04-23 03:14:39,077 Running step 143 epoch 0 ...
+2020-04-23 03:17:14,433 discriminator updated 0 of 1
+2020-04-23 03:17:14,446 Training step 143 epoch 0 has been finished!
+2020-04-23 03:17:14,447 Time elapsed 155.3692536354065 seconds
+2020-04-23 03:17:14,447 Running step 144 epoch 0 ...
+2020-04-23 03:19:49,425 discriminator updated 0 of 1
+2020-04-23 03:19:49,426 Training step 144 epoch 0 has been finished!
+2020-04-23 03:19:49,427 Time elapsed 154.97749543190002 seconds
+2020-04-23 03:19:49,427 Running step 145 epoch 0 ...
+2020-04-23 03:22:25,517 discriminator updated 0 of 1
+2020-04-23 03:22:25,529 Training step 145 epoch 0 has been finished!
+2020-04-23 03:22:25,530 Time elapsed 156.10280179977417 seconds
+2020-04-23 03:25:22,698 Running step 146 epoch 0 ...
+2020-04-23 03:27:58,133 discriminator updated 0 of 1
+2020-04-23 03:27:58,144 Training step 146 epoch 0 has been finished!
+2020-04-23 03:27:58,144 Time elapsed 155.44620609283447 seconds
+2020-04-23 03:27:58,145 Running step 147 epoch 0 ...
+2020-04-23 03:30:35,483 discriminator updated 0 of 1
+2020-04-23 03:30:35,495 Training step 147 epoch 0 has been finished!
+2020-04-23 03:30:35,496 Time elapsed 157.3490345478058 seconds
+2020-04-23 03:30:35,497 Running step 148 epoch 0 ...
+2020-04-23 03:33:10,665 discriminator updated 0 of 1
+2020-04-23 03:33:10,666 Training step 148 epoch 0 has been finished!
+2020-04-23 03:33:10,666 Time elapsed 155.16937637329102 seconds
+2020-04-23 03:33:10,667 Running step 149 epoch 0 ...
+2020-04-23 03:35:46,432 discriminator updated 0 of 1
+2020-04-23 03:35:46,447 Training step 149 epoch 0 has been finished!
+2020-04-23 03:35:46,448 Time elapsed 155.7800006866455 seconds
+2020-04-23 03:35:46,449 Running step 150 epoch 0 ...
+2020-04-23 03:38:22,102 discriminator updated 0 of 1
+2020-04-23 03:38:22,104 Training step 150 epoch 0 has been finished!
+2020-04-23 03:38:22,104 Time elapsed 155.65507555007935 seconds
+2020-04-23 03:41:20,004 Running step 151 epoch 0 ...
+2020-04-23 03:43:57,750 discriminator updated 0 of 1
+2020-04-23 03:43:57,764 Training step 151 epoch 0 has been finished!
+2020-04-23 03:43:57,766 Time elapsed 157.76077961921692 seconds
+2020-04-23 03:43:57,766 Running step 152 epoch 0 ...
+2020-04-23 03:46:35,065 discriminator updated 0 of 1
+2020-04-23 03:46:35,080 Training step 152 epoch 0 has been finished!
+2020-04-23 03:46:35,081 Time elapsed 157.31410479545593 seconds
+2020-04-23 03:46:35,081 Running step 153 epoch 0 ...
+2020-04-23 03:49:16,751 discriminator updated 0 of 1
+2020-04-23 03:49:16,752 Training step 153 epoch 0 has been finished!
+2020-04-23 03:49:16,753 Time elapsed 161.67037105560303 seconds
+2020-04-23 03:49:16,753 Running step 154 epoch 0 ...
+2020-04-23 03:51:54,119 discriminator updated 0 of 1
+2020-04-23 03:51:54,132 Training step 154 epoch 0 has been finished!
+2020-04-23 03:51:54,133 Time elapsed 157.37901496887207 seconds
+2020-04-23 03:51:54,133 Running step 155 epoch 0 ...
+2020-04-23 03:54:30,525 discriminator updated 0 of 1
+2020-04-23 03:54:30,526 Training step 155 epoch 0 has been finished!
+2020-04-23 03:54:30,527 Time elapsed 156.3936231136322 seconds
+2020-04-23 03:57:27,900 Running step 156 epoch 0 ...
+2020-04-23 04:00:03,436 discriminator updated 0 of 1
+2020-04-23 04:00:03,448 Training step 156 epoch 0 has been finished!
+2020-04-23 04:00:03,450 Time elapsed 155.549143075943 seconds
+2020-04-23 04:00:03,450 Running step 157 epoch 0 ...
+2020-04-23 04:02:39,451 discriminator updated 0 of 1
+2020-04-23 04:02:39,470 Training step 157 epoch 0 has been finished!
+2020-04-23 04:02:39,471 Time elapsed 156.0198519229889 seconds
+2020-04-23 04:02:39,471 Running step 158 epoch 0 ...
+2020-04-23 04:05:18,418 discriminator updated 0 of 1
+2020-04-23 04:05:18,507 Training step 158 epoch 0 has been finished!
+2020-04-23 04:05:18,513 Time elapsed 159.0389919281006 seconds
+2020-04-23 04:05:18,513 Running step 159 epoch 0 ...
+2020-04-23 04:07:54,731 discriminator updated 0 of 1
+2020-04-23 04:07:54,743 Training step 159 epoch 0 has been finished!
+2020-04-23 04:07:54,744 Time elapsed 156.2297236919403 seconds
+2020-04-23 04:07:54,745 Running step 160 epoch 0 ...
+2020-04-23 04:10:31,168 discriminator updated 0 of 1
+2020-04-23 04:10:31,186 Training step 160 epoch 0 has been finished!
+2020-04-23 04:10:31,187 Time elapsed 156.4415922164917 seconds
+2020-04-23 04:13:28,009 Running step 161 epoch 0 ...
+2020-04-23 04:16:03,802 discriminator updated 0 of 1
+2020-04-23 04:16:03,840 Training step 161 epoch 0 has been finished!
+2020-04-23 04:16:03,843 Time elapsed 155.82997035980225 seconds
+2020-04-23 04:16:03,843 Running step 162 epoch 0 ...
+2020-04-23 04:18:39,802 discriminator updated 0 of 1
+2020-04-23 04:18:39,814 Training step 162 epoch 0 has been finished!
+2020-04-23 04:18:39,815 Time elapsed 155.97088193893433 seconds
+2020-04-23 04:18:39,816 Running step 163 epoch 0 ...
+2020-04-23 04:21:14,581 discriminator updated 0 of 1
+2020-04-23 04:21:14,606 Training step 163 epoch 0 has been finished!
+2020-04-23 04:21:14,608 Time elapsed 154.79060983657837 seconds
+2020-04-23 04:21:14,608 Running step 164 epoch 0 ...
+2020-04-23 04:23:50,362 discriminator updated 0 of 1
+2020-04-23 04:23:50,374 Training step 164 epoch 0 has been finished!
+2020-04-23 04:23:50,375 Time elapsed 155.76600861549377 seconds
+2020-04-23 04:23:50,376 Running step 165 epoch 0 ...
+2020-04-23 04:26:26,676 discriminator updated 0 of 1
+2020-04-23 04:26:26,690 Training step 165 epoch 0 has been finished!
+2020-04-23 04:26:26,692 Time elapsed 156.31567239761353 seconds
+2020-04-23 04:29:23,195 Running step 166 epoch 0 ...
+2020-04-23 04:31:58,756 discriminator updated 0 of 1
+2020-04-23 04:31:58,768 Training step 166 epoch 0 has been finished!
+2020-04-23 04:31:58,769 Time elapsed 155.57312560081482 seconds
+2020-04-23 04:31:58,770 Running step 167 epoch 0 ...
+2020-04-23 04:34:35,224 discriminator updated 0 of 1
+2020-04-23 04:34:35,569 Training step 167 epoch 0 has been finished!
+2020-04-23 04:34:35,570 Time elapsed 156.79937100410461 seconds
+2020-04-23 04:34:35,570 Running step 168 epoch 0 ...
+2020-04-23 04:37:11,027 discriminator updated 0 of 1
+2020-04-23 04:37:11,039 Training step 168 epoch 0 has been finished!
+2020-04-23 04:37:11,040 Time elapsed 155.46924257278442 seconds
+2020-04-23 04:37:11,040 Running step 169 epoch 0 ...
+2020-04-23 04:39:45,528 discriminator updated 0 of 1
+2020-04-23 04:39:45,543 Training step 169 epoch 0 has been finished!
+2020-04-23 04:39:45,544 Time elapsed 154.501788854599 seconds
+2020-04-23 04:39:45,544 Running step 170 epoch 0 ...
+2020-04-23 04:42:22,174 discriminator updated 0 of 1
+2020-04-23 04:42:22,188 Training step 170 epoch 0 has been finished!
+2020-04-23 04:42:22,189 Time elapsed 156.64346528053284 seconds
+2020-04-23 04:45:18,952 Running step 171 epoch 0 ...
+2020-04-23 04:47:53,632 discriminator updated 0 of 1
+2020-04-23 04:47:53,664 Training step 171 epoch 0 has been finished!
+2020-04-23 04:47:53,665 Time elapsed 154.7116596698761 seconds
+2020-04-23 04:47:53,666 Running step 172 epoch 0 ...
+2020-04-23 04:50:28,950 discriminator updated 0 of 1
+2020-04-23 04:50:28,952 Training step 172 epoch 0 has been finished!
+2020-04-23 04:50:28,953 Time elapsed 155.28630423545837 seconds
+2020-04-23 04:50:28,953 Running step 173 epoch 0 ...
+2020-04-23 04:53:04,217 discriminator updated 0 of 1
+2020-04-23 04:53:04,229 Training step 173 epoch 0 has been finished!
+2020-04-23 04:53:04,230 Time elapsed 155.27656269073486 seconds
+2020-04-23 04:53:04,230 Running step 174 epoch 0 ...
+2020-04-23 04:55:41,683 discriminator updated 0 of 1
+2020-04-23 04:55:41,708 Training step 174 epoch 0 has been finished!
+2020-04-23 04:55:41,710 Time elapsed 157.4789547920227 seconds
+2020-04-23 04:55:41,711 Running step 175 epoch 0 ...
+2020-04-23 04:58:17,369 discriminator updated 0 of 1
+2020-04-23 04:58:17,370 Training step 175 epoch 0 has been finished!
+2020-04-23 04:58:17,371 Time elapsed 155.65907382965088 seconds
+2020-04-23 05:01:15,066 Running step 176 epoch 0 ...
+2020-04-23 05:03:50,463 discriminator updated 0 of 1
+2020-04-23 05:03:50,475 Training step 176 epoch 0 has been finished!
+2020-04-23 05:03:50,476 Time elapsed 155.40922856330872 seconds
+2020-04-23 05:03:50,476 Running step 177 epoch 0 ...
+2020-04-23 05:06:26,869 discriminator updated 0 of 1
+2020-04-23 05:06:26,882 Training step 177 epoch 0 has been finished!
+2020-04-23 05:06:26,883 Time elapsed 156.40561509132385 seconds
+2020-04-23 05:06:26,883 Running step 178 epoch 0 ...
+2020-04-23 05:09:03,795 discriminator updated 0 of 1
+2020-04-23 05:09:03,820 Training step 178 epoch 0 has been finished!
+2020-04-23 05:09:03,821 Time elapsed 156.93728852272034 seconds
+2020-04-23 05:09:03,821 Running step 179 epoch 0 ...
+2020-04-23 05:11:41,721 discriminator updated 0 of 1
+2020-04-23 05:11:41,729 Training step 179 epoch 0 has been finished!
+2020-04-23 05:11:41,730 Time elapsed 157.90768933296204 seconds
+2020-04-23 05:11:41,730 Running step 180 epoch 0 ...
+2020-04-23 05:14:19,077 discriminator updated 0 of 1
+2020-04-23 05:14:19,090 Training step 180 epoch 0 has been finished!
+2020-04-23 05:14:19,092 Time elapsed 157.36102533340454 seconds
+2020-04-23 05:17:16,959 Running step 181 epoch 0 ...
+2020-04-23 05:19:55,155 discriminator updated 0 of 1
+2020-04-23 05:19:55,155 Training step 181 epoch 0 has been finished!
+2020-04-23 05:19:55,156 Time elapsed 158.19650959968567 seconds
+2020-04-23 05:19:55,156 Running step 182 epoch 0 ...
+2020-04-23 05:22:31,769 discriminator updated 0 of 1
+2020-04-23 05:22:31,769 Training step 182 epoch 0 has been finished!
+2020-04-23 05:22:31,769 Time elapsed 156.6124873161316 seconds
+2020-04-23 05:22:31,770 Running step 183 epoch 0 ...
+2020-04-23 05:25:10,262 discriminator updated 0 of 1
+2020-04-23 05:25:10,276 Training step 183 epoch 0 has been finished!
+2020-04-23 05:25:10,277 Time elapsed 158.50631999969482 seconds
+2020-04-23 05:25:10,277 Running step 184 epoch 0 ...
+2020-04-23 05:27:46,956 discriminator updated 0 of 1
+2020-04-23 05:27:46,998 Training step 184 epoch 0 has been finished!
+2020-04-23 05:27:47,001 Time elapsed 156.72042107582092 seconds
+2020-04-23 05:27:47,001 Running step 185 epoch 0 ...
+2020-04-23 05:30:25,206 discriminator updated 0 of 1
+2020-04-23 05:30:25,218 Training step 185 epoch 0 has been finished!
+2020-04-23 05:30:25,219 Time elapsed 158.21749877929688 seconds
+2020-04-23 05:33:23,512 Running step 186 epoch 0 ...
+2020-04-23 05:36:01,026 discriminator updated 0 of 1
+2020-04-23 05:36:01,048 Training step 186 epoch 0 has been finished!
+2020-04-23 05:36:01,049 Time elapsed 157.53591680526733 seconds
+2020-04-23 05:36:01,050 Running step 187 epoch 0 ...
+2020-04-23 05:38:37,421 discriminator updated 0 of 1
+2020-04-23 05:38:37,434 Training step 187 epoch 0 has been finished!
+2020-04-23 05:38:37,435 Time elapsed 156.38363075256348 seconds
+2020-04-23 05:38:37,435 Running step 188 epoch 0 ...
+2020-04-23 05:41:15,570 discriminator updated 0 of 1
+2020-04-23 05:41:15,582 Training step 188 epoch 0 has been finished!
+2020-04-23 05:41:15,583 Time elapsed 158.14753890037537 seconds
+2020-04-23 05:41:15,583 Running step 189 epoch 0 ...
+2020-04-23 05:43:54,341 discriminator updated 0 of 1
+2020-04-23 05:43:54,362 Training step 189 epoch 0 has been finished!
+2020-04-23 05:43:54,363 Time elapsed 158.77715373039246 seconds
+2020-04-23 05:43:54,363 Running step 190 epoch 0 ...
+2020-04-23 05:46:32,551 discriminator updated 0 of 1
+2020-04-23 05:46:32,564 Training step 190 epoch 0 has been finished!
+2020-04-23 05:46:32,565 Time elapsed 158.20250701904297 seconds
+2020-04-23 05:49:30,964 Running step 191 epoch 0 ...
+2020-04-23 05:52:09,255 discriminator updated 0 of 1
+2020-04-23 05:52:09,268 Training step 191 epoch 0 has been finished!
+2020-04-23 05:52:09,269 Time elapsed 158.3035237789154 seconds
+2020-04-23 05:52:09,270 Running step 192 epoch 0 ...
+2020-04-23 05:54:46,734 discriminator updated 0 of 1
+2020-04-23 05:54:46,747 Training step 192 epoch 0 has been finished!
+2020-04-23 05:54:46,748 Time elapsed 157.4769515991211 seconds
+2020-04-23 05:54:46,748 Running step 193 epoch 0 ...
+2020-04-23 05:57:24,315 discriminator updated 0 of 1
+2020-04-23 05:57:24,315 Training step 193 epoch 0 has been finished!
+2020-04-23 05:57:24,315 Time elapsed 157.56789994239807 seconds
+2020-04-23 05:57:24,316 Running step 194 epoch 0 ...
+2020-04-23 06:00:02,121 discriminator updated 0 of 1
+2020-04-23 06:00:02,122 Training step 194 epoch 0 has been finished!
+2020-04-23 06:00:02,122 Time elapsed 157.80575227737427 seconds
+2020-04-23 06:00:02,123 Running step 195 epoch 0 ...
+2020-04-23 06:02:39,108 discriminator updated 0 of 1
+2020-04-23 06:02:39,129 Training step 195 epoch 0 has been finished!
+2020-04-23 06:02:39,130 Time elapsed 157.0062437057495 seconds
+2020-04-23 06:05:37,530 Running step 196 epoch 0 ...
+2020-04-23 06:08:14,673 discriminator updated 0 of 1
+2020-04-23 06:08:14,685 Training step 196 epoch 0 has been finished!
+2020-04-23 06:08:14,686 Time elapsed 157.1541519165039 seconds
+2020-04-23 06:08:14,686 Running step 197 epoch 0 ...
+2020-04-23 06:10:52,949 discriminator updated 0 of 1
+2020-04-23 06:10:52,962 Training step 197 epoch 0 has been finished!
+2020-04-23 06:10:52,963 Time elapsed 158.27746033668518 seconds
+2020-04-23 06:10:52,964 Running step 198 epoch 0 ...
+2020-04-23 06:13:29,738 discriminator updated 0 of 1
+2020-04-23 06:13:29,740 Training step 198 epoch 0 has been finished!
+2020-04-23 06:13:29,741 Time elapsed 156.7753870487213 seconds
+2020-04-23 06:13:29,741 Running step 199 epoch 0 ...
+2020-04-23 06:16:06,314 discriminator updated 0 of 1
+2020-04-23 06:16:06,326 Training step 199 epoch 0 has been finished!
+2020-04-23 06:16:06,327 Time elapsed 156.58550453186035 seconds
+2020-04-23 06:16:06,328 Running step 200 epoch 0 ...
+2020-04-23 06:18:43,067 discriminator updated 0 of 1
+2020-04-23 06:18:43,081 Training step 200 epoch 0 has been finished!
+2020-04-23 06:18:43,082 Time elapsed 156.75440001487732 seconds
+2020-04-23 06:21:45,481 Global step 200
+2020-04-23 06:21:45,481 Running step 201 epoch 1 ...
+2020-04-23 06:24:23,402 discriminator updated 0 of 1
+2020-04-23 06:24:23,414 Training step 201 epoch 1 has been finished!
+2020-04-23 06:24:23,415 Time elapsed 157.93452095985413 seconds
+2020-04-23 06:24:23,416 Running step 202 epoch 1 ...
+2020-04-23 06:27:00,647 discriminator updated 0 of 1
+2020-04-23 06:27:00,647 Training step 202 epoch 1 has been finished!
+2020-04-23 06:27:00,648 Time elapsed 157.23110604286194 seconds
+2020-04-23 06:27:00,648 Running step 203 epoch 1 ...
+2020-04-23 06:29:37,344 discriminator updated 0 of 1
+2020-04-23 06:29:37,358 Training step 203 epoch 1 has been finished!
+2020-04-23 06:29:37,359 Time elapsed 156.7104287147522 seconds
+2020-04-23 06:29:37,360 Running step 204 epoch 1 ...
+2020-04-23 06:32:12,684 discriminator updated 0 of 1
+2020-04-23 06:32:12,697 Training step 204 epoch 1 has been finished!
+2020-04-23 06:32:12,698 Time elapsed 155.33727359771729 seconds
+2020-04-23 06:32:12,698 Running step 205 epoch 1 ...
+2020-04-23 06:34:49,314 discriminator updated 0 of 1
+2020-04-23 06:34:49,327 Training step 205 epoch 1 has been finished!
+2020-04-23 06:34:49,328 Time elapsed 156.62945556640625 seconds
+2020-04-23 06:37:46,111 Running step 206 epoch 1 ...
+2020-04-23 06:40:23,469 discriminator updated 0 of 1
+2020-04-23 06:40:23,470 Training step 206 epoch 1 has been finished!
+2020-04-23 06:40:23,470 Time elapsed 157.35802721977234 seconds
+2020-04-23 06:40:23,470 Running step 207 epoch 1 ...
+2020-04-23 06:43:00,565 discriminator updated 0 of 1
+2020-04-23 06:43:00,579 Training step 207 epoch 1 has been finished!
+2020-04-23 06:43:00,580 Time elapsed 157.1081805229187 seconds
+2020-04-23 06:43:00,580 Running step 208 epoch 1 ...
+2020-04-23 06:45:37,323 discriminator updated 0 of 1
+2020-04-23 06:45:37,338 Training step 208 epoch 1 has been finished!
+2020-04-23 06:45:37,339 Time elapsed 156.75740242004395 seconds
+2020-04-23 06:45:37,339 Running step 209 epoch 1 ...
+2020-04-23 06:48:12,007 discriminator updated 0 of 1
+2020-04-23 06:48:12,007 Training step 209 epoch 1 has been finished!
+2020-04-23 06:48:12,007 Time elapsed 154.66768598556519 seconds
+2020-04-23 06:48:12,008 Running step 210 epoch 1 ...
+2020-04-23 06:50:47,713 discriminator updated 0 of 1
+2020-04-23 06:50:47,727 Training step 210 epoch 1 has been finished!
+2020-04-23 06:50:47,728 Time elapsed 155.7190613746643 seconds
+2020-04-23 06:53:44,094 Running step 211 epoch 1 ...
+2020-04-23 06:56:19,450 discriminator updated 0 of 1
+2020-04-23 06:56:19,462 Training step 211 epoch 1 has been finished!
+2020-04-23 06:56:19,463 Time elapsed 155.36825394630432 seconds
+2020-04-23 06:56:19,464 Running step 212 epoch 1 ...
+2020-04-23 06:58:55,096 discriminator updated 0 of 1
+2020-04-23 06:58:55,109 Training step 212 epoch 1 has been finished!
+2020-04-23 06:58:55,111 Time elapsed 155.6460826396942 seconds
+2020-04-23 06:58:55,111 Running step 213 epoch 1 ...
+2020-04-23 07:01:32,958 discriminator updated 0 of 1
+2020-04-23 07:01:32,971 Training step 213 epoch 1 has been finished!
+2020-04-23 07:01:32,972 Time elapsed 157.86171984672546 seconds
+2020-04-23 07:01:32,973 Running step 214 epoch 1 ...
+2020-04-23 07:04:07,901 discriminator updated 0 of 1
+2020-04-23 07:04:07,902 Training step 214 epoch 1 has been finished!
+2020-04-23 07:04:07,902 Time elapsed 154.92852425575256 seconds
+2020-04-23 07:04:07,902 Running step 215 epoch 1 ...
+2020-04-23 07:06:45,217 discriminator updated 0 of 1
+2020-04-23 07:06:45,228 Training step 215 epoch 1 has been finished!
+2020-04-23 07:06:45,230 Time elapsed 157.3260464668274 seconds
+2020-04-23 07:09:42,301 Running step 216 epoch 1 ...
+2020-04-23 07:12:17,917 discriminator updated 0 of 1
+2020-04-23 07:12:17,929 Training step 216 epoch 1 has been finished!
+2020-04-23 07:12:17,930 Time elapsed 155.62738251686096 seconds
+2020-04-23 07:12:17,930 Running step 217 epoch 1 ...
+2020-04-23 07:14:54,072 discriminator updated 0 of 1
+2020-04-23 07:14:54,101 Training step 217 epoch 1 has been finished!
+2020-04-23 07:14:54,102 Time elapsed 156.17075872421265 seconds
+2020-04-23 07:14:54,102 Running step 218 epoch 1 ...
+2020-04-23 07:17:30,641 discriminator updated 0 of 1
+2020-04-23 07:17:30,653 Training step 218 epoch 1 has been finished!
+2020-04-23 07:17:30,654 Time elapsed 156.55052781105042 seconds
+2020-04-23 07:17:30,655 Running step 219 epoch 1 ...
+2020-04-23 07:20:04,562 discriminator updated 0 of 1
+2020-04-23 07:20:04,563 Training step 219 epoch 1 has been finished!
+2020-04-23 07:20:04,563 Time elapsed 153.9081530570984 seconds
+2020-04-23 07:20:04,564 Running step 220 epoch 1 ...
+2020-04-23 07:22:40,527 discriminator updated 0 of 1
+2020-04-23 07:22:40,539 Training step 220 epoch 1 has been finished!
+2020-04-23 07:22:40,540 Time elapsed 155.97487902641296 seconds
+2020-04-23 07:25:37,321 Running step 221 epoch 1 ...
+2020-04-23 07:28:12,255 discriminator updated 0 of 1
+2020-04-23 07:28:12,267 Training step 221 epoch 1 has been finished!
+2020-04-23 07:28:12,268 Time elapsed 154.94651341438293 seconds
+2020-04-23 07:28:12,268 Running step 222 epoch 1 ...
+2020-04-23 07:30:50,995 discriminator updated 0 of 1
+2020-04-23 07:30:51,020 Training step 222 epoch 1 has been finished!
+2020-04-23 07:30:51,021 Time elapsed 158.75225138664246 seconds
+2020-04-23 07:30:51,022 Running step 223 epoch 1 ...
+2020-04-23 07:33:29,041 discriminator updated 0 of 1
+2020-04-23 07:33:29,042 Training step 223 epoch 1 has been finished!
+2020-04-23 07:33:29,043 Time elapsed 158.02061700820923 seconds
+2020-04-23 07:33:29,043 Running step 224 epoch 1 ...
+2020-04-23 07:36:03,874 discriminator updated 0 of 1
+2020-04-23 07:36:03,890 Training step 224 epoch 1 has been finished!
+2020-04-23 07:36:03,891 Time elapsed 154.8465759754181 seconds
+2020-04-23 07:36:03,891 Running step 225 epoch 1 ...
+2020-04-23 07:38:38,556 discriminator updated 0 of 1
+2020-04-23 07:38:38,556 Training step 225 epoch 1 has been finished!
+2020-04-23 07:38:38,557 Time elapsed 154.66568660736084 seconds
+2020-04-23 07:41:36,759 Running step 226 epoch 1 ...
+2020-04-23 07:44:12,522 discriminator updated 0 of 1
+2020-04-23 07:44:12,552 Training step 226 epoch 1 has been finished!
+2020-04-23 07:44:12,553 Time elapsed 155.79199242591858 seconds
+2020-04-23 07:44:12,553 Running step 227 epoch 1 ...
+2020-04-23 07:46:49,296 discriminator updated 0 of 1
+2020-04-23 07:46:49,308 Training step 227 epoch 1 has been finished!
+2020-04-23 07:46:49,309 Time elapsed 156.75539875030518 seconds
+2020-04-23 07:46:49,310 Running step 228 epoch 1 ...
+2020-04-23 07:49:26,599 discriminator updated 0 of 1
+2020-04-23 07:49:26,611 Training step 228 epoch 1 has been finished!
+2020-04-23 07:49:26,613 Time elapsed 157.30206108093262 seconds
+2020-04-23 07:49:26,613 Running step 229 epoch 1 ...
+2020-04-23 07:52:01,702 discriminator updated 0 of 1
+2020-04-23 07:52:01,714 Training step 229 epoch 1 has been finished!
+2020-04-23 07:52:01,715 Time elapsed 155.10141801834106 seconds
+2020-04-23 07:52:01,716 Running step 230 epoch 1 ...
+2020-04-23 07:54:37,269 discriminator updated 0 of 1
+2020-04-23 07:54:37,284 Training step 230 epoch 1 has been finished!
+2020-04-23 07:54:37,285 Time elapsed 155.56812977790833 seconds
+2020-04-23 07:57:33,990 Running step 231 epoch 1 ...
+2020-04-23 08:00:08,325 discriminator updated 0 of 1
+2020-04-23 08:00:08,356 Training step 231 epoch 1 has been finished!
+2020-04-23 08:00:08,357 Time elapsed 154.36687183380127 seconds
+2020-04-23 08:00:08,357 Running step 232 epoch 1 ...
+2020-04-23 08:02:43,350 discriminator updated 0 of 1
+2020-04-23 08:02:43,352 Training step 232 epoch 1 has been finished!
+2020-04-23 08:02:43,353 Time elapsed 154.99548316001892 seconds
+2020-04-23 08:02:43,353 Running step 233 epoch 1 ...
+2020-04-23 08:05:19,920 discriminator updated 0 of 1
+2020-04-23 08:05:19,933 Training step 233 epoch 1 has been finished!
+2020-04-23 08:05:19,934 Time elapsed 156.5803189277649 seconds
+2020-04-23 08:05:19,934 Running step 234 epoch 1 ...
+2020-04-23 08:07:56,026 discriminator updated 0 of 1
+2020-04-23 08:07:56,041 Training step 234 epoch 1 has been finished!
+2020-04-23 08:07:56,042 Time elapsed 156.10679817199707 seconds
+2020-04-23 08:07:56,042 Running step 235 epoch 1 ...
+2020-04-23 08:10:30,773 discriminator updated 0 of 1
+2020-04-23 08:10:30,784 Training step 235 epoch 1 has been finished!
+2020-04-23 08:10:30,785 Time elapsed 154.74064111709595 seconds
+2020-04-23 08:13:28,194 Running step 236 epoch 1 ...
+2020-04-23 08:16:02,231 discriminator updated 0 of 1
+2020-04-23 08:16:02,231 Training step 236 epoch 1 has been finished!
+2020-04-23 08:16:02,232 Time elapsed 154.03707432746887 seconds
+2020-04-23 08:16:02,232 Running step 237 epoch 1 ...
+2020-04-23 08:18:37,661 discriminator updated 0 of 1
+2020-04-23 08:18:37,674 Training step 237 epoch 1 has been finished!
+2020-04-23 08:18:37,675 Time elapsed 155.44121026992798 seconds
+2020-04-23 08:18:37,675 Running step 238 epoch 1 ...
+2020-04-23 08:21:13,704 discriminator updated 0 of 1
+2020-04-23 08:21:13,705 Training step 238 epoch 1 has been finished!
+2020-04-23 08:21:13,705 Time elapsed 156.029846906662 seconds
+2020-04-23 08:21:13,705 Running step 239 epoch 1 ...
+2020-04-23 08:23:50,347 discriminator updated 0 of 1
+2020-04-23 08:23:50,360 Training step 239 epoch 1 has been finished!
+2020-04-23 08:23:50,361 Time elapsed 156.65446162223816 seconds
+2020-04-23 08:23:50,361 Running step 240 epoch 1 ...
+2020-04-23 08:26:26,060 discriminator updated 0 of 1
+2020-04-23 08:26:26,061 Training step 240 epoch 1 has been finished!
+2020-04-23 08:26:26,061 Time elapsed 155.7000515460968 seconds
+2020-04-23 08:29:23,113 Running step 241 epoch 1 ...
+2020-04-23 08:32:00,819 discriminator updated 0 of 1
+2020-04-23 08:32:00,828 Training step 241 epoch 1 has been finished!
+2020-04-23 08:32:00,830 Time elapsed 157.7158079147339 seconds
+2020-04-23 08:32:00,830 Running step 242 epoch 1 ...
+2020-04-23 08:34:41,357 discriminator updated 0 of 1
+2020-04-23 08:34:41,407 Training step 242 epoch 1 has been finished!
+2020-04-23 08:34:41,409 Time elapsed 160.57828640937805 seconds
+2020-04-23 08:34:41,411 Running step 243 epoch 1 ...
+2020-04-23 08:37:20,208 discriminator updated 0 of 1
+2020-04-23 08:37:21,910 Training step 243 epoch 1 has been finished!
+2020-04-23 08:37:21,912 Time elapsed 160.49985766410828 seconds
+2020-04-23 08:37:21,913 Running step 244 epoch 1 ...
+2020-04-23 08:39:58,322 discriminator updated 0 of 1
+2020-04-23 08:39:58,335 Training step 244 epoch 1 has been finished!
+2020-04-23 08:39:58,336 Time elapsed 156.422208070755 seconds
+2020-04-23 08:39:58,336 Running step 245 epoch 1 ...
+2020-04-23 08:42:34,556 discriminator updated 0 of 1
+2020-04-23 08:42:34,588 Training step 245 epoch 1 has been finished!
+2020-04-23 08:42:34,590 Time elapsed 156.25170874595642 seconds
+2020-04-23 08:45:31,256 Running step 246 epoch 1 ...
+2020-04-23 08:48:04,919 discriminator updated 0 of 1
+2020-04-23 08:48:04,932 Training step 246 epoch 1 has been finished!
+2020-04-23 08:48:04,933 Time elapsed 153.6762957572937 seconds
+2020-04-23 08:48:04,933 Running step 247 epoch 1 ...
+2020-04-23 08:50:38,589 discriminator updated 0 of 1
+2020-04-23 08:50:38,600 Training step 247 epoch 1 has been finished!
+2020-04-23 08:50:38,601 Time elapsed 153.66830277442932 seconds
+2020-04-23 08:50:38,602 Running step 248 epoch 1 ...
+2020-04-23 08:53:12,697 discriminator updated 0 of 1
+2020-04-23 08:53:12,735 Training step 248 epoch 1 has been finished!
+2020-04-23 08:53:12,738 Time elapsed 154.1330165863037 seconds
+2020-04-23 08:53:12,738 Running step 249 epoch 1 ...
+2020-04-23 08:55:47,425 discriminator updated 0 of 1
+2020-04-23 08:55:47,461 Training step 249 epoch 1 has been finished!
+2020-04-23 08:55:47,463 Time elapsed 154.72465300559998 seconds
+2020-04-23 08:55:47,463 Running step 250 epoch 1 ...
+2020-04-23 08:59:05,858 discriminator updated 0 of 1
+2020-04-23 08:59:05,888 Training step 250 epoch 1 has been finished!
+2020-04-23 08:59:05,890 Time elapsed 198.4247989654541 seconds

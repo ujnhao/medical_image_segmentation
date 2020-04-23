@@ -50,27 +50,27 @@ class Full_DRN(object):
 
         tf.reset_default_graph()
 
-        self.n_class = n_class # please note background is another class
+        self.n_class = n_class  # please note background is another class
         self.batch_size = batch_size
 
-        self.mr_front_weights = [] # conv weights of MR path
-        self.ct_front_weights = [] # conv weights of CT path
-        self.cls_weights = []   # weights of feature discriminator
-        self.m_cls_weights = [] # weights for segmentation mask discriminator
-        self.joint_weights = [] # weights of joint part between CT and MRI. The final segmentor in our case
+        self.mr_front_weights = []  # conv weights of MR path
+        self.ct_front_weights = []  # conv weights of CT path
+        self.cls_weights = []       # weights of feature discriminator
+        self.m_cls_weights = []     # weights for segmentation mask discriminator
+        self.joint_weights = []     # weights of joint part between CT and MRI. The final segmentor in our case
 
-        self.mr = tf.placeholder("float", shape=[None, volume_size[0], volume_size[1], channels], name = "mr_ph")
+        self.mr = tf.placeholder("float", shape=[None, volume_size[0], volume_size[1], channels], name="mr_ph")
         self.ct = tf.placeholder("float", shape=[None, volume_size[0], volume_size[1], channels])
         self.ct_y = tf.placeholder("float", shape=[None, label_size[0], label_size[1], self.n_class])
         self.mr_y = tf.placeholder("float", shape=[None, label_size[0], label_size[1], self.n_class])
 
-        self.mr_front_bn = tf.placeholder_with_default(False, shape = None, name = "main_batchnorm_training_switch")
-        self.joint_bn = tf.placeholder_with_default(False, shape = None, name = "joint_batchnorm_training_switch")
-        self.ct_front_bn = tf.placeholder_with_default(True, shape = None, name = "adapt_batchnorm_training_switch")
+        self.mr_front_bn = tf.placeholder_with_default(False, shape=None, name="main_batchnorm_training_switch")
+        self.joint_bn = tf.placeholder_with_default(False, shape=None, name="joint_batchnorm_training_switch")
+        self.ct_front_bn = tf.placeholder_with_default(True, shape=None, name="adapt_batchnorm_training_switch")
 
         # these two are useless. They are not passed into the program
-        self.cls_bn = tf.placeholder_with_default(True, shape = None, name = "cls_batchnorm_training_switch")
-        self.m_cls_bn = tf.placeholder_with_default(True, shape = None, name = "mask_cls_batchnorm_training_switch")
+        self.cls_bn = tf.placeholder_with_default(True, shape=None, name="cls_batchnorm_training_switch")
+        self.m_cls_bn = tf.placeholder_with_default(True, shape=None, name="mask_cls_batchnorm_training_switch")
 
         self.network_config = network_config
         self.mr_front_trainable = self.network_config["mr_front_trainable"]
@@ -82,25 +82,25 @@ class Full_DRN(object):
         self.keep_prob = tf.placeholder(tf.float32) # dropout keep probability
 
         # Get features from MRI and CT path, for early layers
-        _mr_c4_2, _ct_c4_2, _mr_c6_2, _ct_c6_2 = self.create_zip_network(input_channel = channels, \
-                                                                         feature_base = 16, num_cls = n_class, keep_prob = self.keep_prob, \
-                                                                         main_bn = self.mr_front_bn, main_trainable = self.mr_front_trainable, \
-                                                                         adapt_bn = self.ct_front_bn, adapt_trainable = self.ct_front_trainable)
+        _mr_c4_2, _ct_c4_2, _mr_c6_2, _ct_c6_2 = self.create_zip_network(input_channel=channels,
+                                                                         feature_base=16, num_cls=n_class, keep_prob=self.keep_prob,
+                                                                         main_bn=self.mr_front_bn, main_trainable=self.mr_front_trainable,
+                                                                         adapt_bn=self.ct_front_bn, adapt_trainable=self.ct_front_trainable)
 
         # Get features from MRI and CT, fromt the shared higher layers
-        with tf.variable_scope("", reuse = tf.AUTO_REUSE) as scope:
-            _ct_c9_2, _ct_b8, _ct_b7, _ct_logits = self.create_second_half( _ct_c6_2, feature_base = 16, input_channel = 3, num_cls = n_class, keep_prob = self.keep_prob, joint_bn = self.joint_bn, joint_trainable = self.joint_trainable)
-            _mr_c9_2, _mr_b8, _mr_b7, _mr_logits = self.create_second_half( _mr_c6_2, feature_base = 16, input_channel = 3, num_cls = n_class, keep_prob = self.keep_prob, joint_bn = self.joint_bn, joint_trainable = self.joint_trainable)
+        with tf.variable_scope("", reuse=tf.AUTO_REUSE) as scope:
+            _ct_c9_2, _ct_b8, _ct_b7, _ct_logits = self.create_second_half(_ct_c6_2, feature_base=16, input_channel=3, num_cls=n_class, keep_prob=self.keep_prob, joint_bn=self.joint_bn, joint_trainable=self.joint_trainable)
+            _mr_c9_2, _mr_b8, _mr_b7, _mr_logits = self.create_second_half(_mr_c6_2, feature_base=16, input_channel=3, num_cls=n_class, keep_prob=self.keep_prob, joint_bn=self.joint_bn, joint_trainable=self.joint_trainable)
 
         self.ct_conv9_2 = _ct_c9_2
         self.mr_conv9_2 = _mr_c9_2
 
-        with tf.variable_scope("cls_scope", reuse = tf.AUTO_REUSE) as scope:
+        with tf.variable_scope("cls_scope", reuse=tf.AUTO_REUSE) as scope:
             self._ct_class_logits = self.create_classifier(_ct_c4_2, _ct_c6_2, _ct_b7, _ct_c9_2, _ct_logits)
             self._mr_class_logits = self.create_classifier(_mr_c4_2, _mr_c6_2, _mr_b7, _mr_c9_2, _mr_logits)
 
-        self.predictor = pixel_wise_softmax_2(_ct_logits) # segmentation logits of CT
-        self.compact_pred = tf.argmax(self.predicter, 3) # predictions
+        self.predictor = pixel_wise_softmax_2(_ct_logits)   # segmentation logits of CT
+        self.compact_pred = tf.argmax(self.predictor, 3)    # predictions
 
         self.compact_y = tf.argmax(self.ct_y, 3) # ground truth
         self.ct_dice_eval, self.ct_dice_eval_arr = _dice_eval(self.compact_pred, self.ct_y, self.n_class) # used for monitoring training process
@@ -574,15 +574,16 @@ class Full_DRN(object):
 
             logging.info("Model restored from file: %s with relaxation" % model_path)
 
+
 class Trainer(object):
     """
     Train a unet instance
     """
-    def __init__(self, net, mr_train_list, mr_val_list, ct_train_list, ct_val_list, \
-                 adapt_var_list, mr_var_list, old_bn_list, new_bn_list, \
-                 test_label_list = None, test_nii_list = None, \
-                 num_cls=None, batch_size = 6, \
-                 opt_kwargs={}, train_config = {}):
+    def __init__(self, net, mr_train_list, mr_val_list, ct_train_list, ct_val_list,
+                 adapt_var_list, mr_var_list, old_bn_list, new_bn_list,
+                 test_label_list=None, test_nii_list=None,
+                 num_cls=None, batch_size=6,
+                 opt_kwargs={}, train_config={}):
 
         self.net = net
         self.batch_size = batch_size
@@ -598,18 +599,18 @@ class Trainer(object):
         self.mr_var_list = mr_var_list # a list of variables in MRI path in correspondance with variables in adapt_var_list, this is used for manually initialize variables in CT path with those of MRI path
         self.old_bn_list = old_bn_list # a list of batch_norm internal variables in baseline model
         self.new_bn_list = new_bn_list # a list of batch_norm internal variables for the MRI path in current model
-        self.ct_train_queue = tf.train.string_input_producer(ct_train_list, num_epochs = None, shuffle = True) # tensorflow input queue for CT supervision (disabled), CT and MRI
-        self.ct_val_queue = tf.train.string_input_producer(ct_val_list, num_epochs = None, shuffle = True)
-        self.mr_train_queue = tf.train.string_input_producer(mr_train_list, num_epochs = None, shuffle = True)
-        self.mr_val_queue = tf.train.string_input_producer(mr_val_list, num_epochs = None, shuffle = True)
+        self.ct_train_queue = tf.train.string_input_producer(ct_train_list, num_epochs=None, shuffle=True)  # tensorflow input queue for CT supervision (disabled), CT and MRI
+        self.ct_val_queue = tf.train.string_input_producer(ct_val_list, num_epochs=None, shuffle=True)
+        self.mr_train_queue = tf.train.string_input_producer(mr_train_list, num_epochs=None, shuffle=True)
+        self.mr_val_queue = tf.train.string_input_producer(mr_val_list, num_epochs=None, shuffle=True)
         self.train_config = train_config # configuations for training
         self.lr_update_flag = train_config["lr_update"]
 
-    def next_batch(self, input_queue, capacity = 120, num_threads = 2, min_after_dequeue = 30, label_type = 'float'):
+    def next_batch(self, input_queue, capacity=120, num_threads=2, min_after_dequeue=30, label_type='float'):
 
         reader = tf.TFRecordReader()
         fid, serialized_example = reader.read(input_queue)
-        parser = tf.parse_single_example(serialized_example, features = decomp_feature)
+        parser = tf.parse_single_example(serialized_example, features=decomp_feature)
         dsize_dim0 = tf.cast(parser['dsize_dim0'], tf.int32)
         dsize_dim1 = tf.cast(parser['dsize_dim1'], tf.int32)
         dsize_dim2 = tf.cast(parser['dsize_dim2'], tf.int32)
@@ -621,13 +622,13 @@ class Trainer(object):
 
         data_vol = tf.reshape(data_vol, raw_size)
         label_vol = tf.reshape(label_vol, raw_size)
-        data_vol = tf.slice(data_vol, [0,0,0],volume_size)
-        label_vol = tf.slice(label_vol, [0,0,1], label_size)
+        data_vol = tf.slice(data_vol, [0, 0, 0], volume_size)
+        label_vol = tf.slice(label_vol, [0, 0, 1], label_size)
 
-        data_feed, label_feed, fid_feed = tf.train.shuffle_batch([data_vol, label_vol, fid], batch_size =self.batch_size , capacity = capacity, \
-                                                                 num_threads = num_threads, min_after_dequeue = min_after_dequeue)
+        data_feed, label_feed, fid_feed = tf.train.shuffle_batch([data_vol, label_vol, fid], batch_size=self.batch_size, capacity=capacity,
+                                                                 num_threads=num_threads, min_after_dequeue=min_after_dequeue)
 
-        pair_feed = tf.concat([data_feed, label_feed], axis = 3) # concatenate them
+        pair_feed = tf.concat([data_feed, label_feed], axis=3)  # concatenate them
 
         return pair_feed, fid_feed
 
@@ -635,22 +636,22 @@ class Trainer(object):
         """
         Use RMSprop instead of Adam for training WGAN
         """
-        learning_rate = self.opt_kwargs.pop("learning_rate", None) # default set to 0.0002
+        learning_rate = self.opt_kwargs.pop("learning_rate", None)  # default set to 0.0002
         self.LR_refresh = learning_rate
         self.learning_rate_node = tf.Variable(learning_rate)
 
 
-        # optimizer for discriminator/ domain classifier
+        # optimizer for discriminator / domain classifier
         dis_optimizer = tf.train.RMSPropOptimizer(learning_rate=self.learning_rate_node,
                                                   **self.opt_kwargs).minimize(self.net.dis_loss + 1.0 / self.train_config['dis_sub_iter'] * self.net.dis_reg,
-                                                                              global_step=global_step, \
-                                                                              var_list = self.net.cls_vars)
+                                                                              global_step=global_step,
+                                                                              var_list=self.net.cls_vars)
 
         # optimizer for training generator
         gen_optimizer = tf.train.RMSPropOptimizer(learning_rate=self.learning_rate_node,
                                                   **self.opt_kwargs).minimize(self.net.ct_gen_loss + 1.0 / self.train_config['gen_sub_iter'] * self.net.gen_reg,
-                                                                              global_step=global_step, \
-                                                                              var_list = self.net.adapt_vars)
+                                                                              global_step=global_step,
+                                                                              var_list=self.net.adapt_vars)
         # clip operation for WGAN for Lipschitz constrain
         self.clip_op = [tf.assign(var, tf.clip_by_value(var, -0.03, 0.03)) for var in self.net.cls_vars if "Variable" in var.name]
 
@@ -780,7 +781,7 @@ class Trainer(object):
         config = tf.ConfigProto()
         config.gpu_options.allow_growth = True # False
         with tf.Session(config=config) as sess:
-            sess.run([ init_glb, init_loc] )
+            sess.run([init_glb, init_loc])
             coord = tf.train.Coordinator()
             # For restore models, there are three situations:
             # 1. warming up discriminator, init from MRI segmenter: "restore_from_baseline=True, clear_rms=True"
@@ -814,7 +815,7 @@ class Trainer(object):
             mr_feed_all, mr_feed_fid = self.next_batch(self.mr_train_queue)
             mr_feed_val, mr_feed_val_fid = self.next_batch(self.mr_val_queue)
 
-            threads = tf.train.start_queue_runners(sess = sess, coord = coord, start = True)
+            threads = tf.train.start_queue_runners(sess=sess, coord=coord, start=True)
 
             # read iteration configurations
             dis_interval = self.train_config['dis_interval'] # frequency of discriminator updates, default 1. if set 2, update discriminator every 2 iterations
