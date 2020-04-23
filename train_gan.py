@@ -15,7 +15,7 @@ import random
 import adversarial as drn
 from lib import _read_lists
 
-os.environ['CUDA_VISIBLE_DEVICES'] = '1'
+os.environ['CUDA_VISIBLE_DEVICES'] = '0'
 os.environ['TF_CPP_MIN_LOG_LEVEL'] = '2'
 
 random.seed(456)

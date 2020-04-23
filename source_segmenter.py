@@ -279,7 +279,7 @@ class Full_DRN(object):
         :param sess: current session instance
         :param model_path: path to checkpoint file location
         """
-        saver = tf.train.Saver(tf.contrib.framework.get_variables() + tf.get_collection_ref("internal_batchnorm_variables") )
+        saver = tf.train.Saver(tf.contrib.framework.get_variables() + tf.get_collection_ref("internal_batchnorm_variables"))
         logging.info("Model restored from file: %s" % model_path)
         try:
             saver.restore(sess, model_path)

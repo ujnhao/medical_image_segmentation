@@ -2,10 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="8d1930a8-028d-4957-b438-f8f1e7dfaa33" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/tmp_exps/mr2ct122103/train_loggan-0.3_1221-gan/events.out.tfevents.1587616080.DESKTOP-MSG5DPT" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/tmp_exps/mr2ct122103/val_loggan-0.3_1221-gan/events.out.tfevents.1587616096.DESKTOP-MSG5DPT" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/curr_log" beforeDir="false" afterPath="$PROJECT_DIR$/curr_log" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/requirements.txt" beforeDir="false" afterPath="$PROJECT_DIR$/requirements.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/source_segmenter.py" beforeDir="false" afterPath="$PROJECT_DIR$/source_segmenter.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -74,7 +73,7 @@
       <workItem from="1587027251570" duration="7085000" />
       <workItem from="1587089623098" duration="46822000" />
       <workItem from="1587373160225" duration="67083000" />
-      <workItem from="1587615617989" duration="3450000" />
+      <workItem from="1587615617989" duration="9260000" />
     </task>
     <servers />
   </component>
