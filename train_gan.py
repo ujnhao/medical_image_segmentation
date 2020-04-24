@@ -19,7 +19,7 @@ os.environ['CUDA_VISIBLE_DEVICES'] = '0'
 os.environ['TF_CPP_MIN_LOG_LEVEL'] = '2'
 
 random.seed(456)
-logging.basicConfig(filename = "general_log", level = logging.DEBUG)
+logging.basicConfig(filename="general_log", level=logging.DEBUG)
 currtime = datetime.datetime.now().strftime('%Y_%m_%d_%H_%M_%S')
 
 rate = 0.3
