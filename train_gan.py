@@ -26,11 +26,11 @@ rate = 0.3
 date = "1221"
 
 cost_kwargs = {
-    "regularizer": 1e-4, # L2 norm regularizer segmentation model
-    "gan_regularizer": 1e-4, # L2 norm regularizer for WGAN variables
-    "miu_gen": 0.002, # weighing of generator loss
-    "miu_dis": 0.002, # weighing of discriminator loss
-    "lambda_mask_loss": None, # the trade-off parameter for mask discriminator, set it as 0.3
+    "regularizer": 1e-4,  # L2 norm regularizer segmentation model
+    "gan_regularizer": 1e-4,  # L2 norm regularizer for WGAN variables
+    "miu_gen": 0.002,  # weighing of generator loss
+    "miu_dis": 0.002,  # weighing of discriminator loss
+    "lambda_mask_loss": None,  # the trade-off parameter for mask discriminator, set it as 0.3
 }
 
 opt_kwargs = {
@@ -39,7 +39,7 @@ opt_kwargs = {
 
 network_config = {
     "mr_front_trainable": False,  # whether mri segmenter early layers are trainable, set it as False
-    "joint_trainable": False, # whether common higher layers shared by MRI and CT trainable or not, set it as False
+    "joint_trainable": False,  # whether common higher layers shared by MRI and CT trainable or not, set it as False
     "ct_front_trainable": None,  # whether CT adaptation (DAM) variables are trainable
     "cls_trainable": True,  # whether domain discriminator for CNN features are trainable, set it as True
     "m_cls_trainable": True,  # whether domain discriminator for segmentation mask are trainable, set it as True
@@ -47,20 +47,20 @@ network_config = {
 }
 
 train_config = {
-    "restore_from_baseline": None, # restore from the source segmenter and manually initialize DAM layers with learned early layers
+    "restore_from_baseline": None,  # restore from the source segmenter and manually initialize DAM layers with learned early layers
     "copy_main": None,  # only for rerun the zip experiment with cls6 pretrained classifier
     "clear_rms": None,  # restore from the baseline module and manually copy parameters to the ct branch
-    "lr_update": None, # if true, when the model is first run, the learning rate specified above will be used to update learning rate in the checkpoint
+    "lr_update": None,  # if true, when the model is first run, the learning rate specified above will be used to update learning rate in the checkpoint
     "dis_interval": 1,  # frequency of updating discriminator, normally, just set it to 1
     "gen_interval": 1,  # frequency of updating generator (CT adaptation layers), normally, just set it to 1
-    "dis_sub_iter": 20, # number of sub iteration in one update, set as 1 for pre-train, other wise 20
+    "dis_sub_iter": 20,  # number of sub iteration in one update, set as 1 for pre-train, other wise 20
     "gen_sub_iter": 1,
     "tag": "gan-"+str(rate)+"_"+date,  # name postfix of tensorboard log file for identifying this run
     "iter_upd_interval": 300,  # interval for increasing number of *_sub_iter
     "dis_sub_iter_inc": 1,  # number of iteraion increase when updating
     "gen_sub_iter_inc": 0,
     "lr_decay_factor": 0.98,
-    "checkpoint_space": 100, # intervals between model save and learning rate decay
+    "checkpoint_space": 100,  # intervals between model save and learning rate decay
     "training_iters": 200,
     "epochs": 600
 }
@@ -88,7 +88,7 @@ def main(phase):
 
         network_config["ct_front_trainable"] = False
 
-        train_config["restore_from_baseline"]  = False
+        train_config["restore_from_baseline"] = False
         train_config["copy_main"] = True
         train_config["clear_rms"] = True
         train_config["lr_update"] = True
