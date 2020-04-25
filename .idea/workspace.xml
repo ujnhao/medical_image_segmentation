@@ -4,9 +4,6 @@
     <list default="true" id="8d1930a8-028d-4957-b438-f8f1e7dfaa33" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/source_segmenter.py" beforeDir="false" afterPath="$PROJECT_DIR$/source_segmenter.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tmp_exps/mr_baseline/train_log/events.out.tfevents.1587525138.DESKTOP-MSG5DPT" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tmp_exps/mr_baseline/val_log/events.out.tfevents.1587525144.DESKTOP-MSG5DPT" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/train_gan.py" beforeDir="false" afterPath="$PROJECT_DIR$/train_gan.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -77,7 +74,8 @@
       <workItem from="1587373160225" duration="67083000" />
       <workItem from="1587615617989" duration="12460000" />
       <workItem from="1587685153386" duration="515000" />
-      <workItem from="1587686487739" duration="6487000" />
+      <workItem from="1587686487739" duration="9620000" />
+      <workItem from="1587817637689" duration="1587000" />
     </task>
     <servers />
   </component>
