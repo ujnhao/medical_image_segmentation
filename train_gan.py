@@ -88,7 +88,7 @@ def main(phase):
 
         network_config["ct_front_trainable"] = False
 
-        train_config["restore_from_baseline"] = False
+        train_config["restore_from_baseline"] = True
         train_config["copy_main"] = True
         train_config["clear_rms"] = True
         train_config["lr_update"] = True

@@ -228,7 +228,6 @@ class Full_DRN(object):
             self.dice_loss = self._dice_loss_fun(logits)
             loss += miu_dice * self.dice_loss
 
-        # 根据分类, 需要改造
         self.dice_eval, self.dice_eval_arr = _dice_eval(self.compact_pred, self.y, self.n_class)
         self.dice_eval_c1 = self.dice_eval_arr[1]
         self.dice_eval_c2 = self.dice_eval_arr[2]
