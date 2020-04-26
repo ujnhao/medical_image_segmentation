@@ -379,7 +379,6 @@ class Trainer(object):
     def _initialize(self, training_iters, output_path,  restore):
 
         self.global_step = tf.Variable(0)
-        # 需要根据分类改造
         scalar_summaries = [
             tf.summary.scalar('loss', self.net.cost),
             tf.summary.scalar('regularizer_loss', self.net.regularizer_loss),
