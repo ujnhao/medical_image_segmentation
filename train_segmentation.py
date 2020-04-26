@@ -69,9 +69,9 @@ def main():
                           optimizer=config["optimizer"], lr_update_flag=lr_update_flag)
 
     # start tensorboard before getting started
-    if platform.system() is "Linux":
-        command1 = "tensorboard --logdir=" + output_path + " --port=6999 " + " &"
-        os.system(command1)
+    # if platform.system() is "Linux":
+    command1 = "tensorboard --logdir=" + output_path + " --port=6999 " + " &"
+    os.system(command1)
 
     print("Now start training...")
     if restore is True:
